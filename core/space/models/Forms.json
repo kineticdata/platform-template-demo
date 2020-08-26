@@ -1,0 +1,53 @@
+{
+  "activeMappingName": "Forms",
+  "attributes": [
+    {
+      "name": "Name"
+    },
+    {
+      "name": "Slug"
+    },
+    {
+      "name": "Status"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "system",
+      "attributes": [
+        {
+          "name": "Name",
+          "structureField": "${fields(\"name\")}"
+        },
+        {
+          "name": "Slug",
+          "structureField": "${fields(\"slug\")}"
+        },
+        {
+          "name": "Status",
+          "structureField": "${fields(\"status\")}"
+        }
+      ],
+      "bridgeSlug": "kinetic-core",
+      "name": "Forms",
+      "qualifications": [
+        {
+          "name": "Services Kapp",
+          "query": "kappSlug=services"
+        }
+      ],
+      "structure": "Forms"
+    }
+  ],
+  "name": "Forms",
+  "qualifications": [
+    {
+      "name": "Services Kapp",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    }
+  ],
+  "status": "Active"
+}

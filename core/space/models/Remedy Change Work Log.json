@@ -1,0 +1,69 @@
+{
+  "activeMappingName": "Remedy Change Work Log",
+  "attributes": [
+    {
+      "name": "Created At"
+    },
+    {
+      "name": "Notes"
+    },
+    {
+      "name": "Source"
+    },
+    {
+      "name": "Summary"
+    },
+    {
+      "name": "Type"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "fcpskineticagent",
+      "attributes": [
+        {
+          "name": "Created At",
+          "structureField": "${fields('Work Log Submit Date')}"
+        },
+        {
+          "name": "Summary",
+          "structureField": "${fields('Description')}"
+        },
+        {
+          "name": "Notes",
+          "structureField": "${fields('Detailed Description')}"
+        },
+        {
+          "name": "Type",
+          "structureField": "${fields('Work Log Type')}"
+        },
+        {
+          "name": "Source",
+          "structureField": "${fields('Communication Source')}"
+        }
+      ],
+      "bridgeSlug": "ars-remedy",
+      "name": "Remedy Change Work Log",
+      "qualifications": [
+        {
+          "name": "By Infrastructure Change ID",
+          "query": "'Infrastructure Change ID'=\"${parameters('Infrastructure Change ID')}\"  AND 'View Access' = \"Public\""
+        }
+      ],
+      "structure": "CHG:WorkLog"
+    }
+  ],
+  "name": "Remedy Change Work Log",
+  "qualifications": [
+    {
+      "name": "By Infrastructure Change ID",
+      "parameters": [
+        {
+          "name": "Infrastructure Change ID"
+        }
+      ],
+      "resultType": "Multiple"
+    }
+  ],
+  "status": "Active"
+}

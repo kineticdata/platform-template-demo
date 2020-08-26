@@ -1,0 +1,326 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_change_create_v1</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Change Create</name>
+        <author></author>
+        <notes></notes>
+        <lastID>15</lastID>
+        <taskDefinition id="routine_change_create_v1" name="Change Create" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Change Summary" label="Change Summary" required="true" tooltip=""></parameter>
+                <parameter id="Change Notes" label="Change Notes" required="true" tooltip=""></parameter>
+                <parameter id="Impact" label="Impact" required="true" tooltip=""></parameter>
+                <parameter id="Urgency" label="Urgency" required="true" tooltip=""></parameter>
+                <parameter id="Op Cat Tier 1" label="Op Cat Tier 1" required="true" tooltip=""></parameter>
+                <parameter id="Op Cat Tier 2" label="Op Cat Tier 2" required="true" tooltip=""></parameter>
+                <parameter id="Op Cat Tier 3" label="Op Cat Tier 3" required="true" tooltip=""></parameter>
+                <parameter id="Prod Cat Tier 1" label="Prod Cat Tier 1" required="true" tooltip=""></parameter>
+                <parameter id="Prod Cat Tier 2" label="Prod Cat Tier 2" required="true" tooltip=""></parameter>
+                <parameter id="Prod Cat Tier 3" label="Prod Cat Tier 3" required="true" tooltip=""></parameter>
+                <parameter id="Product Name" label="Product Name" required="true" tooltip=""></parameter>
+                <parameter id="Support Company" label="Support Company" required="true" tooltip=""></parameter>
+                <parameter id="Equipment Location" label="Equipment Location" required="true" tooltip=""></parameter>
+                <parameter id="Requester Login ID" label="Requester Login ID" required="true" tooltip=""></parameter>
+                <parameter id="Customer People ID" label="Customer People ID" required="true" tooltip=""></parameter>
+                <parameter id="Company" label="Company" required="true" tooltip=""></parameter>
+                <parameter id="Site" label="Site" required="true" tooltip=""></parameter>
+                <parameter id="Change Coordinator Org" label="Change Coordinator Org" required="true" tooltip=""></parameter>
+                <parameter id="Change Coordinator Group" label="Change Coordinator Group" required="true" tooltip=""></parameter>
+                <parameter id="Change Manager Org" label="Change Manager Org" required="true" tooltip=""></parameter>
+                <parameter id="Change Manger Group" label="Change Manger Group" required="true" tooltip=""></parameter>
+                <parameter id="Work Info Notes" label="Work Info Notes" required="false" tooltip=""></parameter>
+                <parameter id="Work Info Attachment URL 1" label="Work Info Attachment URL 1" required="false" tooltip=""></parameter>
+                <parameter id="Work Info Attachment URL 2" label="Work Info Attachment URL 2" required="false" tooltip=""></parameter>
+                <parameter id="Work Info Attachment URL 3" label="Work Info Attachment URL 3" required="false" tooltip=""></parameter>
+                <parameter id="Secure Tab Notes" label="Secure Tab Notes" required="false" tooltip=""></parameter>
+                <parameter id="Secure Tab Attachment URL 1" label="Secure Tab Attachment URL 1" required="false" tooltip=""></parameter>
+                <parameter id="Secure Tab Attachment URL 2" label="Secure Tab Attachment URL 2" required="false" tooltip=""></parameter>
+                <parameter id="Secure Tab Attachment URL 3" label="Secure Tab Attachment URL 3" required="false" tooltip=""></parameter>
+                <parameter id="Submitter" label="Submitter" required="true" tooltip=""></parameter>
+                <parameter id="Space Slug" label="Space Slug" required="true" tooltip=""></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Infrastructure Change Id" tooltip=""></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="115" y="24">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">utilities_echo_v1_4</task>
+                </dependents>
+            </task>
+            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_3" name="Create Change" x="356" y="472">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Error Handling" label="Error Handling" menu="" required="false" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Handler Slug" label="Handler Slug" menu="" required="false" tooltip="The name of the handler slug to execute. ex foo_bar">remedy_generic_create</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Payload" label="Payload" menu="" required="false" tooltip="A json structure that matches the handlers parameters. ie {&quot;baz&quot;: &quot;buz&quot;}">&lt;%=	
+{'error_handling' =&gt; 'Raise Error',
+    'form' =&gt; 'HPD:IncidentInterface_Create',
+    'field_values' =&gt; @results['Convert Labels To Remedy Labels']['output']
+}.to_json%&gt;</parameter>
+                </parameters>
+                <messages>
+                    <message type="Create"></message>
+                    <message type="Update"></message>
+                    <message type="Complete"></message>
+                </messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_kinetic_agent_execute_routine_v2_11</task>
+                </dependents>
+            </task>
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_4" name="Static Values" x="73" y="164">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">{
+  "z1D_Action":"CREATE",
+  "Status":"New",
+  "Service_Type":"User Service Request",
+  "Reported Source":"Web"
+}</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">utilities_echo_v1_5</task>
+                </dependents>
+            </task>
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_5" name="Merge Values" x="74" y="320">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%=
+# Get Static Values
+static_values = JSON.parse(@results['Static Values']['output'])
+
+# Get Inputs
+inputs = JSON.parse(@inputs.to_json)
+
+# Merge JSON
+results = inputs.merge(static_values)
+
+# Remove work info values
+results = results.reject { |k,v| k.include?("Work Info") }
+
+# Remove secure work info values
+results = results.reject { |k,v| k.include?("Secure Tab") }
+
+# Remove slugs passed values
+results = results.reject { |k,v| k.include?("Slug") }
+
+# Remove nil values
+results = results.reject { |k,v| v.nil? }
+
+# convert the hash to json object
+results = results.to_json
+
+results
+%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">utilities_echo_v1_6</task>
+                </dependents>
+            </task>
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_6" name="Convert Labels To Remedy Labels" x="74" y="471">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%=
+conversion_mapping = JSON.parse('{
+	"Requester First Name": "First_Name",
+	"Requester Last Name": "Last_Name",
+	"Submitter": "Submitter",
+	"Customer": "Login_ID",
+	"Incident Summary": "Description",
+	"Impact": "Impact",
+	"Urgency": "Urgency",
+	"Support Company": "Assigned Support Company",
+	"Support Organization": "Assigned Support Organization",
+	"Support Group": "Assigned Group",
+	"Assignee Login ID": "Assignee",
+	"Op Cat Tier 1": "Categorization Tier 1",
+	"Op Cat Tier 2": "Categorization Tier 2",
+	"Op Cat Tier 3": "Categorization Tier 3",
+	"Prod Cat Tier 1": "Product Categorization Tier 1",
+	"Prod Cat Tier 2": "Product Categorization Tier 2",
+	"Prod Cat Tier 3": "Product Categorization Tier 3",
+	"Product Name": "Product Name",
+	"Manufacture" : "Manufacturer",
+	"Resolution Product Cat 1": "Resolution Product Categorization 1",
+	"Resolution Product Cat 2": "Resolution Product Categorization 2",
+	"Resolution Product Cat 3": "Resolution Product Categorization 3",
+	"Resolution": "Resolution",
+	"Service_Type": "Service_Type",
+	"Incident Notes": "Detailed_Decription",
+	"Contact" : "Direct Contact LoginID",
+	"Request ID": "SRInstanceID",
+	"Customer Site": "Customer Site",
+	"Customer Urgency": "z1D_Customer_Urgency",
+	"Department": "Department",
+	"Equipment Location": "Equipment Location",
+	"Service Cost": "Service Cost",
+	"Cost Center": "FP Cost Center",
+	"Site": "Site",
+	"Barcode": "Barcode",
+	"Finance Officer": "FP Finance Officer",
+	"General Ledger": "FP General Ledger"
+}')
+
+answers = JSON.parse(@results['Merge Values']['output'])
+
+answers.keys.each { |key| 
+  if conversion_mapping[key]
+    answers[conversion_mapping[key]] = answers.delete(key)
+  end
+}
+
+answers.to_json
+
+%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_kinetic_agent_execute_routine_v2_3</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_9" name="Return" x="915.2666" y="316.86663999999996">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Incident Number" label="Incident Number" menu="" required="false" tooltip="">&lt;%= @results['Change Id']['output']%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_11" name="Retrieve Incident" x="356" y="320">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Error Handling" label="Error Handling" menu="" required="false" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Handler Slug" label="Handler Slug" menu="" required="false" tooltip="The name of the handler slug to execute. ex foo_bar">remedy_generic_query_retrieve</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Payload" label="Payload" menu="" required="false" tooltip="A json structure that matches the handlers parameters. ie {&quot;baz&quot;: &quot;buz&quot;}">&lt;%=	
+{'error_handling' =&gt; 'Raise Error',
+    'form' =&gt; 'HPD:IncidentInterface_Create',
+    'return_type' =&gt; "Single",
+    'request_query' =&gt; "'Request ID' = \""+JSON.parse(@results['Create Change']['output'])['Entry Id']+"\""
+}.to_json%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">utilities_echo_v1_14</task>
+                </dependents>
+            </task>
+            <task definition_id="routine_incident_work_info_create_v1" id="routine_incident_work_info_create_v1_12" name="Create Work Info" x="1748" y="516.6">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Incident Number" label="Incident Number" menu="" required="true" tooltip="">&lt;%= @results['Change Id']['output'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Request ID" label="Request ID" menu="" required="true" tooltip="">&lt;%= @inputs['Request ID'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Notes" label="Work Info Notes" menu="" required="true" tooltip="">&lt;%= @inputs['Work Info Notes'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 1" label="Work Info Attachment URL 1" menu="" required="false" tooltip="">&lt;%= @inputs['Work Info Attachment URL 1'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 2" label="Work Info Attachment URL 2" menu="" required="false" tooltip="">&lt;%= @inputs['Work Info Attachment URL 2'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 3" label="Work Info Attachment URL 3" menu="" required="false" tooltip="">&lt;%= @inputs['Work Info Attachment URL 3'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Submitter" label="Submitter" menu="" required="true" tooltip="">&lt;%= @inputs['Submitter'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Summary" label="Work Info Summary" menu="" required="true" tooltip="">&lt;%= summary = @inputs['Work Info Notes']
+if @inputs['Work Info Notes'].length &gt; 100
+summary = @inputs['Work Info Notes'][0..99]
+end
+summary %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Space Slug" label="Space Slug" menu="" required="true" tooltip="">&lt;%= @inputs['Space Slug'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+            <task definition_id="routine_incident_secure_tab_create_v1" id="routine_incident_secure_tab_create_v1_13" name="Create Secure Work Info" x="1256" y="622.6">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Incident Number" label="Incident Number" menu="" required="true" tooltip="">&lt;%= @results['Change Id']['output'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Request ID" label="Request ID" menu="" required="true" tooltip="">&lt;%= @inputs['Request ID'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Notes" label="Work Info Notes" menu="" required="true" tooltip="">&lt;%= @inputs['Secure Tab Notes'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 1" label="Work Info Attachment URL 1" menu="" required="false" tooltip="">&lt;%= @inputs['Secure Tab Attachment URL 1'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 2" label="Work Info Attachment URL 2" menu="" required="false" tooltip="">&lt;%= @inputs['Secure Tab Attachment URL 2'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 3" label="Work Info Attachment URL 3" menu="" required="false" tooltip="">&lt;%= @inputs['Secure Tab Attachment URL 3'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Submitter" label="Submitter" menu="" required="true" tooltip="">&lt;%= @inputs['Submitter'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Space Slug" label="Space Slug" menu="" required="true" tooltip="">&lt;%= @inputs['Space Slug'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_14" name="Change Id" x="632.1333" y="319.6667">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%= 
+results = JSON.parse(@results['Retrieve Incident']['output'])
+results['Incident Number']
+ %&gt;</parameter>
+                </parameters>
+                <messages>
+                    <message type="Complete"></message>
+                </messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_9</task>
+                </dependents>
+            </task>
+            <task definition_id="system_noop_v1" id="system_noop_v1_15" name="No Op" x="1401" y="470.6">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages>
+                    <message type="Complete"></message>
+                </messages>
+                <dependents>
+                    <task label="Work Log" type="Complete" value="!@inputs['Work Info Notes'].nil?">routine_incident_work_info_create_v1_12</task>
+                    <task label="Secure Work Log" type="Complete" value="!@inputs['Secure Tab Notes'].nil?">routine_incident_secure_tab_create_v1_13</task>
+                </dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

@@ -1,0 +1,689 @@
+{
+  "anonymous": false,
+  "attributes": [
+
+  ],
+  "bridgedResources": [
+    {
+      "model": "Remedy People",
+      "name": "Remedy by First and Last",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('First Initial')}",
+          "name": "First Name"
+        },
+        {
+          "mapping": "${values('Last Name')}",
+          "name": "Last Name"
+        }
+      ],
+      "qualification": "By First and Last",
+      "status": "Active"
+    },
+    {
+      "model": "Remedy People",
+      "name": "Remedy People",
+      "order": [
+
+      ],
+      "parameters": [
+
+      ],
+      "qualification": "All Enabled",
+      "status": "Active"
+    },
+    {
+      "model": "Remedy People",
+      "name": "Remedy Person",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Requested For')}",
+          "name": "Login ID"
+        }
+      ],
+      "qualification": "By User Name",
+      "status": "Active"
+    },
+    {
+      "model": "Remedy People",
+      "name": "Remedy Search",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Last Name')}",
+          "name": "Last Name"
+        }
+      ],
+      "qualification": "By Last Name",
+      "status": "Active"
+    },
+    {
+      "model": "Remedy Site",
+      "name": "Remedy Site",
+      "order": [
+
+      ],
+      "parameters": [
+
+      ],
+      "qualification": "All Enabled",
+      "status": "Active"
+    }
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": "<style>\n  section.page form section.requested-for .field-label {\n    float: none;\n  }\n  \n  /* Temporary until font-weight is fixed for labels */\n  [data-element-name=\"request-for\"] label:not(.field-label){\n    font-weight: 100 !important;\n  }\n  \n  dd{\n   margin-bottom: 0;\n  }\n  \n  .button-container {\n    margin-top: 30px;\n    margin-bottom: 15px;\n  }\n  \n  .left-button {\n    margin-right: 10px;\n  }\n</style>",
+  "description": "Subform template to hold Requested For section.",
+  "name": "Requested For Search",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Requested For Container",
+          "title": "",
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Requested For Choice Section",
+              "title": "",
+              "visible": true,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "elements": [
+                {
+                  "type": "field",
+                  "name": "Request For",
+                  "label": "This Request is For",
+                  "key": "f1",
+                  "defaultValue": "Me",
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+                    {
+                      "name": "Set to Me",
+                      "type": "Change",
+                      "action": "Custom",
+                      "code": "$('#person-select .rbt-input').val(\"\");\nK('field[Requested For]').value(identity('username'));\nK('bridgedResource[Remedy Person]').load({\n        attributes: ['First Name', 'Last Name', \"Email\", \"Job Title\"],\n        values: {'Login ID' : identity('username')},\n        success: function(bridgedData) {\n           //console.log(bridgedData);\n          K('field[Requested For]').value(bridgedData[\"Login ID\"]);\n          K('field[Requested For Display Name]').value(bridgedData[\"Full Name\"]);\n          K('field[Email]').value(bridgedData[\"Email\"]);\n          K('field[Phone]').value(bridgedData[\"Phone Number\"]);\n          K('field[Job Title]').value(bridgedData[\"Job Title\"]);\n          K('field[Site]').value(bridgedData[\"Site\"]);\n          setDisplayPerson();\n        }\n    });\n",
+                      "runIf": "values('Request For')=='Me'",
+                      "bridgedResourceName": "Remedy Person"
+                    },
+                    {
+                      "name": "Set to Someone Else",
+                      "type": "Change",
+                      "action": "Custom",
+                      "code": "clearPerson();\nsetDisplayPerson();",
+                      "runIf": "values('Request For')=='Someone Else'"
+                    }
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "radio",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "Me",
+                      "value": "Me"
+                    },
+                    {
+                      "label": "Someone Else",
+                      "value": "Someone Else"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Search Section Buttons",
+              "title": null,
+              "visible": "values('Request For') === \"Someone Else\" && values('Requested For') === null",
+              "omitWhenHidden": true,
+              "renderAttributes": {
+                "class": "row"
+              },
+              "elements": [
+                {
+                  "type": "section",
+                  "renderType": null,
+                  "name": "First Initial",
+                  "title": null,
+                  "visible": true,
+                  "omitWhenHidden": null,
+                  "renderAttributes": {
+                    "class": "col-xs-12 col-sm-12 col-md-4 col-lg-2"
+                  },
+                  "elements": [
+                    {
+                      "type": "field",
+                      "name": "First Initial",
+                      "label": "First Initial",
+                      "key": "f29",
+                      "defaultValue": null,
+                      "defaultResourceName": null,
+                      "visible": true,
+                      "enabled": true,
+                      "required": false,
+                      "requiredMessage": null,
+                      "omitWhenHidden": null,
+                      "pattern": null,
+                      "constraints": [
+
+                      ],
+                      "events": [
+
+                      ],
+                      "renderAttributes": {
+                        "placeholder": "Search"
+                      },
+                      "dataType": "string",
+                      "renderType": "text",
+                      "rows": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "renderType": null,
+                  "name": "Last Name",
+                  "title": null,
+                  "visible": true,
+                  "omitWhenHidden": null,
+                  "renderAttributes": {
+                    "class": "col-xs-12 col-sm-12 col-md-6 col-lg-4"
+                  },
+                  "elements": [
+                    {
+                      "type": "field",
+                      "name": "Last Name",
+                      "label": "Last Name",
+                      "key": "f30",
+                      "defaultValue": null,
+                      "defaultResourceName": null,
+                      "visible": true,
+                      "enabled": true,
+                      "required": false,
+                      "requiredMessage": null,
+                      "omitWhenHidden": null,
+                      "pattern": null,
+                      "constraints": [
+
+                      ],
+                      "events": [
+
+                      ],
+                      "renderAttributes": {
+                        "placeholder": "Search"
+                      },
+                      "dataType": "string",
+                      "renderType": "text",
+                      "rows": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "renderType": null,
+                  "name": "Button Section",
+                  "title": null,
+                  "visible": true,
+                  "omitWhenHidden": null,
+                  "renderAttributes": {
+                    "class": "col-xs-12 col-sm-12 col-md-6 col-lg-4 button-container"
+                  },
+                  "elements": [
+                    {
+                      "type": "button",
+                      "label": "Search",
+                      "name": "Search",
+                      "visible": true,
+                      "enabled": true,
+                      "renderType": "custom",
+                      "renderAttributes": {
+                        "class": "left-button"
+                      },
+                      "events": [
+                        {
+                          "name": "Search",
+                          "type": "Click",
+                          "action": "Custom",
+                          "code": "searchByLastName();",
+                          "runIf": "values('Last Name') != null"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "button",
+                      "label": "Clear",
+                      "name": "Clear",
+                      "visible": true,
+                      "enabled": true,
+                      "renderType": "custom",
+                      "renderAttributes": {
+                      },
+                      "events": [
+
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Search Results Dialog",
+              "title": null,
+              "visible": true,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "elements": [
+                {
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "Search Results HTML",
+                  "text": "<table id=\"req-for-table\"></table>",
+                  "visible": true,
+                  "renderAttributes": {
+                  }
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Person Details Section",
+              "title": null,
+              "visible": true,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "elements": [
+                {
+                  "type": "button",
+                  "label": "Change Person",
+                  "name": "Change Person",
+                  "visible": "values('Request For') === \"Someone Else\" && values('Requested For') !== null",
+                  "enabled": true,
+                  "renderType": "custom",
+                  "renderAttributes": {
+                  },
+                  "events": [
+                    {
+                      "name": "Clear Person Info",
+                      "type": "Click",
+                      "action": "Custom",
+                      "code": "clearPerson();"
+                    }
+                  ]
+                },
+                {
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "Person Details Container HTML",
+                  "text": "<div id=\"meDetails\"></div>",
+                  "visible": true,
+                  "renderAttributes": {
+                  }
+                },
+                {
+                  "type": "field",
+                  "name": "Site",
+                  "label": "Site",
+                  "key": "f31",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "dropdown",
+                  "choicesResourceName": "Remedy Site",
+                  "choicesRunIf": null,
+                  "choices": {
+                    "label": "${resources('Remedy Site:Site')}",
+                    "value": "${resources('Remedy Site:Site')}"
+                  }
+                },
+                {
+                  "type": "section",
+                  "renderType": null,
+                  "name": "Request Contact Section",
+                  "title": null,
+                  "visible": true,
+                  "omitWhenHidden": null,
+                  "renderAttributes": {
+                  },
+                  "elements": [
+                    {
+                      "type": "field",
+                      "name": "Request Contact",
+                      "label": "Is the primary contact person for this request the same as above?",
+                      "key": "f26",
+                      "defaultValue": "Yes",
+                      "defaultResourceName": null,
+                      "visible": true,
+                      "enabled": true,
+                      "required": false,
+                      "requiredMessage": null,
+                      "omitWhenHidden": null,
+                      "pattern": null,
+                      "constraints": [
+
+                      ],
+                      "events": [
+
+                      ],
+                      "renderAttributes": {
+                      },
+                      "dataType": "string",
+                      "renderType": "radio",
+                      "choicesResourceName": null,
+                      "choicesRunIf": null,
+                      "choices": [
+                        {
+                          "label": "Yes",
+                          "value": "Yes"
+                        },
+                        {
+                          "label": "No",
+                          "value": "No"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "content",
+                      "renderType": "html",
+                      "name": "Request Contact HTML",
+                      "text": "<div style=\"font-weight: bold; font-size:12px; color:red; font-family:Open Sans\";>You will be identified as the primary contact for this submission.</div><br>",
+                      "visible": "values('Request Contact') == \"No\"",
+                      "renderAttributes": {
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Hidden Section",
+          "title": null,
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Requested For",
+              "label": "Requested For",
+              "key": "f15",
+              "defaultValue": "${identity('username')}",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": "Please select who the Request is for",
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Requested For Display Name",
+              "label": "Requested For Display Name",
+              "key": "f14",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Requested For Department",
+              "label": "Requested For Department",
+              "key": "f27",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Email",
+              "label": "Email",
+              "key": "f9",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Phone",
+              "label": "Phone",
+              "key": "f21",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Desk",
+              "label": "Desk",
+              "key": "f32",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Job Title",
+              "label": "Job Title",
+              "key": "f28",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Review Mode",
+              "label": "Review Mode",
+              "key": "f19",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onLoad",
+          "type": "Load",
+          "action": "Custom",
+          "code": "setDisplayPerson = function(){\n   $('#dd_name').text( K('field[Requested For Display Name]').value() )\n   $('#dd_phone').text( K('field[Phone]').value() )\n   $('#dd_email').text( K('field[Email]').value() )\n   $('#dd_job_title').text( K('field[Job Title]').value() )\n   $('#dd_desk').text( K('field[Desk]').value() )\n}   \n\nclearPerson = function(){\n   K('field[Requested For]').value(null);\n   K('field[Requested For Display Name]').value(null);  \n   K('field[Email]').value(null);\n   K('field[Phone]').value(null);\n   K('field[Job Title]').value(null);\n   K('field[Desk]').value(null);\n   K('field[Requested For Department]').value(null);\n   setDisplayPerson();\n}   \n\n// Create element for displaying selected Requested for Person\n  $('#meDetails').append($(\"<div/>\", {\n      id: \"requestedFor\",\n    }).append($(\"<dt/>\", {\n    id: \"dt_name\",\n    text: \"Requested For:\"}\n  ).add($(\"<dd/>\",{\n    id: \"dd_name\"}\n  )).add($(\"<dd/>\",{\n    id: \"dd_phone\"}\n  )).add($(\"<dd/>\",{\n    id: \"dd_email\"}\n  )).add($(\"<dd/>\",{\n    id: \"dd_job_title\"}\n  )).add($(\"<dd/>\",{\n    id: \"dd_desk\"}\n  )))\n  )\n\nvar peopleBridge = \"Remedy Search\";\nif (K(\"field[First Initial]\").value() != null) peopleBridge = \"Remedy by First and Last\";\n\nbundle.helpers.requestedForConfig = {\n  resource: {\n    name: peopleBridge\n  },\n  resultsContainer:\n    '<table cellspacing=\"0\", border=\"0\", class=\"table table-striped table-bordered table-condensed dataTable\">',\n  data: [\n    {\n      title: \"Login\",\n      name: \"Login ID\",\n      visible: false,\n      setField: \"Requested For\"\n    },\n    {\n      title: \"Last Name\",\n      name: \"Last Name\",\n      orderable: true\n    },\n    {\n      title: \"First Name\",\n      name: \"First Name\",\n      orderable: true,\n      visible: true\n    },\n    {\n      title: \"Email\",\n      name: \"Email\",\n      visible: true,\n      setField: \"Email\"\n    },\n    {\n      title: \"Phone\",\n      name: \"Phone Number\",\n      visible: true,\n      setField: \"Phone\"\n    },\n    {\n      title: \"Job Title\",\n      name: \"Job Title\",\n      visible: false,\n      setField: \"Job Title\"\n    },\n    {\n      title: \"Full Name\",\n      name: \"Full Name\",\n      visible: false,\n      setField: \"Requested For Display Name\"\n    },\n    {\n      title: \"Site\",\n      name: \"Site\",\n      visible: false,\n      setField: \"Site\"\n    },\n    {\n      title: \"Desk Location\",\n      name: \"Desk\",\n      visible: false,\n      setField: \"Desk\"\n    },\n  ],\n  resultsContainerId: \"req-for-table\",\n  before: function before(configObj) {},\n  success: function success(configObj) {},\n  error: function error(configObj) {},\n  complete: function complete(configObj) {},\n  removeOnClick: true,\n  renderer: {\n    type: DataViewer.Renderers.DataTables, // Passing a function here allows for better customization\n    options: {\n      // Options for Reneder\n      processSingleResult: true,\n      // DataTable OPTIONS; Passing options here make it clear that they are being passed to data tables\n      // responsive: OPTIONAL Default for \"BridgeDataTable\" is true but can be over written.\n      responsive: false,\n      dom: \"ftip\",\n      order: [[2, \"asc\"]],\n      paging: true,\n      pageLength: 20,\n      lengthChange: false,\n      deferRender: true,\n      scrollCollapse: true,\n      select: {\n        style: 'single',\n        selector: 'tr'\n      },\n      createdRow: function createdRow(row, data, dataIndex) {},\n      initComplete: function initComplete() {},\n      clickCallback: function(data) {\n       // console.log(data);\n        setDisplayPerson();\n      }\n    }\n  }\n    },\n  \n  searchByLastName = function(){\n      DataViewer.executeSearch(function () {\n  return $(K('content[Search Results HTML]').element());\n  }, bundle.helpers.requestedForConfig);\n  } \n\n// setTimeout is a workaround to KCORE-2962.  The work around allows the watch fields to be set in the K.load loaded callback before the fields are set.  \nsetTimeout(function(){ \n  // Logic for when parent is loaded in review mode.\n  if ( K('field[Review Mode]').value() == \"true\" ) {\n    $(K('form').element()).find(':input:not(:disabled)').prop('disabled',true);\n    K('section[Search Section]').hide();\n    K('field[Request For]').hide();\n  }\n  else if (K('field[Request For]').value() == \"Me\"){ \n    K('field[Requested For]').value(identity('username'));\n    K('bridgedResource[Remedy Person]').load({\n        attributes: ['First Name', 'Last Name', \"Email\", \"Job Title\", \"Site\"],\n        values: {'Login ID' : K('field[Requested For]').value()},\n        success: function(bridgedData) {\n          // console.log(bridgedData);\n          K('field[Requested For]').value(bridgedData[\"Login ID\"]);\n          K('field[Requested For Display Name]').value(bridgedData[\"Full Name\"]);\n          K('field[Email]').value(bridgedData[\"Email\"]);\n          K('field[Phone]').value(bridgedData[\"Phone Number\"]);\n          K('field[Job Title]').value(bridgedData[\"Job Title\"]);\n          K('field[Site]').value(bridgedData[\"Site\"]);\n          K('field[Desk]').value(bridgedData[\"Desk\"]);\n          setDisplayPerson();\n        }\n    });\n   \n  }\n\n}, 1000);\n\n$(K('field[Last Name]').wrapper()).keypress(function (event) {\n  if(event.which == 13) {\n    searchByLastName();\n  }\n})",
+          "runIf": ""
+        }
+      ],
+      "name": "Requested For Information",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+    {
+      "endpoint": "Display",
+      "name": "Everyone"
+    }
+  ],
+  "slug": "requested-for-search",
+  "status": "Active",
+  "submissionLabelExpression": "",
+  "type": "Subservice"
+}

@@ -1,0 +1,46 @@
+{
+  "activeMappingName": "Remedy Site",
+  "attributes": [
+    {
+      "name": "Site"
+    },
+    {
+      "name": "Status"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "fcpskineticagent",
+      "attributes": [
+        {
+          "name": "Site",
+          "structureField": "${fields(\"Site\")}"
+        },
+        {
+          "name": "Status",
+          "structureField": "${fields(\"Status\")}"
+        }
+      ],
+      "bridgeSlug": "ars-remedy",
+      "name": "Remedy Site",
+      "qualifications": [
+        {
+          "name": "All Enabled",
+          "query": "'Status' = \"Enabled\""
+        }
+      ],
+      "structure": "SIT:Site"
+    }
+  ],
+  "name": "Remedy Site",
+  "qualifications": [
+    {
+      "name": "All Enabled",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    }
+  ],
+  "status": "Active"
+}

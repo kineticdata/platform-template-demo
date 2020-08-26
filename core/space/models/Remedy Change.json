@@ -1,0 +1,120 @@
+{
+  "activeMappingName": "Remedy Change",
+  "attributes": [
+    {
+      "name": "Created At"
+    },
+    {
+      "name": "Id"
+    },
+    {
+      "name": "Notes"
+    },
+    {
+      "name": "Status"
+    },
+    {
+      "name": "Submitter First Name"
+    },
+    {
+      "name": "Submitter Last Name"
+    },
+    {
+      "name": "Summary"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "fcpskineticagent",
+      "attributes": [
+        {
+          "name": "Id",
+          "structureField": "${fields('Infrastructure Change ID')}"
+        },
+        {
+          "name": "Submitter First Name",
+          "structureField": "${fields('Submitter First Name')}\n"
+        },
+        {
+          "name": "Submitter Last Name",
+          "structureField": "${fields('Submitter Last Name')}"
+        },
+        {
+          "name": "Summary",
+          "structureField": "${fields('Description')}"
+        },
+        {
+          "name": "Notes",
+          "structureField": "${fields('Detailed Description')}"
+        },
+        {
+          "name": "Status",
+          "structureField": "${fields('Change Request Status')}"
+        },
+        {
+          "name": "Created At",
+          "structureField": "${fields('Submit Date')}"
+        }
+      ],
+      "bridgeSlug": "ars-remedy",
+      "name": "Remedy Change",
+      "qualifications": [
+        {
+          "name": "By Infrastructure Change ID",
+          "query": "'Infrastructure Change ID' = \"${parameters('Infrastructure Change ID')}\""
+        },
+        {
+          "name": "By Submitter - Open",
+          "query": "'Submitter Login ID' = \"${parameters('Remedy Login')}\" AND 'Status' < \"Rejected\""
+        },
+        {
+          "name": "By Submitter - Closed",
+          "query": "('Submitter Login ID' = \"${parameters('Remedy Login')}\" AND 'Change Request Status' >= \"Rejected\""
+        },
+        {
+          "name": "By Submitter",
+          "query": "'Submitter Login ID' = \"jmfisher1\""
+        }
+      ],
+      "structure": "CHG:Infrastructure Change"
+    }
+  ],
+  "name": "Remedy Change",
+  "qualifications": [
+    {
+      "name": "By Infrastructure Change ID",
+      "parameters": [
+        {
+          "name": "Infrastructure Change ID"
+        }
+      ],
+      "resultType": "Single"
+    },
+    {
+      "name": "By Submitter",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    },
+    {
+      "name": "By Submitter - Closed",
+      "parameters": [
+        {
+          "name": "Remedy Login"
+        }
+      ],
+      "resultType": "Multiple"
+    },
+    {
+      "name": "By Submitter - Open",
+      "parameters": [
+        {
+          "name": "Remedy Login"
+        }
+      ],
+      "resultType": "Multiple"
+    }
+  ],
+  "status": "Active"
+}

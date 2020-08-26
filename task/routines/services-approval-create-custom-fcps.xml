@@ -1,0 +1,224 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_services_approval_create_custom_fcps_v1</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Services Approval Create Custom FCPS</name>
+        <author></author>
+        <notes></notes>
+        <lastID>154</lastID>
+        <taskDefinition id="routine_services_approval_create_custom_fcps_v1" name="Services Approval Create Custom FCPS" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Kapp Slug" label="Kapp Slug" required="true" tooltip="Slug of the Services Kapp">services</parameter>
+                <parameter id="Approval Form Slug" label="Approval Form Slug" required="true" tooltip="Slug of the approval form"></parameter>
+                <parameter id="Assigned Team" label="Assigned Team" required="false" tooltip="Name of the team to assign approval to (ex. &quot;Test::Test::Test&quot;)"></parameter>
+                <parameter id="Assigned Individual" label="Assigned Individual" required="false" tooltip="Id of the person the task will be assigned to"></parameter>
+                <parameter id="Assigned Individual Display Name" label="Assigned Individual Display Name" required="false" tooltip="Full Name of the person the task will be assigned to"></parameter>
+                <parameter id="Originating System" label="Originating System" required="true" tooltip="Source of the parent record (e.g. Kinetic Core, Salesforce ..etc)">Kinetic Core</parameter>
+                <parameter id="Originating Id" label="Originating Id" required="true" tooltip="Id of the originating systems record"></parameter>
+                <parameter id="Requested For" label="Requested For" required="true" tooltip="Who the original request is being submitted for (Id)"></parameter>
+                <parameter id="Requested For Display Name" label="Requested For Display Name" required="true" tooltip="Who the original request is being submitted for (Full Name)"></parameter>
+                <parameter id="Originating Form Name" label="Originating Form Name" required="true" tooltip="Name of the originating systems record"></parameter>
+                <parameter id="System Input" label="System Input" required="false" tooltip="Structured data that can be leveraged by the queue task form"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Approval Submission Id" tooltip="Submission Id of the completed approval"></result>
+                <result name="Fields JSON" tooltip="A JSON map of questions that were answered on the approval record"></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="111" y="36">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">utilities_echo_v1_140</task>
+                </dependents>
+            </task>
+            <task definition_id="utilities_defer_v1" id="utilities_defer_v1_46" name="Fulfillment" x="340" y="343">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="deferral_value" label="Initial Deferral Value" menu="" required="false" tooltip=""></parameter>
+                </parameters>
+                <messages>
+                    <message type="Create">A task was created and assigned to the &lt;%=@results['Verify Assignment']['Assigned Team']%&gt; team</message>
+                    <message type="Complete">A task for your request was recently completed</message>
+                </messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_kinetic_submission_retrieve_v1_136</task>
+                    <task label="" type="Create" value="">routine_kinetic_form_retrieve_v1_154</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_106" name="Return" x="343" y="734">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Approval Submission Id" label="Approval Submission Id" menu="" required="false" tooltip="Submission Id of the completed approval">&lt;%=@results['Create Approval Record']['Id']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Fields JSON" label="Fields JSON" menu="" required="false" tooltip="A JSON map of questions that were answered on the approval record">&lt;%=@results['Retrieve Fulfillment Values']['Values JSON']%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+            <task definition_id="routine_kinetic_queue_assignment_validate_v1" id="routine_kinetic_queue_assignment_validate_v1_132" name="Verify Assignment" x="68" y="343">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Assigned Team" label="Assigned Team" menu="" required="false" tooltip="The Assigned Team">&lt;%= @inputs['Assigned Team'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Assigned Individual" label="Assigned Individual" menu="" required="false" tooltip="The Assigned Individual">&lt;%= @inputs['Assigned Individual'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Originating System" label="Originating System" menu="" required="false" tooltip="The system originating the fulfillment process">&lt;%= @inputs['Originating System'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Originating Id" label="Originating Id" menu="" required="false" tooltip="The Id of the record originating the fulfillment process">&lt;%= @inputs['Originating Id'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">utilities_defer_v1_46</task>
+                </dependents>
+            </task>
+            <task definition_id="routine_kinetic_submission_create_v1" id="routine_kinetic_submission_create_v1_133" name="Create Approval Record" x="912" y="342">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Kapp Slug" label="Kapp Slug" menu="" required="true" tooltip="The slug of the Kapp to create the submission in">&lt;%=@inputs['Kapp Slug']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Form Slug" label="Form Slug" menu="" required="true" tooltip="The slug of the Form to create the submission in">&lt;%= @inputs['Approval Form Slug'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Current Page Name" label="Current Page Name" menu="" required="false" tooltip="The page to set the submission to"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Current Page Navigation" label="Current Page Navigation" menu="" required="false" tooltip="The direction of the next page (next or previous)"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Values JSON" label="Values JSON" menu="" required="false" tooltip="A JSON Map of values to set into the submissions fields">&lt;%=
+values = {
+  'Assigned Individual' =&gt; @results['Verify Assignment']['Assigned Individual'],
+  'Assigned Individual Display Name' =&gt; @results['Verify Assignment']['Assigned Individual Display Name'],
+  'Assigned Team' =&gt; @results['Verify Assignment']['Assigned Team'],
+  'Requested For' =&gt; @inputs['Requested For'],
+  'Requested For Display Name' =&gt; @inputs['Requested For Display Name'],
+  'Deferral Token' =&gt; @results['Fulfillment']['deferral_token'],
+  'Originating Id' =&gt; @inputs['Originating Id'],
+  'Originating Form Name' =&gt; @inputs['Originating Form Name'],
+  'Originating System' =&gt; @inputs['Originating System'],
+  'Status' =&gt; 'Awaiting Approval',
+  'System Input' =&gt; @inputs['System Input'],
+}
+
+# Extract Form Fields
+form_fields = JSON.parse(@results['Retrieve Approval Form']['Fields JSON']).map{|field| field.values}.flatten
+
+# Prepare System Input fields
+system_inputs = JSON.parse( @inputs['System Input'] || "{}" )
+
+# Remove the values fields, as those are "unsettable" and should be handled in other ways
+updatable_fields = form_fields - values.keys
+
+# Set each updatable field if there is a matching field in the system_input fields
+updatable_fields.each{|field|
+  values[field] = system_inputs[field] if system_inputs.has_key?(field)
+}
+
+# Handle Status if not provided as a system input
+if values['Status'].nil?
+  values['Status'] = "Open"
+end
+
+values.to_json%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Origin Id" label="Origin Id" menu="" required="false" tooltip="Sets the submissions origin to another Kinetic Submission">&lt;%= @inputs['Originating System'] == "Kinetic Core" ? @inputs['Originating Id'] : nil%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Parent Id" label="Parent Id" menu="" required="false" tooltip="Sets the submissions parent to another Kinetic Submission">&lt;%= @inputs['Originating System'] == "Kinetic Core" ? @inputs['Originating Id'] : nil%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Submit Submission" label="Submit Submission" menu="" required="false" tooltip="True or False, if Submission should be Submitted when created">false</parameter>
+                </parameters>
+                <messages>
+                    <message type="Create"></message>
+                    <message type="Update"></message>
+                    <message type="Complete"></message>
+                </messages>
+                <dependents>
+                    <task label="Has Originating Id &amp;amp;&amp;amp; Core" type="Complete" value="@results['Has Kinetic Submission Origin']['output'].to_s == 'true'">system_noop_v1_135</task>
+                </dependents>
+            </task>
+            <task definition_id="system_noop_v1" id="system_noop_v1_135" name="Has Kinetic Origin" x="913" y="510">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_kinetic_queue_task_relate_origin_submission_discussion_v1_146</task>
+                </dependents>
+            </task>
+            <task definition_id="routine_kinetic_submission_retrieve_v1" id="routine_kinetic_submission_retrieve_v1_136" name="Retrieve Fulfillment Values" x="342" y="507">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Id" label="Id" menu="" required="true" tooltip="The Id of the submission to retrieve">&lt;%=@results['Create Approval Record']['Id']%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_106</task>
+                </dependents>
+            </task>
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_140" name="Has Kinetic Submission Origin" x="71" y="181">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%=@inputs['Originating System'] == "Kinetic Core" &amp;&amp; !@inputs['Originating Id'].to_s.empty?%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_kinetic_queue_assignment_validate_v1_132</task>
+                </dependents>
+            </task>
+            <task definition_id="routine_kinetic_queue_task_relate_origin_submission_discussion_v1" id="routine_kinetic_queue_task_relate_origin_submission_discussion_v1_146" name="Relate Origin Submission Discussion" x="911" y="725">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Origin Submission Id" label="Origin Submission Id" menu="" required="false" tooltip="The Id of the Origin Submission. If the origin's submission has a discussion,  a discussion relationship will be created to the provided related submission">&lt;%=@inputs['Originating Id']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Related Submission Id" label="Related Submission Id" menu="" required="false" tooltip="The Id of the Submission to Relate to the Origins Discussion, if it exists">&lt;%=@results['Create Approval Record']['Id']%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+            <task definition_id="routine_kinetic_form_retrieve_v1" id="routine_kinetic_form_retrieve_v1_154" name="Retrieve Approval Form" x="631" y="343">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Kapp Slug" label="Kapp Slug" menu="" required="true" tooltip="The slug of the Kapp the form exists in">&lt;%=@inputs['Kapp Slug']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Slug" label="Slug" menu="" required="true" tooltip="The Forms slug">&lt;%= @inputs['Approval Form Slug'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_kinetic_submission_create_v1_133</task>
+                </dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

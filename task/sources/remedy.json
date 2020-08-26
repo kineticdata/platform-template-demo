@@ -1,0 +1,13 @@
+{
+  "name": "Remedy",
+  "status": "Active",
+  "type": "Adhoc",
+  "policyRules": [
+    {
+      "name": "Allow All",
+      "rule": "true",
+      "message": "Unrestricted access",
+      "type": "API Access"
+    }
+  ]
+}

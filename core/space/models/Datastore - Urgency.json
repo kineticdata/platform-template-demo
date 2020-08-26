@@ -1,0 +1,57 @@
+{
+  "activeMappingName": "Datastore - Urgency",
+  "attributes": [
+    {
+      "name": "Sort Order"
+    },
+    {
+      "name": "Urgency"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "system",
+      "attributes": [
+        {
+          "name": "Urgency",
+          "structureField": "${fields(\"values[Urgency]\")}"
+        },
+        {
+          "name": "Sort Order",
+          "structureField": "${fields(\"values[Sort Order]\")}"
+        }
+      ],
+      "bridgeSlug": "kinetic-platform",
+      "name": "Datastore - Urgency",
+      "qualifications": [
+        {
+          "name": "Active",
+          "query": "index=values[Status]&q=values[Status]=\"active\""
+        },
+        {
+          "name": "Active platform",
+          "query": "index=values[Status]&q=values[Status]=\"active\""
+        }
+      ],
+      "structure": "Datastore Submissions > urgency"
+    }
+  ],
+  "name": "Datastore - Urgency",
+  "qualifications": [
+    {
+      "name": "Active",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    },
+    {
+      "name": "Active platform",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    }
+  ],
+  "status": "Active"
+}

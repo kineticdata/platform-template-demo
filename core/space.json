@@ -1,0 +1,222 @@
+{
+  "afterLogoutPath": "",
+  "attributes": [
+    {
+      "name": "Admin Kapp Slug",
+      "values": [
+        "admin"
+      ]
+    },
+    {
+      "name": "Alerts Form Slug",
+      "values": [
+        "alerts"
+      ]
+    },
+    {
+      "name": "Approval Form Slug",
+      "values": [
+        "approval"
+      ]
+    },
+    {
+      "name": "Catalog Kapp Slug",
+      "values": [
+        "services"
+      ]
+    },
+    {
+      "name": "Change Manager Form Slug",
+      "values": [
+        "change-manager-request"
+      ]
+    },
+    {
+      "name": "Default Kapp Display",
+      "values": [
+        "services"
+      ]
+    },
+    {
+      "name": "Disable Self Sign Up",
+      "values": [
+        "false"
+      ]
+    },
+    {
+      "name": "Discussion Server Url",
+      "values": [
+        "Not used with Kinetic Discussions"
+      ]
+    },
+    {
+      "name": "Feedback Form Slug",
+      "values": [
+        "feedback"
+      ]
+    },
+    {
+      "name": "Help Form Slug",
+      "values": [
+        "help"
+      ]
+    },
+    {
+      "name": "Hidden Users Regex",
+      "values": [
+        ".*@kinops.io$"
+      ]
+    },
+    {
+      "name": "Invite Others Form Slug",
+      "values": [
+        "invite-users"
+      ]
+    },
+    {
+      "name": "Libraries Bundle Path",
+      "values": [
+        "space"
+      ]
+    },
+    {
+      "name": "Owning Team",
+      "values": [
+        "Default"
+      ]
+    },
+    {
+      "name": "Queue Kapp Slug",
+      "values": [
+        "queue"
+      ]
+    },
+    {
+      "name": "Remedy Server URL",
+      "values": [
+        "http://ritmidtest01vm:8080/arsys/forms/ritapptest01vm/"
+      ]
+    },
+    {
+      "name": "Request Alert Form Slug",
+      "values": [
+        "system-alert-request"
+      ]
+    },
+    {
+      "name": "Service Days Due",
+      "values": [
+        "7"
+      ]
+    },
+    {
+      "name": "Shared Workflow Engine",
+      "values": [
+        "False"
+      ]
+    },
+    {
+      "name": "Task Assignee Team",
+      "values": [
+        "Default"
+      ]
+    },
+    {
+      "name": "Task Form Slug",
+      "values": [
+        "work-order"
+      ]
+    },
+    {
+      "name": "Task Server Space Slug",
+      "values": [
+        "fcps-dev"
+      ]
+    },
+    {
+      "name": "Task Source Name",
+      "values": [
+        "Kinetic Request CE"
+      ]
+    },
+    {
+      "name": "Web Server Url",
+      "values": [
+        "https://fcps-dev.kinops.io"
+      ]
+    }
+  ],
+  "bundlePath": "",
+  "customTranslationContexts": [
+
+  ],
+  "defaultDatastoreFormConfirmationPage": null,
+  "defaultDatastoreFormDisplayPage": null,
+  "defaultLocale": "en",
+  "defaultTimezone": "America/Chicago",
+  "displayType": "Single Page App",
+  "displayValue": "spa.jsp?location=https://s3.amazonaws.com/kinops.io/bundles/fcps/branches/develop",
+  "enabledLocales": [
+    "en"
+  ],
+  "loginPage": null,
+  "name": "Fairfax County Public Schools",
+  "platformComponents": {
+    "agents": [
+      {
+        "config": {
+        },
+        "slug": "fcpskineticagent",
+        "url": ""
+      }
+    ]
+  },
+  "resetPasswordPage": null,
+  "securityPolicies": [
+    {
+      "endpoint": "Discussion Creation",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Display",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Teams Access",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Team Creation",
+      "name": "Admins"
+    },
+    {
+      "endpoint": "Team Membership Modification",
+      "name": "Admins"
+    },
+    {
+      "endpoint": "Team Modification",
+      "name": "Admins"
+    },
+    {
+      "endpoint": "Users Access",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "User Creation",
+      "name": "Admins"
+    },
+    {
+      "endpoint": "User Modification",
+      "name": "Admins"
+    }
+  ],
+  "sessionInactiveLimitInSeconds": 2592000,
+  "sharedBundleBase": "hydrogen-v1",
+  "slug": "fcps-dev",
+  "trustedFrameDomains": [
+    "localhost:3000"
+  ],
+  "trustedResourceDomains": [
+    "http://localhost:3000"
+  ]
+}

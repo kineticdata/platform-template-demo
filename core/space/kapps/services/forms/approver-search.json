@@ -1,0 +1,584 @@
+{
+  "anonymous": false,
+  "attributes": [
+
+  ],
+  "bridgedResources": [
+    {
+      "model": "Remedy People",
+      "name": "Approver-Remedy by First and Last",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Approver First Initial')}",
+          "name": "First Name"
+        },
+        {
+          "mapping": "${values('Approver Last Name')}",
+          "name": "Last Name"
+        }
+      ],
+      "qualification": "By First and Last",
+      "status": "Active"
+    },
+    {
+      "model": "Remedy People",
+      "name": "Approver-Remedy People",
+      "order": [
+
+      ],
+      "parameters": [
+
+      ],
+      "qualification": "All Enabled",
+      "status": "Active"
+    },
+    {
+      "model": "Remedy People",
+      "name": "Approver-Remedy Person",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Approver')}",
+          "name": "Login ID"
+        }
+      ],
+      "qualification": "By User Name",
+      "status": "Active"
+    },
+    {
+      "model": "Remedy People",
+      "name": "Approver-Remedy Search",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Approver Last Name')}",
+          "name": "Last Name"
+        }
+      ],
+      "qualification": "By Last Name",
+      "status": "Active"
+    },
+    {
+      "model": "Remedy Site",
+      "name": "Remedy Site",
+      "order": [
+
+      ],
+      "parameters": [
+
+      ],
+      "qualification": "All Enabled",
+      "status": "Active"
+    }
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": "<style>\n  section.page form section.requested-for .field-label {\n    float: none;\n  }\n  \n  /* Temporary until font-weight is fixed for labels */\n  [data-element-name=\"request-for\"] label:not(.field-label){\n    font-weight: 100 !important;\n  }\n  \n  dd{\n   margin-bottom: 0;\n  }\n  \n  button-container {\n  \tdisplay: flex;\n    flex-direction: column;\n    justify-content: center;\n    margin-top: 30px;\n    margin-bottom: 15px;\n  }\n  \n  left-button {\n    margin-right: 10px;\n  }\n</style>",
+  "description": "Subform template to hold Approver Section. ",
+  "name": "Approver Search",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Approver Container",
+          "title": "",
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Approver Heading HTML",
+              "text": "<b>Approver Search</b>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Approver Search Section",
+              "title": null,
+              "visible": "values('Review Mode') !== \"true\"",
+              "omitWhenHidden": true,
+              "renderAttributes": {
+                "class": "row"
+              },
+              "elements": [
+                {
+                  "type": "section",
+                  "renderType": null,
+                  "name": "First Initial",
+                  "title": null,
+                  "visible": true,
+                  "omitWhenHidden": null,
+                  "renderAttributes": {
+                    "class": "col-xs-12 col-sm-12 col-md-4 col-lg-2"
+                  },
+                  "elements": [
+                    {
+                      "type": "field",
+                      "name": "Approver First Initial",
+                      "label": "First Initial",
+                      "key": "f29",
+                      "defaultValue": null,
+                      "defaultResourceName": null,
+                      "visible": true,
+                      "enabled": true,
+                      "required": false,
+                      "requiredMessage": null,
+                      "omitWhenHidden": null,
+                      "pattern": null,
+                      "constraints": [
+
+                      ],
+                      "events": [
+
+                      ],
+                      "renderAttributes": {
+                        "placeholder": "Search"
+                      },
+                      "dataType": "string",
+                      "renderType": "text",
+                      "rows": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "renderType": null,
+                  "name": "Last Name",
+                  "title": null,
+                  "visible": true,
+                  "omitWhenHidden": null,
+                  "renderAttributes": {
+                    "class": "col-xs-12 col-sm-12 col-md-6 col-lg-4"
+                  },
+                  "elements": [
+                    {
+                      "type": "field",
+                      "name": "Approver Last Name",
+                      "label": "Last Name",
+                      "key": "f30",
+                      "defaultValue": null,
+                      "defaultResourceName": null,
+                      "visible": true,
+                      "enabled": true,
+                      "required": false,
+                      "requiredMessage": null,
+                      "omitWhenHidden": null,
+                      "pattern": null,
+                      "constraints": [
+
+                      ],
+                      "events": [
+
+                      ],
+                      "renderAttributes": {
+                        "placeholder": "Search"
+                      },
+                      "dataType": "string",
+                      "renderType": "text",
+                      "rows": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "renderType": null,
+                  "name": "Button Section",
+                  "title": null,
+                  "visible": true,
+                  "omitWhenHidden": null,
+                  "renderAttributes": {
+                    "class": "col-xs-12 col-sm-12 col-md-6 col-lg-4 button-container"
+                  },
+                  "elements": [
+                    {
+                      "type": "button",
+                      "label": "Search",
+                      "name": "Approver Search",
+                      "visible": true,
+                      "enabled": true,
+                      "renderType": "custom",
+                      "renderAttributes": {
+                        "class": "left-button"
+                      },
+                      "events": [
+                        {
+                          "name": "Search",
+                          "type": "Click",
+                          "action": "Custom",
+                          "code": "searchApproverByLastName();",
+                          "runIf": "values('Approver Last Name') != null"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "button",
+                      "label": "Clear",
+                      "name": "Approver Clear",
+                      "visible": true,
+                      "enabled": true,
+                      "renderType": "custom",
+                      "renderAttributes": {
+                      },
+                      "events": [
+                        {
+                          "name": "Clear Search",
+                          "type": "Click",
+                          "action": "Custom",
+                          "code": "clearApprover();"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Search Results Dialog",
+              "title": null,
+              "visible": true,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+              },
+              "elements": [
+                {
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "Approver Search Results",
+                  "text": "<table id=\"approver-table\"></table>",
+                  "visible": true,
+                  "renderAttributes": {
+                  }
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Person Details Section",
+              "title": null,
+              "visible": "values('Approver') != null",
+              "omitWhenHidden": true,
+              "renderAttributes": {
+              },
+              "elements": [
+                {
+                  "type": "button",
+                  "label": "Change Approver",
+                  "name": "Change Approver",
+                  "visible": "values('Approver') !== null",
+                  "enabled": true,
+                  "renderType": "custom",
+                  "renderAttributes": {
+                  },
+                  "events": [
+                    {
+                      "name": "Clear Approver Info",
+                      "type": "Click",
+                      "action": "Custom",
+                      "code": "clearApprover();"
+                    }
+                  ]
+                },
+                {
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "Approver Details Container HTML",
+                  "text": "<div id=\"approverDetails\"></div>",
+                  "visible": true,
+                  "renderAttributes": {
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Hidden Section",
+          "title": null,
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Approver Display Name",
+              "label": "Approver Display Name",
+              "key": "f14",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Approver",
+              "label": "Approver",
+              "key": "f15",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": "Please selected a who the Approver is",
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Approver Site",
+              "label": "Site",
+              "key": "f31",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "dropdown",
+              "choicesResourceName": "Remedy Site",
+              "choicesRunIf": null,
+              "choices": {
+                "label": "${resources('Remedy Site:Site')}",
+                "value": "${resources('Remedy Site:Site')}"
+              }
+            },
+            {
+              "type": "field",
+              "name": "Approver Department",
+              "label": "Department",
+              "key": "f27",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Approver Email",
+              "label": "Email",
+              "key": "f9",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Approver Phone",
+              "label": "Phone",
+              "key": "f21",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Approver Desk",
+              "label": "Desk",
+              "key": "f32",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Approver Job Title",
+              "label": "Job Title",
+              "key": "f28",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Review Mode",
+              "label": "Review Mode",
+              "key": "f19",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onLoad",
+          "type": "Load",
+          "action": "Custom",
+          "code": "  setDisplayApprover = function(){\n      $('#app_name').text( K('field[Approver Display Name]').value() )\n      $('#app_phone').text( K('field[Approver Phone]').value() )\n      $('#app_email').text( K('field[Approver Email]').value() )\n      $('#app_job_title').text( K('field[Approver Job Title]').value() )\n      $('#app_desk').text( K('field[Approver Desk]').value() )\n   \n  }   \n\n  clearApprover = function(){\n    K('field[Approver]').value(null);\n    K('field[Approver Display Name]').value(null);  \n    K('field[Approver Email]').value(null);\n    K('field[Approver Phone]').value(null);\n    K('field[Approver Job Title]').value(null);\n    K('field[Approver Desk]').value(null);\n    K('field[Approver Department]').value(null);\n    setDisplayApprover();\n  }   \n\n  // Create element for displaying selected Requested for Person\n  $('#approverDetails').append($(\"<div/>\", {\n      id: \"approver\",\n    }).append($(\"<dt/>\", {\n    id: \"dt_name\",\n    text: \"Selected Approver:\"}\n  ).add($(\"<dd/>\",{\n    id: \"app_name\"}\n  )).add($(\"<dd/>\",{\n    id: \"app_phone\"}\n  )).add($(\"<dd/>\",{\n    id: \"app_email\"}\n  )).add($(\"<dd/>\",{\n    id: \"app_job_title\"}\n  )))\n  )\n\nvar peopleBridge = \"Approver-Remedy Search\";\nif (K(\"field[Approver First Initial]\").value() != null) peopleBridge = \"Approver-Remedy by First and Last\";\n\nbundle.helpers.approverConfig = {\n  resource: {\n    name: peopleBridge\n  },\n  resultsContainer:\n    '<table cellspacing=\"0\", border=\"0\", class=\"table table-striped table-bordered table-condensed dataTable\">',\n  data: [\n    {\n      title: \"Login\",\n      name: \"Login ID\",\n      visible: false,\n      setField: \"Approver\"\n    },\n    {\n      title: \"Last Name\",\n      name: \"Last Name\",\n      orderable: true\n    },\n    {\n      title: \"First Name\",\n      name: \"First Name\",\n      orderable: true,\n      visible: true\n    },\n    {\n      title: \"Email\",\n      name: \"Email\",\n      visible: true,\n      setField: \"Approver Email\"\n    },\n    {\n      title: \"Phone\",\n      name: \"Phone Number\",\n      visible: true,\n      setField: \"Approver Phone\"\n    },\n    {\n      title: \"Job Title\",\n      name: \"Job Title\",\n      visible: false,\n      setField: \"Approver Job Title\"\n    },\n    {\n      title: \"Full Name\",\n      name: \"Full Name\",\n      visible: false,\n      setField: \"Approver Display Name\"\n    },\n    {\n      title: \"Site\",\n      name: \"Site\",\n      visible: false,\n      setField: \"Approver Site\"\n    },\n  ],\n  resultsContainerId: \"approver-table\",\n  before: function before(configObj) {},\n  success: function success(configObj) {},\n  error: function error(configObj) {},\n  complete: function complete(configObj) {},\n  removeOnClick: true,\n  renderer: {\n    type: DataViewer.Renderers.DataTables, // Passing a function here allows for better customization\n    options: {\n      // Options for Reneder\n      processSingleResult: true,\n      // DataTable OPTIONS; Passing options here make it clear that they are being passed to data tables\n      // responsive: OPTIONAL Default for \"BridgeDataTable\" is true but can be over written.\n      responsive: false,\n      dom: \"ftip\",\n      order: [[2, \"asc\"]],\n      paging: true,\n      pageLength: 20,\n      lengthChange: false,\n      deferRender: true,\n      scrollCollapse: true,\n      select: {\n        style: 'single',\n        selector: 'tr'\n      },\n      createdRow: function createdRow(row, data, dataIndex) {},\n      initComplete: function initComplete() {},\n      clickCallback: function(data) {\n       // console.log(data);\n        setDisplayApprover();\n        K(\"field[Approver Last Name]\").value(null);\n        K(\"field[Approver First Initial]\").value(null);\n        \n      }\n    }\n  }\n    }\n  \n  searchApproverByLastName = function(){\n      DataViewer.executeSearch(function () {\n  return $(K('content[Approver Search Results]').element());\n  }, bundle.helpers.approverConfig);\n  } \n\n// setTimeout is a workaround to KCORE-2962.  The work around allows the watch fields to be set in the K.load loaded callback before the fields are set.  \nsetTimeout(function(){ \n  // Logic for when parent is loaded in review mode.\n  if ( K('field[Review Mode]').value() == \"true\" ) {\n    $(K('form').element()).find(':input:not(:disabled)').prop('disabled',true);\n    K('section[Search Results Dialog]').hide();\n  }\n\n}, 1000);\n\n$(K('field[Approver Last Name]').wrapper()).keypress(function (event) {\n  if(event.which == 13) {\n    searchApproverByLastName();\n  }\n})",
+          "runIf": ""
+        }
+      ],
+      "name": "Approver Information",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+    {
+      "endpoint": "Display",
+      "name": "Everyone"
+    }
+  ],
+  "slug": "approver-search",
+  "status": "Active",
+  "submissionLabelExpression": "",
+  "type": "Subservice"
+}

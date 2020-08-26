@@ -1,0 +1,134 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_service_portal_submission_config_custom_fcps_v1</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Service Portal Submission Config Custom FCPS</name>
+        <author></author>
+        <notes></notes>
+        <lastID>5</lastID>
+        <taskDefinition id="routine_service_portal_submission_config_custom_fcps_v1" name="Service Portal Submission Config Custom FCPS" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Source Data" label="Source Data" required="true" tooltip="Submission Source Data Used to Build Configuration">&lt;%=@source['Data']%&gt;</parameter>
+                <parameter id="Fields To Exclude" label="Fields To Exclude" required="false" tooltip="Comma separated value of field names"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Fulfillment Summary" tooltip="Summary to place on fulfillment records"></result>
+                <result name="Fulfillment Details" tooltip="Details about the request (using answer values)"></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="100" y="48">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_4</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_4" name="Return Config" x="56" y="210">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Fulfillment Summary" label="Fulfillment Summary" menu="" required="false" tooltip="Summary to place on fulfillment records">&lt;%=
+data = JSON.parse(@inputs['Source Data'])
+submitter = data['submission']['submittedBy']
+if data['values'].has_key?('Requested For Display Name') &amp;&amp; !data['values']['Requested For Display Name'].nil?
+   submitter = data['values']['Requested For Display Name']
+elsif data['values'].has_key?('Requested By') &amp;&amp; !data['values'].nil?
+   submitter = data['values']['Requested By Display Name']
+end
+
+"#{data['form']['name']} has been requested by #{submitter}" %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Fulfillment Details" label="Fulfillment Details" menu="" required="false" tooltip="Details about the request (using answer values)">&lt;%=
+# Parse Source Data values
+data = JSON.parse(@inputs['Source Data'])['values']
+# Loop over each value and remove nil's and join arrays
+result = {}
+
+# Define omitted fields
+ommitted_fields = []
+if !@inputs['Fields To Exclude'].nil?
+  ommitted_fields = @inputs['Fields To Exclude'].gsub(/, /, ',').split(',')
+end
+ommitted_fields
+
+# Add each of the remaining fields
+data.each do |k, v|
+  # If the key is for an omitted field or the value is blank
+  if ommitted_fields.include?(k) || v.nil? || v == ''
+    next
+  # If the field is for a complex type (IE list)
+  elsif v.is_a?(Array)
+    unless v.empty?
+      # Check to see if it's a Hash (Attachments)
+      if v[0].is_a?(Hash)
+        output = ''
+        v.each_with_index do |val, index|
+          next unless val.key?('contentType')
+          output &lt;&lt; if index == v.size - 1
+                      "Attachment Name: #{val['name']} (#{val['contentType']})"
+                    else
+                      "Attachment Name: #{val['name']} (#{val['contentType']})\n"
+                    end
+        end
+        result[k] = output
+      else
+        result[k] = v.join(', ')
+      end
+      end
+  # If the field is for a date/time
+  elsif v =~ /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\+00:00$/
+    result[k] = DateTime.parse(v).strftime('%c')
+  # If the field is for a date
+  elsif v =~ /^\d\d\d\d-\d\d-\d\d$/
+    result[k] = DateTime.parse(v).strftime('%D')
+  # If the field is for a time
+  elsif v =~ /^\d\d:\d\d$/
+    result[k] = DateTime.parse(v).strftime('%r')
+  # If the field is a normal field
+  else
+    result[k] = v
+  end
+end
+
+table = ''
+result.keys.each do |key|
+  table &lt;&lt; "#{key}: #{result[key]}\n"
+end
+table%&gt;</parameter>
+                </parameters>
+                <messages>
+                    <message type="Complete"></message>
+                </messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_kinetic_finish_v1_5</task>
+                </dependents>
+            </task>
+            <task definition_id="routine_kinetic_finish_v1" id="routine_kinetic_finish_v1_5" name="Finish" x="53" y="382">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Run Id" label="Run Id" menu="" required="false" tooltip="The Id of the completed run">&lt;%=@run['Id']%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

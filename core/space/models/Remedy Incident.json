@@ -1,0 +1,134 @@
+{
+  "activeMappingName": "Remedy Incident",
+  "attributes": [
+    {
+      "name": "Created At"
+    },
+    {
+      "name": "Id"
+    },
+    {
+      "name": "Notes"
+    },
+    {
+      "name": "Priority"
+    },
+    {
+      "name": "Status"
+    },
+    {
+      "name": "Status Reason"
+    },
+    {
+      "name": "Summary"
+    },
+    {
+      "name": "Type"
+    },
+    {
+      "name": "Updated At"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "fcpskineticagent",
+      "attributes": [
+        {
+          "name": "Created At",
+          "structureField": "${fields('Submit Date')}"
+        },
+        {
+          "name": "Id",
+          "structureField": "${fields('Incident Number')}"
+        },
+        {
+          "name": "Priority",
+          "structureField": "${fields('Priority')}"
+        },
+        {
+          "name": "Status",
+          "structureField": "${fields('Status')}"
+        },
+        {
+          "name": "Status Reason",
+          "structureField": "${fields('Status_Reason')}"
+        },
+        {
+          "name": "Summary",
+          "structureField": "${fields('Description')}"
+        },
+        {
+          "name": "Updated At",
+          "structureField": "${fields('Last Modified Date')}"
+        },
+        {
+          "name": "Type",
+          "structureField": "${fields('Service Type')}"
+        },
+        {
+          "name": "Notes",
+          "structureField": "${fields('Detailed Decription')}"
+        }
+      ],
+      "bridgeSlug": "ars-remedy",
+      "name": "Remedy Incident",
+      "qualifications": [
+        {
+          "name": "By Incident Id",
+          "query": "'Incident Number' = \"${parameters('Incident Id')}\""
+        },
+        {
+          "name": "By Submitter - Open",
+          "query": "('Corporate ID' = \"${parameters('Remedy Login')}\" OR 'Direct Contact Corporate ID' = \"${parameters('Remedy Login')}\") AND 'Status' < \"Resolved\""
+        },
+        {
+          "name": "By Submitter - Closed",
+          "query": "('Corporate ID' = \"${parameters('Remedy Login')}\" OR 'Direct Contact Corporate ID' = \"${parameters('Remedy Login')}\") AND 'Status' >= \"Resolved\" AND 'Last Modified Date' >= $\\DATE$ - (30*86400)"
+        },
+        {
+          "name": "By Submitter",
+          "query": "'Submitter' = \"msabedy\""
+        }
+      ],
+      "structure": "HPD:Help Desk"
+    }
+  ],
+  "name": "Remedy Incident",
+  "qualifications": [
+    {
+      "name": "By Incident Id",
+      "parameters": [
+        {
+          "name": "Incident Id"
+        }
+      ],
+      "resultType": "Single"
+    },
+    {
+      "name": "By Submitter",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    },
+    {
+      "name": "By Submitter - Closed",
+      "parameters": [
+        {
+          "name": "Remedy Login"
+        }
+      ],
+      "resultType": "Multiple"
+    },
+    {
+      "name": "By Submitter - Open",
+      "parameters": [
+        {
+          "name": "Remedy Login"
+        }
+      ],
+      "resultType": "Multiple"
+    }
+  ],
+  "status": "Active"
+}
