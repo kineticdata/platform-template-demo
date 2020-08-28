@@ -6,11 +6,6 @@
   },
   {
     "allowsMultiple": false,
-    "description": "This attribute determines if a form is routed for approval or not.  Valid entries are True or False.",
-    "name": "Approval Needed"
-  },
-  {
-    "allowsMultiple": false,
     "description": "Options are: Team Name, Individual Name or Manager",
     "name": "Approver"
   },
@@ -41,6 +36,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Type of fulfillment ticket to create.  Valid options are Queue and Incident.",
+    "name": "Fulfillment Type"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Font Awesome Icon Class",
     "name": "Icon"
   },
@@ -63,11 +63,6 @@
     "allowsMultiple": true,
     "description": "Team that owns and manages this service (Defaults to Kapp Attribute when not set here)",
     "name": "Owning Team"
-  },
-  {
-    "allowsMultiple": false,
-    "description": "This attribute is used to determine which type of Remedy case should be created in the workflow.  Valid entries are Incident and Change.",
-    "name": "Remedy Case Type"
   },
   {
     "allowsMultiple": false,

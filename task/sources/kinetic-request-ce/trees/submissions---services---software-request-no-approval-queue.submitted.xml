@@ -1,6 +1,6 @@
 <tree schema_version="1.0">
     <sourceName>Kinetic Request CE</sourceName>
-    <sourceGroup>Submissions > services</sourceGroup>
+    <sourceGroup>Submissions > services > software-request-no-approval-queue</sourceGroup>
     <type>Tree</type>
     <status>Active</status>
     <taskTree builder_version="" schema_version="1.0" version="">
@@ -404,7 +404,7 @@ outcome%&gt;</parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="Prod Cat Tier 1" label="Prod Cat Tier 1" menu="" required="true" tooltip="">Software</parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="Prod Cat Tier 2" label="Prod Cat Tier 2" menu="" required="true" tooltip="">Application</parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="Prod Cat Tier 3" label="Prod Cat Tier 3" menu="" required="true" tooltip="">Third Party</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Product Name" label="Product Name" menu="" required="true" tooltip="">Microsoft Office Word 2007</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Product Name" label="Product Name" menu="" required="true" tooltip="">&lt;%=  @values['Selected Software'] %&gt;</parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="Support Company" label="Support Company" menu="" required="false" tooltip="">Calbro Services</parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="Support Organization" label="Support Organization" menu="" required="false" tooltip="">IT Support</parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="Support Group" label="Support Group" menu="" required="false" tooltip="">Service Desk</parameter>

@@ -96,6 +96,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Used by the bundle to decide which logo to render.",
+    "name": "State Logo Url"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Form used to request a new service be added to the catalog.",
     "name": "Suggest a Service Form Slug"
   },

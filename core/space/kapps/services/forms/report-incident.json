@@ -2,21 +2,15 @@
   "anonymous": false,
   "attributes": [
     {
-      "name": "Approval Needed",
+      "name": "Custom Submission Workflow",
       "values": [
-        "False"
+        "Submitted"
       ]
     },
     {
-      "name": "Cancel Disabled",
+      "name": "Fulfillment Type",
       "values": [
-        "true"
-      ]
-    },
-    {
-      "name": "Cloning Disabled",
-      "values": [
-        "true"
+        "Incident"
       ]
     },
     {
@@ -24,44 +18,21 @@
       "values": [
         "fa-file-text-o"
       ]
-    },
-    {
-      "name": "Remedy Case Type",
-      "values": [
-        "Incident"
-      ]
-    },
-    {
-      "name": "Task Assignee Team",
-      "values": [
-        "Default"
-      ]
     }
   ],
   "bridgedResources": [
-    {
-      "model": "Datastore - Urgency",
-      "name": "Urgency",
-      "order": [
 
-      ],
-      "parameters": [
-
-      ],
-      "qualification": "Active",
-      "status": "Active"
-    }
   ],
   "categorizations": [
     {
       "category": {
-        "slug": "software"
+        "slug": "network"
       }
     }
   ],
   "customHeadContent": null,
-  "description": "Template used for creating new forms.",
-  "name": "Fix My... Template",
+  "description": "Report Incident.  No approval required.",
+  "name": "Report Incident",
   "notes": null,
   "pages": [
     {
@@ -72,7 +43,7 @@
         {
           "type": "section",
           "renderType": null,
-          "name": "Requested For",
+          "name": "Questions",
           "title": "",
           "visible": true,
           "omitWhenHidden": null,
@@ -80,36 +51,15 @@
           },
           "elements": [
             {
-              "type": "content",
-              "renderType": "html",
-              "name": "Requested For",
-              "text": "<div id=\"reqFor\"></div>",
-              "visible": true,
-              "renderAttributes": {
-              }
-            }
-          ]
-        },
-        {
-          "type": "section",
-          "renderType": null,
-          "name": "Questions",
-          "title": "Questions",
-          "visible": true,
-          "omitWhenHidden": null,
-          "renderAttributes": {
-          },
-          "elements": [
-            {
               "type": "field",
-              "name": "Customer Urgency",
-              "label": "Customer Urgency",
-              "key": "f916",
-              "defaultValue": null,
+              "name": "Widespread",
+              "label": "Is the issue widespread?",
+              "key": "f918",
+              "defaultValue": "",
               "defaultResourceName": null,
               "visible": true,
               "enabled": true,
-              "required": false,
+              "required": true,
               "requiredMessage": null,
               "omitWhenHidden": null,
               "pattern": null,
@@ -122,26 +72,72 @@
               "renderAttributes": {
               },
               "dataType": "string",
-              "renderType": "dropdown",
-              "choicesResourceName": "Urgency",
+              "renderType": "radio",
+              "choicesResourceName": null,
               "choicesRunIf": null,
-              "choices": {
-                "label": "${resources('Urgency:Urgency')}",
-                "value": "${resources('Urgency:Urgency')}"
-              }
+              "choices": [
+                {
+                  "label": "Yes",
+                  "value": "Yes"
+                },
+                {
+                  "label": "No",
+                  "value": "No"
+                }
+              ]
             },
             {
               "type": "field",
-              "name": "Problem Location",
-              "label": "Problem Location",
-              "key": "f921",
+              "name": "Affecting",
+              "label": "Affecting",
+              "key": "f919",
               "defaultValue": null,
               "defaultResourceName": null,
-              "visible": true,
+              "visible": "values('Widespread')===\"Yes\"",
               "enabled": true,
-              "required": false,
+              "required": "values('Widespread')===\"Yes\"",
               "requiredMessage": null,
-              "omitWhenHidden": null,
+              "omitWhenHidden": true,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Unit",
+                  "value": "Unit"
+                },
+                {
+                  "label": "State",
+                  "value": "State"
+                },
+                {
+                  "label": "Other",
+                  "value": "Other"
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "Affecting Other",
+              "label": "Affecting Other - Please Specify",
+              "key": "f920",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": "values('Widespread')===\"Yes\" && values('Affecting')===\"Other\"",
+              "enabled": true,
+              "required": "values('Widespread')===\"Yes\" && values('Affecting')===\"Other\"",
+              "requiredMessage": null,
+              "omitWhenHidden": true,
               "pattern": null,
               "constraints": [
 
@@ -157,9 +153,9 @@
             },
             {
               "type": "field",
-              "name": "Notes",
-              "label": "Notes",
-              "key": "f915",
+              "name": "Comments",
+              "label": "Comments",
+              "key": "f1",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
@@ -184,7 +180,7 @@
               "type": "field",
               "name": "Attachment",
               "label": "Attachment(s)",
-              "key": "f912",
+              "key": "f916",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
@@ -194,10 +190,7 @@
               "omitWhenHidden": null,
               "pattern": null,
               "constraints": [
-                {
-                  "content": "value.length < 4",
-                  "message": "A maximum of 3 attachments is all that is allowed."
-                }
+
               ],
               "events": [
 
@@ -206,7 +199,7 @@
               },
               "dataType": "file",
               "renderType": "attachment",
-              "allowMultiple": true
+              "allowMultiple": false
             }
           ]
         },
@@ -283,131 +276,6 @@
               "label": "Requested For Display Name",
               "key": "f909",
               "defaultValue": "${identity('displayName')}",
-              "defaultResourceName": null,
-              "visible": true,
-              "enabled": true,
-              "required": false,
-              "requiredMessage": null,
-              "omitWhenHidden": null,
-              "pattern": null,
-              "constraints": [
-
-              ],
-              "events": [
-
-              ],
-              "renderAttributes": {
-              },
-              "dataType": "string",
-              "renderType": "text",
-              "rows": 1
-            },
-            {
-              "type": "field",
-              "name": "Desk",
-              "label": "Desk",
-              "key": "f920",
-              "defaultValue": null,
-              "defaultResourceName": null,
-              "visible": true,
-              "enabled": true,
-              "required": false,
-              "requiredMessage": null,
-              "omitWhenHidden": null,
-              "pattern": null,
-              "constraints": [
-
-              ],
-              "events": [
-
-              ],
-              "renderAttributes": {
-              },
-              "dataType": "string",
-              "renderType": "text",
-              "rows": 1
-            },
-            {
-              "type": "field",
-              "name": "Site",
-              "label": "Site",
-              "key": "f919",
-              "defaultValue": null,
-              "defaultResourceName": null,
-              "visible": true,
-              "enabled": true,
-              "required": false,
-              "requiredMessage": null,
-              "omitWhenHidden": null,
-              "pattern": null,
-              "constraints": [
-
-              ],
-              "events": [
-
-              ],
-              "renderAttributes": {
-              },
-              "dataType": "string",
-              "renderType": "text",
-              "rows": 1
-            },
-            {
-              "type": "field",
-              "name": "Job Title",
-              "label": "Job Title",
-              "key": "f910",
-              "defaultValue": null,
-              "defaultResourceName": null,
-              "visible": true,
-              "enabled": true,
-              "required": false,
-              "requiredMessage": null,
-              "omitWhenHidden": null,
-              "pattern": null,
-              "constraints": [
-
-              ],
-              "events": [
-
-              ],
-              "renderAttributes": {
-              },
-              "dataType": "string",
-              "renderType": "text",
-              "rows": 1
-            },
-            {
-              "type": "field",
-              "name": "Email",
-              "label": "Email",
-              "key": "f917",
-              "defaultValue": null,
-              "defaultResourceName": null,
-              "visible": true,
-              "enabled": true,
-              "required": false,
-              "requiredMessage": null,
-              "omitWhenHidden": null,
-              "pattern": null,
-              "constraints": [
-
-              ],
-              "events": [
-
-              ],
-              "renderAttributes": {
-              },
-              "dataType": "string",
-              "renderType": "text",
-              "rows": 1
-            },
-            {
-              "type": "field",
-              "name": "Phone",
-              "label": "Phone",
-              "key": "f918",
-              "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
               "enabled": true,
@@ -589,13 +457,7 @@
         }
       ],
       "events": [
-        {
-          "name": "Load Request For",
-          "type": "Load",
-          "action": "Custom",
-          "code": "\n// ***** CONFIGURE *********\nvar load = {\n\t//Form to Load\n  \"formSlug\":\"requested-for-search\", \n  //Container for the form (jQuery syntax)\n  \"container\": '#reqFor', \n  //Define values to pass into subform.  Map subform Field to value or K('field') reference.\n\t//NOTE: INCLUDE THESE FIELDS IN SUBFORM, OR PAGE WILL NOT LOAD\n  \"paramsInput\": {\n    \"Requested For\": K('field[Requested For]').value(),\n    \"Requested For Display Name\": K('field[Requested For Display Name]').value(),\n    \"Review Mode\": K('form').reviewMode() ? true : \"\",\n    \"Request For\": K('field[Requested For]').value() != null && K('identity')['username'] != K('field[Requested For]').value()? \"Someone Else\" : \"Me\",\n    \"Email\": K('field[Email]').value(),\n    \"Phone\": K('field[Phone]').value(),\n    \"Site\": K('field[Site]').value(),\n    \"Desk\": K('field[Desk]').value(),\n    \"Job Title\": K('field[Job Title]').value()\n\t},\n  //Define Fields to set on parent form using watch.  Map subform field to parent form field.\n  \"watchFields\":{\n    \"Requested For\": \"Requested For\",\n    \"Requested For Display Name\": \"Requested For Display Name\",\n    \"Email\": \"Email\",\n    \"Phone\": \"Phone\",\n    \"Site\": \"Site\",\n    \"Desk\": \"Desk\",\n    \"Job Title\": \"Job Title\"\n  }\n}\n// ***** END CONFIGURE *********\n\n// Turn paramsInput into formatted/encoded urlParams array as that's what's required by the\n// Kinetic App when passing in values\nload.urlParams = [];\n$.each( load.paramsInput, function( key, value ){\n  load.urlParams.push( \"values[\" + encodeURIComponent( key ) + \"]=\" + encodeURIComponent( value ) );\n})\n\n\n// Remove null values from urlParams list\nload.urlParams = load.urlParams.filter(function(val) { return val.split(\"=\")[1]!==\"null\" });\n\nK.load({\n  path: bundle.spaceLocation() + K('kapp').slug()+ '/' + load.formSlug + '?' + load.urlParams.join(\"&\"),\n  container: load.container,\n  loaded: function(form) {\n    var subform = K.as(form);\n    // initialize watch fields definfed in configureation\n    $.each(load.watchFields, function(source, desination){\n      subform('form').$watch(source, function(newVal,oldVal){\n        K('field['+desination+']').value(newVal);\n      });\n    })\n  }\n});",
-          "runIf": ""
-        }
+
       ],
       "name": "Page 1",
       "renderType": "submittable",
@@ -603,12 +465,9 @@
     }
   ],
   "securityPolicies": [
-    {
-      "endpoint": "Display",
-      "name": "Authenticated Users"
-    }
+
   ],
-  "slug": "fix-my-template",
+  "slug": "report-incident",
   "status": "Active",
   "submissionLabelExpression": "${form('name')} - ${values('Requested For Display Name')}",
   "type": "Service"

@@ -2,9 +2,9 @@
   "anonymous": false,
   "attributes": [
     {
-      "name": "Approval Form Slug",
+      "name": "Custom Submission Workflow",
       "values": [
-        "approval"
+        "Submitted"
       ]
     },
     {
@@ -22,7 +22,7 @@
     {
       "name": "Task Assignee Team",
       "values": [
-        "Default"
+        "IT"
       ]
     }
   ],
@@ -30,11 +30,15 @@
 
   ],
   "categorizations": [
-
+    {
+      "category": {
+        "slug": "software-sw"
+      }
+    }
   ],
   "customHeadContent": null,
-  "description": "Template used for creating new forms.",
-  "name": "Request Template",
+  "description": "Request software.  No approval required.",
+  "name": "No Approval - Queue",
   "notes": null,
   "pages": [
     {
@@ -52,6 +56,86 @@
           "renderAttributes": {
           },
           "elements": [
+            {
+              "type": "field",
+              "name": "Selected Software",
+              "label": "Select Desired Software",
+              "key": "f917",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "dropdown",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Adobe Acrobat 9.3 Pro",
+                  "value": "Adobe Acrobat 9.3 Pro"
+                },
+                {
+                  "label": "Adobe Illustrator CS5",
+                  "value": "Adobe Illustrator CS5"
+                },
+                {
+                  "label": "Microsoft Office Word 2007",
+                  "value": "Microsoft Office Word 2007"
+                },
+                {
+                  "label": "Microsoft Office PowerPoint 2007",
+                  "value": "Microsoft Office PowerPoint 2007"
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "Intended Use",
+              "label": "Intended Use",
+              "key": "f918",
+              "defaultValue": "Business",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Business",
+                  "value": "Business"
+                },
+                {
+                  "label": "Personal",
+                  "value": "Personal"
+                }
+              ]
+            },
             {
               "type": "field",
               "name": "Comments",
@@ -368,7 +452,7 @@
   "securityPolicies": [
 
   ],
-  "slug": "request-template",
+  "slug": "software-request-no-approval-queue",
   "status": "Active",
   "submissionLabelExpression": "${form('name')} - ${values('Requested For Display Name')}",
   "type": "Service"

@@ -30,17 +30,8 @@
                 <parameter id="Assignee Login Id" label="Assignee Login Id" required="false" tooltip=""></parameter>
                 <parameter id="Customer Login Id" label="Customer Login Id" required="true" tooltip="">&lt;%=  @values['Requested For'] %&gt;</parameter>
                 <parameter id="Contact Login Id" label="Contact Login Id" required="false" tooltip="">&lt;%= if @values['Requested For'] == @values['Requested By']  nil @values['Requested By'] end %&gt;</parameter>
-                <parameter id="Site" label="Site" required="false" tooltip=""></parameter>
-                <parameter id="Customer Urgency" label="Customer Urgency" required="false" tooltip=""></parameter>
-                <parameter id="Equipment Location" label="Equipment Location" required="false" tooltip=""></parameter>
-                <parameter id="Service Cost" label="Service Cost" required="false" tooltip=""></parameter>
-                <parameter id="Barcode" label="Barcode" required="false" tooltip=""></parameter>
-                <parameter id="Finance Officer" label="Finance Officer" required="false" tooltip=""></parameter>
-                <parameter id="General Ledger" label="General Ledger" required="false" tooltip=""></parameter>
                 <parameter id="Work Info Summary" label="Work Info Summary" required="false" tooltip=""></parameter>
                 <parameter id="Work Info Notes" label="Work Info Notes" required="false" tooltip=""></parameter>
-                <parameter id="Secure Tab Summary" label="Secure Tab Summary" required="false" tooltip=""></parameter>
-                <parameter id="Secure Tab Notes" label="Secure Tab Notes" required="false" tooltip=""></parameter>
                 <parameter id="Request Id" label="Request Id" required="true" tooltip="">&lt;%=  @submission['Id'] %&gt;</parameter>
                 <parameter id="Submitter" label="Submitter" required="true" tooltip="">&lt;%=  @values['Requested For'] %&gt;</parameter>
                 <parameter id="Space Slug" label="Space Slug" required="true" tooltip="">&lt;%=  @space['Slug'] %&gt;</parameter>
@@ -63,7 +54,7 @@
                     <task label="" type="Complete" value="">routine_kinetic_submission_retrieve_v1_17</task>
                 </dependents>
             </task>
-            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_3" name="Create Incident" x="356" y="472">
+            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_3" name="Create Incident" x="341" y="322">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>true</defers>
@@ -83,7 +74,7 @@
                     <task label="" type="Complete" value="">routine_kinetic_agent_execute_routine_v2_11</task>
                 </dependents>
             </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_4" name="Static Values" x="73" y="164">
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_4" name="Static Values" x="70" y="321">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -102,7 +93,7 @@
                     <task label="" type="Complete" value="">utilities_echo_v1_5</task>
                 </dependents>
             </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_5" name="Merge Values" x="74" y="320">
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_5" name="Merge Values" x="70" y="479">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -142,7 +133,7 @@ results
                     <task label="" type="Complete" value="">utilities_echo_v1_6</task>
                 </dependents>
             </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_6" name="Convert Labels To Remedy Labels" x="74" y="471">
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_6" name="Convert Labels To Remedy Labels" x="340" y="480">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -165,11 +156,6 @@ conversion_mapping = JSON.parse('{
 	"Assignee Login Id": "Assignee",
 	"Customer Login Id": "Login_ID",
 	"Contact Login Id" : "Direct Contact LoginID",
-	"Customer Urgency": "z1D_Customer_Urgency",	
-	"Equipment Location": "Equipment Location",
-	"Service Cost": "Service Cost",
-	"Finance Officer": "FP Finance Officer",	
-	"General Ledger": "FP General Ledger",
 	"Request Id": "SRInstanceID"
 }')
 
@@ -190,7 +176,7 @@ answers.to_json
                     <task label="" type="Complete" value="">routine_kinetic_agent_execute_routine_v2_3</task>
                 </dependents>
             </task>
-            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_9" name="Return" x="1406.2666" y="651.86664">
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_9" name="Return" x="624.2666" y="480.86663999999996">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -202,7 +188,7 @@ answers.to_json
                 <messages></messages>
                 <dependents></dependents>
             </task>
-            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_11" name="Retrieve Incident" x="356" y="320">
+            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_11" name="Retrieve Incident" x="340" y="173">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>true</defers>
@@ -223,7 +209,7 @@ answers.to_json
                     <task label="" type="Complete" value="">utilities_echo_v1_14</task>
                 </dependents>
             </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_14" name="Incident Number" x="632.1333" y="319.6667">
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_14" name="Incident Number" x="625.1333" y="172.6667">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -237,33 +223,10 @@ results['Incident Number']
                 </parameters>
                 <messages></messages>
                 <dependents>
-                    <task label="No Work Logs" type="Complete" value="@inputs['Work Info Summary'].nil? &amp;&amp; @inputs['Secure Tab Summary'].nil?">system_junction_v1_21</task>
-                    <task label="Work Logs" type="Complete" value="!@inputs['Work Info Summary'].nil? || !@inputs['Secure Tab Summary'].nil?">kinetic_request_ce_attachment_temp_link_retrieve_v1_16</task>
+                    <task label="" type="Complete" value="">system_junction_v1_21</task>
                 </dependents>
             </task>
-            <task definition_id="kinetic_request_ce_attachment_temp_link_retrieve_v1" id="kinetic_request_ce_attachment_temp_link_retrieve_v1_16" name="Get Attachment URL" x="999.1333" y="321.6667">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>false</defers>
-                <deferrable>false</deferrable>
-                <visible>false</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="space_slug" label="Space Slug" menu="" required="false" tooltip="The Space the attachment is being retrieved from (defaults to info value if not provided)."></parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="submission_id" label="Submission Id" menu="" required="true" tooltip="The Id of the Submission.">&lt;%= @inputs['Request Id'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="field_name" label="Field Name" menu="" required="true" tooltip="The name of the Field that contains the attachments.">&lt;%= 
-# Extract which fields are attachments by selecting ones which are arrays, have value in the first item, and the first item has a key in it of 'documentId'.  This combination will indicate it is an attachment field.
-JSON.parse(@results['Retrieve Original Submission Values']['Values JSON']).select{ |qstn,value|  value.kind_of?(Array) &amp;&amp; value.first &amp;&amp; value.first.kind_of?(Hash) &amp;&amp; value.first.has_key?('link') }.map{ |field, value|  field }.first 
-%&gt;</parameter>
-                </parameters>
-                <messages></messages>
-                <dependents>
-                    <task label="Create" type="Complete" value="!@inputs['Work Info Summary'].nil? &amp;&amp; 1==0">routine_kinetic_agent_execute_routine_v2_19</task>
-                    <task label="Create" type="Complete" value="!@inputs['Secure Tab Summary'].nil?">routine_kinetic_agent_execute_routine_v2_23</task>
-                    <task label="" type="Complete" value="">utilities_echo_v1_27</task>
-                </dependents>
-            </task>
-            <task definition_id="routine_kinetic_submission_retrieve_v1" id="routine_kinetic_submission_retrieve_v1_17" name="Retrieve Original Submission Values" x="360" y="29">
+            <task definition_id="routine_kinetic_submission_retrieve_v1" id="routine_kinetic_submission_retrieve_v1_17" name="Retrieve Original Submission Values" x="72" y="173">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>true</defers>
@@ -277,50 +240,7 @@ JSON.parse(@results['Retrieve Original Submission Values']['Values JSON']).selec
                     <task label="" type="Complete" value="">utilities_echo_v1_4</task>
                 </dependents>
             </task>
-            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_19" name="Create Work Log Entry" x="1343.1333" y="237.6667">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>true</defers>
-                <deferrable>true</deferrable>
-                <visible>false</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="Error Handling" label="Error Handling" menu="" required="true" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Handler Slug" label="Handler Slug" menu="" required="true" tooltip="The name of the handler slug to execute. ex foo_bar">remedy_incident_work_info_create</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Payload" label="Payload" menu="" required="true" tooltip="A json structure that matches the handlers parameters. ie {&quot;baz&quot;: &quot;buz&quot;}">&lt;%=	
-if !@results['Get Attachment URL']['Files'].to_s.empty?
- attachments = JSON.parse(@results['Get Attachment URL']['Files'])
-end
-
-{
-  'error_handling' =&gt; 'Raise Error',
-  'incident_number' =&gt; @results['Incident Number']['output'],
-  'include_review_request' =&gt; 'No',
-  'include_question_answers' =&gt; 'No',
-  'work_info_summary' =&gt; @inputs['Work Info Summary'],
-  'work_info_notes' =&gt; @inputs['Work Info Notes'],
-  'work_info_source' =&gt; 'Web',
-  'work_info_type' =&gt; 'General Information',
-  'attachment_input_type' =&gt; 'JSON',
-  'attachment_json_1' =&gt; [attachments[0]].to_json,
-  'attachment_json_2' =&gt; attachments[1].to_json,
-  'attachment_json_3' =&gt; attachments[2].to_json,
-  'space_slug' =&gt; @inputs['Space Slug'],
-  'submission_id' =&gt; @inputs['Request Id'],
-  'secure_work_log' =&gt; 'No',
-  'view_access' =&gt; 'Public'
-}.to_json
-%&gt;</parameter>
-                </parameters>
-                <messages>
-                    <message type="Create"></message>
-                    <message type="Update"></message>
-                    <message type="Complete"></message>
-                </messages>
-                <dependents>
-                    <task label="" type="Complete" value="">system_junction_v1_24</task>
-                </dependents>
-            </task>
-            <task definition_id="system_junction_v1" id="system_junction_v1_21" name="Junction" x="1133.1333" y="664.6667">
+            <task definition_id="system_junction_v1" id="system_junction_v1_21" name="Junction" x="624.1333" y="330.6667">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -331,68 +251,6 @@ end
                 <dependents>
                     <task label="" type="Complete" value="">system_tree_return_v1_9</task>
                 </dependents>
-            </task>
-            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_23" name="Create Secure Work Log Entry" x="1342" y="384">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>true</defers>
-                <deferrable>true</deferrable>
-                <visible>false</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="Error Handling" label="Error Handling" menu="" required="true" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Handler Slug" label="Handler Slug" menu="" required="true" tooltip="The name of the handler slug to execute. ex foo_bar">remedy_incident_work_info_create</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Payload" label="Payload" menu="" required="true" tooltip="A json structure that matches the handlers parameters. ie {&quot;baz&quot;: &quot;buz&quot;}">&lt;%=	
-{
-  'error_handling' =&gt; 'Raise Error',
-  'incident_number' =&gt; JSON.parse(@results['Get Incident Details']['output'])['Incident Number'],
-  'include_review_request' =&gt; 'No',
-  'include_question_answers' =&gt; 'No',
-  'work_info_notes' =&gt; JSON.parse(@results['Echo Attachment']['output']).first['name'],
-  'work_info_summary' =&gt; JSON.parse(@results['Echo Attachment']['output']).first['name'],'work_info_source' =&gt; 'Web',
-  'work_info_type' =&gt; 'General Information',
-  'attachment_json_1' =&gt; @results['Echo Attachment']['output'],
-  'attachment_input_type' =&gt; 'JSON',
-  'submission_id' =&gt; JSON.parse(@results['Get Incident Details']['output'])['Incident Number'],
-  'space_slug' =&gt; @results['Get Space Slug of Submission']['Originating Submission Space Slug']
-}.to_json
-%&gt;</parameter>
-                </parameters>
-                <messages></messages>
-                <dependents>
-                    <task label="" type="Complete" value="">system_junction_v1_24</task>
-                </dependents>
-            </task>
-            <task definition_id="system_junction_v1" id="system_junction_v1_24" name="Work Log Junction" x="1624.1333" y="330.6667">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>false</defers>
-                <deferrable>false</deferrable>
-                <visible>false</visible>
-                <parameters></parameters>
-                <messages></messages>
-                <dependents>
-                    <task label="" type="Complete" value="">system_junction_v1_21</task>
-                </dependents>
-            </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_27" name="Test" x="1018.1333" y="131.6667">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>false</defers>
-                <deferrable>false</deferrable>
-                <visible>true</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%=	
-if !@results['Get Attachment URL']['Files'].to_s.empty?
- attachments = JSON.parse(@results['Get Attachment URL']['Files'])
-end
-
-attachments.count
-%&gt;</parameter>
-                </parameters>
-                <messages>
-                    <message type="Complete"></message>
-                </messages>
-                <dependents></dependents>
             </task>
         </request>
     </taskTree>

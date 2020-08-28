@@ -18,36 +18,10 @@
                 <parameters></parameters>
                 <messages></messages>
                 <dependents>
-                    <task label="Type Change" type="Complete" value="@values['Type'] == 'change' ">routine_kinetic_agent_execute_routine_v2_17</task>
-                    <task label="Type Incident" type="Complete" value="@values['Type'] == 'incident'">routine_kinetic_agent_execute_routine_v2_18</task>
+                    <task label="" type="Complete" value="">routine_kinetic_agent_execute_routine_v2_18</task>
                 </dependents>
             </task>
-            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_17" name="Call Agent - Add Work Order Work Log" x="31.997" y="320.9861">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>true</defers>
-                <deferrable>true</deferrable>
-                <visible>true</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="Error Handling" label="Error Handling" menu="" required="false" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Handler Slug" label="Handler Slug" menu="" required="false" tooltip="The name of the handler slug to execute. ex foo_bar">remedy_generic_create</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Payload" label="Payload" menu="" required="false" tooltip="A json structure that matches the handlers parameters. ie {&quot;baz&quot;: &quot;buz&quot;}">&lt;%=	
-{'error_handling' =&gt; 'Raise Error',
-'form' =&gt; 'CHG:WorkInfo',
-'field_values' =&gt; {'Work Log Type':'General Information','Secure Work Log':'No','View Access':'Public','Communication Source':'Web','Description':'Notes From Customer','z1D Previous Operation':'SET','Detailed Description':@values['Comments'],'Status':'Enabled','Infrastructure Change ID':@values['Id'],'Work Log Submitter':'KD_WEBUSER'}.to_json
-}.to_json
-%&gt;</parameter>
-                </parameters>
-                <messages>
-                    <message type="Create"></message>
-                    <message type="Update"></message>
-                    <message type="Complete"></message>
-                </messages>
-                <dependents>
-                    <task label="" type="Complete" value="">system_junction_v1_20</task>
-                </dependents>
-            </task>
-            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_18" name="Call Agent - Add Incident Work Log" x="341" y="79.986">
+            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_18" name="Call Agent - Add Incident Work Log" x="33" y="225.986">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>true</defers>
@@ -63,28 +37,12 @@
 }.to_json
 %&gt;</parameter>
                 </parameters>
-                <messages>
-                    <message type="Create"></message>
-                    <message type="Update"></message>
-                    <message type="Complete"></message>
-                </messages>
-                <dependents>
-                    <task label="" type="Complete" value="">system_junction_v1_20</task>
-                </dependents>
-            </task>
-            <task definition_id="system_junction_v1" id="system_junction_v1_20" name="Junction - Add Work Log" x="341" y="330.986">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>false</defers>
-                <deferrable>false</deferrable>
-                <visible>false</visible>
-                <parameters></parameters>
                 <messages></messages>
                 <dependents>
                     <task label="" type="Complete" value="">routine_kinetic_submission_update_v1_21</task>
                 </dependents>
             </task>
-            <task definition_id="routine_kinetic_submission_update_v1" id="routine_kinetic_submission_update_v1_21" name="Close Submission" x="341" y="530.986">
+            <task definition_id="routine_kinetic_submission_update_v1" id="routine_kinetic_submission_update_v1_21" name="Close Submission" x="33" y="394.986">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>true</defers>

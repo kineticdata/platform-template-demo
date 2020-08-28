@@ -116,6 +116,12 @@
       ]
     },
     {
+      "name": "State Logo Url",
+      "values": [
+        "https://upload.wikimedia.org/wikipedia/commons/8/86/Maryland_NG_SSI.png"
+      ]
+    },
+    {
       "name": "Task Assignee Team",
       "values": [
         "Default"
@@ -128,9 +134,27 @@
       ]
     },
     {
+      "name": "Task Server Host",
+      "values": [
+        "arng-md.kinops.io"
+      ]
+    },
+    {
+      "name": "Task Server Scheme",
+      "values": [
+        "https"
+      ]
+    },
+    {
       "name": "Task Server Space Slug",
       "values": [
-        "fcps-dev"
+        "arng-md"
+      ]
+    },
+    {
+      "name": "Task Server Url",
+      "values": [
+        "https://arng-md.kinops.io/kinetic-task"
       ]
     },
     {
@@ -142,7 +166,7 @@
     {
       "name": "Web Server Url",
       "values": [
-        "https://fcps-dev.kinops.io"
+        "https://arng-md.kinops.io"
       ]
     }
   ],
@@ -155,18 +179,18 @@
   "defaultLocale": "en",
   "defaultTimezone": "America/Chicago",
   "displayType": "Single Page App",
-  "displayValue": "spa.jsp?location=https://s3.amazonaws.com/kinops.io/bundles/fcps/branches/develop",
+  "displayValue": "spa.jsp?location=https://s3.amazonaws.com/kinops.io/bundles/fcps/branches/demo",
   "enabledLocales": [
     "en"
   ],
   "loginPage": null,
-  "name": "Fairfax County Public Schools",
+  "name": "ARNG Maryland",
   "platformComponents": {
     "agents": [
       {
         "config": {
         },
-        "slug": "fcpskineticagent",
+        "slug": "kinetic-internal-ars91",
         "url": ""
       }
     ]
@@ -212,7 +236,7 @@
   ],
   "sessionInactiveLimitInSeconds": 2592000,
   "sharedBundleBase": "hydrogen-v1",
-  "slug": "fcps-dev",
+  "slug": "arng-md",
   "trustedFrameDomains": [
     "localhost:3000"
   ],

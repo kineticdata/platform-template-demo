@@ -1,0 +1,322 @@
+{
+  "anonymous": false,
+  "attributes": [
+
+  ],
+  "bridgedResources": [
+
+  ],
+  "categorizations": [
+    {
+      "category": {
+        "slug": "account"
+      }
+    },
+    {
+      "category": {
+        "slug": "appv"
+      }
+    },
+    {
+      "category": {
+        "slug": "audiometer"
+      }
+    },
+    {
+      "category": {
+        "slug": "auditorium-equipment"
+      }
+    },
+    {
+      "category": {
+        "slug": "av-equipment"
+      }
+    },
+    {
+      "category": {
+        "slug": "bhms"
+      }
+    },
+    {
+      "category": {
+        "slug": "black-box-theatre"
+      }
+    },
+    {
+      "category": {
+        "slug": "blackboard-collaborate-ap"
+      }
+    },
+    {
+      "category": {
+        "slug": "blackboard-collaborate-sw"
+      }
+    },
+    {
+      "category": {
+        "slug": "byod"
+      }
+    },
+    {
+      "category": {
+        "slug": "cable-tv"
+      }
+    },
+    {
+      "category": {
+        "slug": "camera"
+      }
+    },
+    {
+      "category": {
+        "slug": "cell-phone"
+      }
+    },
+    {
+      "category": {
+        "slug": "clocks-bells"
+      }
+    },
+    {
+      "category": {
+        "slug": "computer-peripherals-accessories"
+      }
+    },
+    {
+      "category": {
+        "slug": "computer-security-awareness"
+      }
+    },
+    {
+      "category": {
+        "slug": "computers-equipment"
+      }
+    },
+    {
+      "category": {
+        "slug": "computing-devices"
+      }
+    },
+    {
+      "category": {
+        "slug": "consulting-planning-training"
+      }
+    },
+    {
+      "category": {
+        "slug": "copier"
+      }
+    },
+    {
+      "category": {
+        "slug": "copyright"
+      }
+    },
+    {
+      "category": {
+        "slug": "curator"
+      }
+    },
+    {
+      "category": {
+        "slug": "data-drop"
+      }
+    },
+    {
+      "category": {
+        "slug": "data-security"
+      }
+    },
+    {
+      "category": {
+        "slug": "delegation-application"
+      }
+    },
+    {
+      "category": {
+        "slug": "division-reports"
+      }
+    },
+    {
+      "category": {
+        "slug": "documents"
+      }
+    },
+    {
+      "category": {
+        "slug": "documents-forms-report"
+      }
+    },
+    {
+      "category": {
+        "slug": "duplicator"
+      }
+    },
+    {
+      "category": {
+        "slug": "duplicators"
+      }
+    },
+    {
+      "category": {
+        "slug": "edsl"
+      }
+    },
+    {
+      "category": {
+        "slug": "educational-materials"
+      }
+    },
+    {
+      "category": {
+        "slug": "efts---electronic-fitness-tracking-system"
+      }
+    },
+    {
+      "category": {
+        "slug": "elearnit"
+      }
+    },
+    {
+      "category": {
+        "slug": "electronic-sign"
+      }
+    },
+    {
+      "category": {
+        "slug": "enotify"
+      }
+    },
+    {
+      "category": {
+        "slug": "get-iep"
+      }
+    },
+    {
+      "category": {
+        "slug": "internet-content-filtering-sw"
+      }
+    },
+    {
+      "category": {
+        "slug": "mifi"
+      }
+    },
+    {
+      "category": {
+        "slug": "my-plt"
+      }
+    },
+    {
+      "category": {
+        "slug": "naviance"
+      }
+    },
+    {
+      "category": {
+        "slug": "one-note"
+      }
+    },
+    {
+      "category": {
+        "slug": "product-technology-assessment"
+      }
+    },
+    {
+      "category": {
+        "slug": "public-address"
+      }
+    },
+    {
+      "category": {
+        "slug": "records"
+      }
+    },
+    {
+      "category": {
+        "slug": "requestit"
+      }
+    },
+    {
+      "category": {
+        "slug": "sbts"
+      }
+    },
+    {
+      "category": {
+        "slug": "sea-stars"
+      }
+    },
+    {
+      "category": {
+        "slug": "summer-self-directed-learning"
+      }
+    },
+    {
+      "category": {
+        "slug": "tv"
+      }
+    },
+    {
+      "category": {
+        "slug": "universal-screener"
+      }
+    },
+    {
+      "category": {
+        "slug": "ups"
+      }
+    },
+    {
+      "category": {
+        "slug": "video-production"
+      }
+    },
+    {
+      "category": {
+        "slug": "wecareatschool"
+      }
+    },
+    {
+      "category": {
+        "slug": "wireless-training"
+      }
+    }
+  ],
+  "customHeadContent": null,
+  "description": "This is a place holder form to cause the categories to display",
+  "name": "General Request",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "button",
+          "label": "Submit",
+          "name": "Submit Button",
+          "visible": true,
+          "enabled": true,
+          "renderType": "submit-page",
+          "renderAttributes": {
+          }
+        }
+      ],
+      "events": [
+
+      ],
+      "name": "Page",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+
+  ],
+  "slug": "general-request",
+  "status": "Active",
+  "submissionLabelExpression": null,
+  "type": "Service"
+}

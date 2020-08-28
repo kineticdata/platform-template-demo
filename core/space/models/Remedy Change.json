@@ -5,6 +5,9 @@
       "name": "Created At"
     },
     {
+      "name": "Form Name"
+    },
+    {
       "name": "Id"
     },
     {
@@ -25,7 +28,7 @@
   ],
   "mappings": [
     {
-      "agentSlug": "fcpskineticagent",
+      "agentSlug": "kinetic-internal-ars91",
       "attributes": [
         {
           "name": "Id",
@@ -54,6 +57,10 @@
         {
           "name": "Created At",
           "structureField": "${fields('Submit Date')}"
+        },
+        {
+          "name": "Form Name",
+          "structureField": "Remedy Change Ticket"
         }
       ],
       "bridgeSlug": "ars-remedy",
@@ -73,7 +80,7 @@
         },
         {
           "name": "By Submitter",
-          "query": "'Submitter Login ID' = \"jmfisher1\""
+          "query": "'Submitter Login ID' = \"${parameters('Remedy Login')}\""
         }
       ],
       "structure": "CHG:Infrastructure Change"
@@ -93,7 +100,9 @@
     {
       "name": "By Submitter",
       "parameters": [
-
+        {
+          "name": "Remedy Login"
+        }
       ],
       "resultType": "Multiple"
     },

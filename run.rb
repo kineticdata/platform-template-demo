@@ -1,7 +1,7 @@
 require "json"
 
-space_name = "Demo Template"
-space_slug = "fcps-dev"
+space_name = "ARNG Template"
+space_slug = "arng-md"
 server = "https://#{space_slug}.kinops.io"
 username = "james.davies@kineticdata.com"
 password = "Jcdhawa!!14"

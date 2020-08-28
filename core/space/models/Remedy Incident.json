@@ -5,6 +5,9 @@
       "name": "Created At"
     },
     {
+      "name": "Form Name"
+    },
+    {
       "name": "Id"
     },
     {
@@ -31,7 +34,7 @@
   ],
   "mappings": [
     {
-      "agentSlug": "fcpskineticagent",
+      "agentSlug": "kinetic-internal-ars91",
       "attributes": [
         {
           "name": "Created At",
@@ -68,6 +71,10 @@
         {
           "name": "Notes",
           "structureField": "${fields('Detailed Decription')}"
+        },
+        {
+          "name": "Form Name",
+          "structureField": "Remedy Incident Ticket"
         }
       ],
       "bridgeSlug": "ars-remedy",
@@ -87,7 +94,7 @@
         },
         {
           "name": "By Submitter",
-          "query": "'Submitter' = \"msabedy\""
+          "query": "'Submitter' = \"${parameters('Remedy Login')}\""
         }
       ],
       "structure": "HPD:Help Desk"
@@ -107,7 +114,9 @@
     {
       "name": "By Submitter",
       "parameters": [
-
+        {
+          "name": "Remedy Login"
+        }
       ],
       "resultType": "Multiple"
     },

@@ -21,7 +21,7 @@
           "structureField": "${fields(\"values[Sort Order]\")}"
         }
       ],
-      "bridgeSlug": "kinetic-platform",
+      "bridgeSlug": "kinetic-core",
       "name": "Datastore - Urgency",
       "qualifications": [
         {

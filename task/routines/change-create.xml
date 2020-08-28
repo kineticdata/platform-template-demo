@@ -78,11 +78,7 @@
     'field_values' =&gt; @results['Convert Labels To Remedy Labels']['output']
 }.to_json%&gt;</parameter>
                 </parameters>
-                <messages>
-                    <message type="Create"></message>
-                    <message type="Update"></message>
-                    <message type="Complete"></message>
-                </messages>
+                <messages></messages>
                 <dependents>
                     <task label="" type="Complete" value="">routine_kinetic_agent_execute_routine_v2_11</task>
                 </dependents>
@@ -211,7 +207,7 @@ answers.to_json
                     <task label="" type="Complete" value="">routine_kinetic_agent_execute_routine_v2_3</task>
                 </dependents>
             </task>
-            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_9" name="Return" x="915.2666" y="316.86663999999996">
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_9" name="Return" x="915.2666" y="316.86664">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -244,49 +240,6 @@ answers.to_json
                     <task label="" type="Complete" value="">utilities_echo_v1_14</task>
                 </dependents>
             </task>
-            <task definition_id="routine_incident_work_info_create_v1" id="routine_incident_work_info_create_v1_12" name="Create Work Info" x="1748" y="516.6">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>true</defers>
-                <deferrable>true</deferrable>
-                <visible>false</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="Incident Number" label="Incident Number" menu="" required="true" tooltip="">&lt;%= @results['Change Id']['output'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Request ID" label="Request ID" menu="" required="true" tooltip="">&lt;%= @inputs['Request ID'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Notes" label="Work Info Notes" menu="" required="true" tooltip="">&lt;%= @inputs['Work Info Notes'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 1" label="Work Info Attachment URL 1" menu="" required="false" tooltip="">&lt;%= @inputs['Work Info Attachment URL 1'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 2" label="Work Info Attachment URL 2" menu="" required="false" tooltip="">&lt;%= @inputs['Work Info Attachment URL 2'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 3" label="Work Info Attachment URL 3" menu="" required="false" tooltip="">&lt;%= @inputs['Work Info Attachment URL 3'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Submitter" label="Submitter" menu="" required="true" tooltip="">&lt;%= @inputs['Submitter'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Summary" label="Work Info Summary" menu="" required="true" tooltip="">&lt;%= summary = @inputs['Work Info Notes']
-if @inputs['Work Info Notes'].length &gt; 100
-summary = @inputs['Work Info Notes'][0..99]
-end
-summary %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Space Slug" label="Space Slug" menu="" required="true" tooltip="">&lt;%= @inputs['Space Slug'] %&gt;</parameter>
-                </parameters>
-                <messages></messages>
-                <dependents></dependents>
-            </task>
-            <task definition_id="routine_incident_secure_tab_create_v1" id="routine_incident_secure_tab_create_v1_13" name="Create Secure Work Info" x="1256" y="622.6">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>true</defers>
-                <deferrable>true</deferrable>
-                <visible>false</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="Incident Number" label="Incident Number" menu="" required="true" tooltip="">&lt;%= @results['Change Id']['output'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Request ID" label="Request ID" menu="" required="true" tooltip="">&lt;%= @inputs['Request ID'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Notes" label="Work Info Notes" menu="" required="true" tooltip="">&lt;%= @inputs['Secure Tab Notes'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 1" label="Work Info Attachment URL 1" menu="" required="false" tooltip="">&lt;%= @inputs['Secure Tab Attachment URL 1'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 2" label="Work Info Attachment URL 2" menu="" required="false" tooltip="">&lt;%= @inputs['Secure Tab Attachment URL 2'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Work Info Attachment URL 3" label="Work Info Attachment URL 3" menu="" required="false" tooltip="">&lt;%= @inputs['Secure Tab Attachment URL 3'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Submitter" label="Submitter" menu="" required="true" tooltip="">&lt;%= @inputs['Submitter'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Space Slug" label="Space Slug" menu="" required="true" tooltip="">&lt;%= @inputs['Space Slug'] %&gt;</parameter>
-                </parameters>
-                <messages></messages>
-                <dependents></dependents>
-            </task>
             <task definition_id="utilities_echo_v1" id="utilities_echo_v1_14" name="Change Id" x="632.1333" y="319.6667">
                 <version>1</version>
                 <configured>true</configured>
@@ -299,26 +252,9 @@ results = JSON.parse(@results['Retrieve Incident']['output'])
 results['Incident Number']
  %&gt;</parameter>
                 </parameters>
-                <messages>
-                    <message type="Complete"></message>
-                </messages>
+                <messages></messages>
                 <dependents>
                     <task label="" type="Complete" value="">system_tree_return_v1_9</task>
-                </dependents>
-            </task>
-            <task definition_id="system_noop_v1" id="system_noop_v1_15" name="No Op" x="1401" y="470.6">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>false</defers>
-                <deferrable>false</deferrable>
-                <visible>false</visible>
-                <parameters></parameters>
-                <messages>
-                    <message type="Complete"></message>
-                </messages>
-                <dependents>
-                    <task label="Work Log" type="Complete" value="!@inputs['Work Info Notes'].nil?">routine_incident_work_info_create_v1_12</task>
-                    <task label="Secure Work Log" type="Complete" value="!@inputs['Secure Tab Notes'].nil?">routine_incident_secure_tab_create_v1_13</task>
                 </dependents>
             </task>
         </request>

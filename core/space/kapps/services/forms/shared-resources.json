@@ -29,7 +29,10 @@
         }
       ],
       "parameters": [
-
+        {
+          "mapping": "${identity('username')}",
+          "name": "Remedy Login"
+        }
       ],
       "qualification": "By Submitter",
       "status": "Active"
@@ -74,7 +77,10 @@
         }
       ],
       "parameters": [
-
+        {
+          "mapping": "${identity('username')}",
+          "name": "Remedy Login"
+        }
       ],
       "qualification": "By Submitter",
       "status": "Active"
@@ -122,18 +128,6 @@
         }
       ],
       "qualification": "By Username",
-      "status": "Active"
-    },
-    {
-      "model": "Remedy Surveys",
-      "name": "Survey - By Submitter Email",
-      "order": [
-
-      ],
-      "parameters": [
-
-      ],
-      "qualification": "By Submitter Email",
       "status": "Active"
     }
   ],
