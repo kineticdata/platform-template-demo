@@ -1,7 +1,6 @@
-# platform-template-service-portal
+# platform-template-demo
 
-This platform template contains forms and workflow for use as a service portal.
-
+This is a demo / dummy repository used for provisioning spaces used in demo environments. This repository doesn't need to be maintained.
 ## Installation
 
 Install gems with [Bundler](https://bundler.io/)
