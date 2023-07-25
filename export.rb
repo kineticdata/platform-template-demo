@@ -7,7 +7,7 @@
 #     "api" => "https://foo.web-server/app/api/v1",
 #     "agent_api" => "https://foo.web-server/app/components/agent/app/api/v1",
 #     "proxy_url" => "https://foo.web-server/app/components",
-#     "server" => "https://web-server",
+#     "server" => "https://foo.web-server",
 #     "space_slug" => "foo",
 #     "space_name" => "Foo",
 #     "service_user_username" => "service_user_username",
@@ -37,7 +37,7 @@ raise "Missing JSON argument string passed to template export script" if ARGV.em
 begin
   vars = JSON.parse(ARGV[0])
 rescue => e
-  raise "Template #{template_name} repair error: #{e.inspect}"
+  raise "Template #{template_name} export error: #{e.inspect}"
 end
 
 
@@ -47,30 +47,15 @@ core_path = File.join(platform_template_path, "core")
 task_path = File.join(platform_template_path, "task")
 
 # ------------------------------------------------------------------------------
-# methods
-# ------------------------------------------------------------------------------
-
-# Removes discussion id attribute from a given model
-def remove_discussion_id_attribute(model)
-  if !model.is_a?(Array)
-    if model.has_key?("attributes")
-      scrubbed = model["attributes"].select do |attribute|
-        attribute["name"] != "Discussion Id"
-      end
-    end
-    model["attributes"] = scrubbed
-  end
-  return model
-end
-
-# ------------------------------------------------------------------------------
 # constants
 # ------------------------------------------------------------------------------
 
 # Configuration of which submissions should be exported
 SUBMISSIONS_TO_EXPORT = [
   {"kappSlug" => "datastore", "formSlug" => "notification-data"},
-  {"kappSlug" => "datastore", "formSlug" => "notification-template-dates"}
+  {"kappSlug" => "datastore", "formSlug" => "notification-template-dates"},
+  {"kappSlug" => "datastore", "formSlug" => "banner-alerts"},
+  {"kappSlug" => "datastore", "formSlug" => "news-articles"}
 ]
 
 REMOVE_DATA_PROPERTIES = [
@@ -96,6 +81,7 @@ logger.info "Installing gems for the \"#{template_name}\" template."
 Dir.chdir(platform_template_path) { system("bundle", "install") }
 
 require 'kinetic_sdk'
+require File.join(File.expand_path(File.dirname(__FILE__)), "workflows.rb")
 
 http_options = (vars["http_options"] || {}).each_with_object({}) do |(k,v),result|
   result[k.to_sym] = v
@@ -116,12 +102,21 @@ space_sdk = KineticSdk::Core.new({
   password: vars["core"]["service_user_password"],
   options: http_options.merge({ export_directory: "#{core_path}" })
 })
+task_sdk = KineticSdk::Task.new({
+  app_server_url: "#{vars["core"]["proxy_url"]}/task",
+  username: vars["core"]["service_user_username"],
+  password: vars["core"]["service_user_password"],
+  options: http_options.merge({ export_directory: "#{task_path}" })
+})
 
 # fetch export from core service and write to export directory
 logger.info "Exporting the core components for the \"#{template_name}\" template."
 logger.info "  exporting with api: #{space_sdk.api_url}"
 logger.info "   - exporting configuration data (Kapps,forms, etc)"
 space_sdk.export_space
+
+# export workflows as these are not included in the export_space method
+export_workflows(core_path, space_sdk, task_sdk)
 
 # cleanup properties that should not be committed with export
 # bridge keys
@@ -151,12 +146,6 @@ if space.has_key?("platformComponents")
 end
 # rewrite the space file
 File.open(filename, 'w') { |file| file.write(JSON.pretty_generate(space)) }
-
-# cleanup discussion ids
-Dir["#{core_path}/**/*.json"].each do |filename|
-  model = remove_discussion_id_attribute(JSON.parse(File.read(filename)))
-  File.open(filename, 'w') { |file| file.write(JSON.pretty_generate(model)) }
-end
 
 # export submissions
 logger.info "  - exporting and writing submission data"
@@ -201,19 +190,19 @@ logger.info "  - submission data export complete"
 logger.info "Removing files and folders from the existing \"#{template_name}\" template."
 FileUtils.rm_rf Dir.glob("#{task_path}/*")
 
-task_sdk = KineticSdk::Task.new({
-  app_server_url: "#{vars["core"]["proxy_url"]}/task",
-  username: vars["core"]["service_user_username"],
-  password: vars["core"]["service_user_password"],
-  options: http_options.merge({ export_directory: "#{task_path}" })
-})
-
 logger.info "Exporting the task components for the \"#{template_name}\" template."
 logger.info "  exporting with api: #{task_sdk.api_url}"
 
-# export all sources, trees, routines, handlers,
-# groups, policy rules, categories, and access keys
-task_sdk.export
+# export all sources, handlers, groups, policy rules, categories, and access keys
+task_sdk.export_all_except_trees
+
+# export trees for all sources except the "Kinetic Request CE" source
+(task_sdk.find_sources.content['sourceRoots'] || []).delete_if{ |source| source["name"] == "Kinetic Request CE" }.each do |source|
+  task_sdk.export_trees(source['name'])
+end
+
+# export routines
+task_sdk.export_trees("-")
 
 
 # ------------------------------------------------------------------------------

@@ -8,7 +8,7 @@
         <name>Email Template Notification Send</name>
         <author></author>
         <notes></notes>
-        <lastID>198</lastID>
+        <lastID>193</lastID>
         <taskDefinition id="routine_kinetic_email_template_notification_send_v1" name="Email Template Notification Send" schema_version="1.0" version="1">
             <visible>false</visible>
             <deferrable>true</deferrable>
@@ -25,7 +25,7 @@
             <results format="xml"></results>
         </taskDefinition>
         <request>
-            <task definition_id="system_start_v1" id="start" name="Start" x="104" y="155">
+            <task definition_id="system_start_v1" id="start" name="Start" x="167" y="135">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -37,7 +37,7 @@
                     <task label="" type="Complete" value="">utility_csv_to_xml_v1_168</task>
                 </dependents>
             </task>
-            <task definition_id="system_loop_head_v1" id="system_loop_head_v1_144" name="Send Message Loop Start" x="1382.579" y="379.42105">
+            <task definition_id="system_loop_head_v1" id="system_loop_head_v1_144" name="Send Message Loop Start" x="716" y="169">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -52,10 +52,10 @@
                 <dependents>
                     <task label="" type="Complete" value="">system_loop_tail_v1_145</task>
                     <task label="Valid User" type="Complete" value="JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'user' &amp;&amp; !JSON.parse(@results['Send Message Loop Start']['Value'])['recipient'].to_s.empty?">kinetic_core_api_v1_184</task>
-                    <task label="" type="Complete" value="">system_junction_v1_185</task>
+                    <task label="" type="Complete" value="">kinetic_core_api_v1_183</task>
                 </dependents>
             </task>
-            <task definition_id="system_loop_tail_v1" id="system_loop_tail_v1_145" name="Send Message Loop End" x="1382.6316" y="649.8421">
+            <task definition_id="system_loop_tail_v1" id="system_loop_tail_v1_145" name="Send Message Loop End" x="714" y="348">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -70,7 +70,7 @@
                     <task label="" type="Complete" value="">system_tree_return_v1_155</task>
                 </dependents>
             </task>
-            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_155" name="Return" x="1382.6842" y="745.8947">
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_155" name="Return" x="720" y="513">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -80,7 +80,7 @@
                 <messages></messages>
                 <dependents></dependents>
             </task>
-            <task definition_id="utility_csv_to_xml_v1" id="utility_csv_to_xml_v1_168" name="Recipient List to XML" x="59" y="271">
+            <task definition_id="utility_csv_to_xml_v1" id="utility_csv_to_xml_v1_168" name="Recipient List to XML" x="100" y="253">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -94,7 +94,7 @@
                     <task label="" type="Complete" value="">system_loop_head_v1_169</task>
                 </dependents>
             </task>
-            <task definition_id="system_loop_head_v1" id="system_loop_head_v1_169" name="Sanitize Recipients - Start" x="56" y="380">
+            <task definition_id="system_loop_head_v1" id="system_loop_head_v1_169" name="Sanitize Recipients - Start" x="94" y="361">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -111,7 +111,7 @@
                     <task label="" type="Complete" value="">routine_kinetic_user_retrieve_v1_171</task>
                 </dependents>
             </task>
-            <task definition_id="system_loop_tail_v1" id="system_loop_tail_v1_170" name="Sanitize Recipients - End" x="411" y="379">
+            <task definition_id="system_loop_tail_v1" id="system_loop_tail_v1_170" name="Sanitize Recipients - End" x="478" y="352">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -126,7 +126,7 @@
                     <task label="" type="Complete" value="">utilities_echo_v1_178</task>
                 </dependents>
             </task>
-            <task definition_id="routine_kinetic_user_retrieve_v1" id="routine_kinetic_user_retrieve_v1_171" name="Fetch User" x="55" y="483">
+            <task definition_id="routine_kinetic_user_retrieve_v1" id="routine_kinetic_user_retrieve_v1_171" name="Fetch User" x="96" y="469">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>true</defers>
@@ -141,7 +141,7 @@
                     <task label="User Found" type="Complete" value="@results['Fetch User']['Exists'].to_s.downcase == &quot;true&quot;">system_junction_v1_177</task>
                 </dependents>
             </task>
-            <task definition_id="routine_kinetic_team_retrieve_v1" id="routine_kinetic_team_retrieve_v1_172" name="Fetch Team" x="56" y="615">
+            <task definition_id="routine_kinetic_team_retrieve_v1" id="routine_kinetic_team_retrieve_v1_172" name="Fetch Team" x="98" y="610">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>true</defers>
@@ -156,22 +156,21 @@
                     <task label="Team Found" type="Complete" value="@results['Fetch Team']['Exists'].to_s.downcase == &quot;true&quot;">system_junction_v1_177</task>
                 </dependents>
             </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_173" name="Is Valid Email" x="57" y="753">
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_173" name="Is Valid Email" x="95" y="755">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
                 <deferrable>false</deferrable>
                 <visible>true</visible>
                 <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%=!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.match("#{@results['Sanitize Recipients - Start']['Value']}").nil?)%&gt;
-</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%=!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.match("#{@results['Sanitize Recipients - Start']['Value']}").nil?)%&gt;</parameter>
                 </parameters>
                 <messages></messages>
                 <dependents>
                     <task label="Email Found" type="Complete" value="@results['Is Valid Email']['output'] === &quot;true&quot;">utilities_echo_v1_176</task>
                 </dependents>
             </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_176" name="Format Email JSON" x="408" y="750">
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_176" name="Format Email JSON" x="484" y="746">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -189,7 +188,7 @@
                     <task label="" type="Complete" value="">system_junction_v1_177</task>
                 </dependents>
             </task>
-            <task definition_id="system_junction_v1" id="system_junction_v1_177" name="Sanitize - Complete" x="411" y="558">
+            <task definition_id="system_junction_v1" id="system_junction_v1_177" name="Sanitize - Complete" x="487" y="544">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -201,7 +200,7 @@
                     <task label="" type="Complete" value="">system_loop_tail_v1_170</task>
                 </dependents>
             </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_178" name="Collect Results" x="656.5263" y="378.1579">
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_178" name="Collect Results" x="476" y="179">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -250,15 +249,17 @@ if @results.has_key? 'Format Email JSON'
   end
 end
 
-recipient_details.select{|user| !user['smtpaddress'].to_s.include?('@kinops.io')}.to_json
+#recipient_details.select{|user| !user['smtpaddress'].to_s.include?('@kinops.io')}.to_json
+recipient_details.to_json
+
 %&gt;</parameter>
                 </parameters>
                 <messages></messages>
                 <dependents>
-                    <task label="" type="Complete" value="">kinetic_core_api_v1_183</task>
+                    <task label="" type="Complete" value="">system_loop_head_v1_144</task>
                 </dependents>
             </task>
-            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_183" name="Fetch Substitution Data" x="893.0526" y="379.3158">
+            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_183" name="Fetch Substitution Data" x="1020" y="152">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -314,10 +315,10 @@ data_api_route%&gt;</parameter>
                 </parameters>
                 <messages></messages>
                 <dependents>
-                    <task label="" type="Complete" value="">utilities_echo_v1_195</task>
+                    <task label="" type="Complete" value="">system_junction_v1_185</task>
                 </dependents>
             </task>
-            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_184" name="Fetch User Data" x="1765.2106" y="379.26315">
+            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_184" name="Fetch User Data" x="1022" y="257">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -334,7 +335,7 @@ data_api_route%&gt;</parameter>
                     <task label="" type="Complete" value="">system_junction_v1_185</task>
                 </dependents>
             </task>
-            <task definition_id="system_junction_v1" id="system_junction_v1_185" name="Data Fetch - Complete" x="1765.2106" y="502.4737">
+            <task definition_id="system_junction_v1" id="system_junction_v1_185" name="Data Fetch - Complete" x="1417" y="145">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -343,10 +344,11 @@ data_api_route%&gt;</parameter>
                 <parameters></parameters>
                 <messages></messages>
                 <dependents>
-                    <task label="" type="Complete" value="">kinetic_request_ce_notification_template_send_v3_192</task>
+                    <task label="Not kinops.io" type="Complete" value="( JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'user' &amp;&amp; !JSON.parse(@results['Fetch User Data']['Response Body'])['email'].to_s.include?('@kinops.io') ) || ( JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'smtp' &amp;&amp; !JSON.parse(@results['Send Message Loop Start']['Value'])['recipient'].to_s.include?('@kinops.io') )&#10;">kinetic_request_ce_notification_template_send_v3_192</task>
+                    <task label="Is kinops.io" type="Complete" value="( JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'user' &amp;&amp; JSON.parse(@results['Fetch User Data']['Response Body'])['email'].to_s.include?('@kinops.io') ) || ( JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'smtp' &amp;&amp; JSON.parse(@results['Send Message Loop Start']['Value'])['recipient'].to_s.include?('@kinops.io') )&#10;">system_junction_v1_193</task>
                 </dependents>
             </task>
-            <task definition_id="kinetic_request_ce_notification_template_send_v3" id="kinetic_request_ce_notification_template_send_v3_192" name="Assemble and Send Message" x="1766" y="648">
+            <task definition_id="kinetic_request_ce_notification_template_send_v3" id="kinetic_request_ce_notification_template_send_v3_192" name="Assemble and Send Message" x="1421" y="343">
                 <version>3</version>
                 <configured>true</configured>
                 <defers>false</defers>
@@ -356,6 +358,7 @@ data_api_route%&gt;</parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="space_slug" label="Space Slug" menu="" required="false" tooltip="The id of the space from which the submission is being retrieved."></parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="recipient_json" label="Recipient Json Object" menu="" required="true" tooltip="The recipient object should look like this. {&quot;type&quot;:&quot;user&quot;,&quot;username&quot;:&quot;test@mycompany.com&quot;,&quot;smtpaddress&quot;:&quot;test@mycompany.com&quot;,&quot;language&quot;:&quot;- Default -&quot;,&quot;email notifications&quot;:&quot;yes&quot;}  ">&lt;%=
+#@results['Send Message Loop Start']['Value']
 if JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'user'
   JSON.parse(@results['Fetch User Data']['Response Body'])['user']['email']
 elsif JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'smtp'
@@ -363,22 +366,7 @@ elsif JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'smtp'
 end
 %&gt;</parameter>
                     <parameter dependsOnId="" dependsOnValue="" id="notification_template_name" label="Notification Template Name" menu="" required="true" tooltip="The notification template name being used.">&lt;%=@inputs['Notification Template Name']%&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="replacement_values" label="Replacement Values" menu="" required="false" tooltip="JSON string of replacement values. Required to successfully apply replacements to any notification template.  JSON keys can be 'form', 'values', and 'vars'.">&lt;%= @results['Replacement Values For Email']['output'] %&gt;</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="submission_id" label="Submission Id" menu="" required="false" tooltip="Needed if the message contains attachments.">&lt;%=@inputs['Related Submission Id']%&gt;</parameter>
-                </parameters>
-                <messages></messages>
-                <dependents>
-                    <task label="" type="Complete" value="">system_loop_tail_v1_145</task>
-                </dependents>
-            </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_195" name="Replacement Values For Email" x="1131" y="379">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>false</defers>
-                <deferrable>false</deferrable>
-                <visible>true</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%=
+                    <parameter dependsOnId="" dependsOnValue="" id="replacement_values" label="Replacement Values" menu="" required="false" tooltip="JSON string of replacement values. Required to successfully apply replacements to any notification template.  JSON keys can be 'form', 'values', and 'vars'.">&lt;%=
 ## Parse Replacement Variables Data
 data_response = @results['Fetch Substitution Data']['Handler Error Message'].nil? ? JSON.parse(@results['Fetch Substitution Data']['Response Body']) : nil
 user_response = (@results.has_key?('Fetch User Data') &amp;&amp; @results['Fetch User Data']['Handler Error Message'].nil?) ? JSON.parse(@results['Fetch User Data']['Response Body']) : nil
@@ -570,66 +558,24 @@ unless backup_vars.nil?
 end
 
 @variables.to_json%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="submission_id" label="Submission Id" menu="" required="false" tooltip="Needed if the message contains attachments.">&lt;%=@inputs['Related Submission Id']%&gt;</parameter>
                 </parameters>
                 <messages></messages>
                 <dependents>
-                    <task label="" type="Complete" value="">system_loop_head_v1_144</task>
+                    <task label="" type="Complete" value="">system_junction_v1_193</task>
                 </dependents>
             </task>
-            <task definition_id="routine_kinetic_agent_execute_routine_v2" id="routine_kinetic_agent_execute_routine_v2_197" name="Assemble and Send Message - Agent" x="1574" y="564">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>true</defers>
-                <deferrable>true</deferrable>
-                <visible>false</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="Error Handling" label="Error Handling" menu="" required="false" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Handler Slug" label="Handler Slug" menu="" required="false" tooltip="The name of the handler slug to execute. ex foo_bar">kinetic_request_ce_notification_template_send_v3</parameter>
-                    <parameter dependsOnId="" dependsOnValue="" id="Payload" label="Payload" menu="" required="false" tooltip="A json structure that matches the handlers parameters. ie {&quot;baz&quot;: &quot;buz&quot;}">&lt;%=
-recipient = ""
-if JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'user'
-  recipient = JSON.parse(@results['Fetch User Data']['Response Body'])['user']['email']
-elsif JSON.parse(@results['Send Message Loop Start']['Value'])['type'] == 'smtp'
-  recipient = JSON.parse(@results['Send Message Loop Start']['Value'])['recipient']
-end
-
-{'error_handling' =&gt; 'Raise Error',
- 'space_slug' =&gt; '',
- 'recipient_json' =&gt; recipient,
- 'notification_template_name' =&gt; @inputs['Notification Template Name'],
- 'replacement_values' =&gt; @results['Replacement Values For Email']['output'],
- 'submission_id' =&gt; @inputs['Related Submission Id'] 
-}.to_json
-%&gt;</parameter>
-                </parameters>
-                <messages></messages>
-                <dependents></dependents>
-            </task>
-            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_198" name="**NOTE**  Use of Agent Handlers" x="1853.2106" y="552.4737">
+            <task definition_id="system_junction_v1" id="system_junction_v1_193" name="Junction" x="1093" y="352">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>false</defers>
                 <deferrable>false</deferrable>
-                <visible>true</visible>
-                <parameters>
-                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">This routine contains the workflow necessary to use this routine in environments that use either local handlers or agent handlers.
-
-Use the instructions below to connect the correct nodes for the enviroment
-
-Local Handlers:
--Connect the following node
-  - 'Junction' to 'Assemble and Send Message'
-  - 'Assemble and Send Message' to 'Send Message Loop End'
-  - Remove any connectors to and from 'Assemble and Send Message - Agent'
-  
-Agent Handlers:
--Connect the following node
-  - 'Junction' to 'Assemble and Send Message - Agent'
-  - 'Assemble and Send Message - Agent' to 'Send Message Loop End'
-  - Remove any connectors to and from 'Assemble and Send Message'</parameter>
-                </parameters>
+                <visible>false</visible>
+                <parameters></parameters>
                 <messages></messages>
-                <dependents></dependents>
+                <dependents>
+                    <task label="" type="Complete" value="">system_loop_tail_v1_145</task>
+                </dependents>
             </task>
         </request>
     </taskTree>

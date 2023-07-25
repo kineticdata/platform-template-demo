@@ -33,50 +33,30 @@
                     <task label="" type="Complete" value="">routine_kinetic_submission_retrieve_v1_15</task>
                 </dependents>
             </task>
-            <task definition_id="routine_kinetic_finish_v1" id="routine_kinetic_finish_v1_14" name="Finish" x="748" y="121">
-                <version>1</version>
-                <configured>true</configured>
-                <defers>false</defers>
-                <deferrable>true</deferrable>
-                <visible>false</visible>
-                <parameters>
-                    <parameter id="Run Id" label="Run Id" menu="" required="false" tooltip="The Id of the completed run">&lt;%=@run['Id']%&gt;</parameter>
-                </parameters>
-                <messages>
-                    <message type="Create"></message>
-                    <message type="Update"></message>
-                    <message type="Complete"></message>
-                </messages>
-                <dependents></dependents>
-            </task>
-            <task definition_id="routine_kinetic_submission_retrieve_v1" id="routine_kinetic_submission_retrieve_v1_15" name="Retrieve Queue Task" x="451" y="123">
+            <task definition_id="routine_kinetic_submission_retrieve_v1" id="routine_kinetic_submission_retrieve_v1_15" name="Retrieve Queue Task" x="414" y="139">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>true</defers>
                 <deferrable>true</deferrable>
                 <visible>false</visible>
                 <parameters>
-                    <parameter id="Id" label="Id" menu="" required="true" tooltip="The Id of the submission to retrieve">&lt;%=@inputs['Queue Task Submission Id']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Id" label="Id" menu="" required="true" tooltip="The Id of the submission to retrieve">&lt;%=@inputs['Queue Task Submission Id']%&gt;</parameter>
                 </parameters>
-                <messages>
-                    <message type="Create"></message>
-                    <message type="Update"></message>
-                    <message type="Complete"></message>
-                </messages>
+                <messages></messages>
                 <dependents>
                     <task label="" type="Complete" value="">routine_kinetic_submission_activity_update_v1_16</task>
                 </dependents>
             </task>
-            <task definition_id="routine_kinetic_submission_activity_update_v1" id="routine_kinetic_submission_activity_update_v1_16" name="Update Origin Submission Activity" x="617" y="100">
+            <task definition_id="routine_kinetic_submission_activity_update_v1" id="routine_kinetic_submission_activity_update_v1_16" name="Update Origin Submission Activity" x="682" y="137">
                 <version>1</version>
                 <configured>true</configured>
                 <defers>true</defers>
                 <deferrable>true</deferrable>
                 <visible>false</visible>
                 <parameters>
-                    <parameter id="Submission Id" label="Submission Id" menu="" required="true" tooltip="The Id of the submission in which the activity is related">&lt;%=@inputs['Origin Submission Id']%&gt;</parameter>
-                    <parameter id="Activity Id" label="Activity Id" menu="" required="true" tooltip="The Id of the submission activity">&lt;%=@inputs['Origin Submission Activity Id']%&gt;</parameter>
-                    <parameter id="Updated - Data" label="Updated - Data" menu="" required="false" tooltip="Data to store in the submission activity">&lt;%=
+                    <parameter dependsOnId="" dependsOnValue="" id="Submission Id" label="Submission Id" menu="" required="true" tooltip="The Id of the submission in which the activity is related">&lt;%=@inputs['Origin Submission Id']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Activity Id" label="Activity Id" menu="" required="true" tooltip="The Id of the submission activity">&lt;%=@inputs['Origin Submission Activity Id']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Updated - Data" label="Updated - Data" menu="" required="false" tooltip="Data to store in the submission activity">&lt;%=
 queue_task_values = JSON.parse(@results['Retrieve Queue Task']['Values JSON'])
 comments = queue_task_values.has_key?('Notes for Customer') ?queue_task_values['Notes for Customer'] : nil
 if comments.nil?
@@ -91,18 +71,12 @@ end
   "Status" =&gt; queue_task_values['Status'],
   "Comments" =&gt; comments
 }.to_json %&gt;</parameter>
-                    <parameter id="Updated - Description" label="Updated - Description" menu="" required="false" tooltip="Description of the submission activity"></parameter>
-                    <parameter id="Updated - Label" label="Updated - Label" menu="" required="false" tooltip="Label for the submission activity"></parameter>
-                    <parameter id="Updated - Type" label="Updated - Type" menu="" required="false" tooltip="Type of submission activity"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Updated - Description" label="Updated - Description" menu="" required="false" tooltip="Description of the submission activity"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Updated - Label" label="Updated - Label" menu="" required="false" tooltip="Label for the submission activity"></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Updated - Type" label="Updated - Type" menu="" required="false" tooltip="Type of submission activity"></parameter>
                 </parameters>
-                <messages>
-                    <message type="Create"></message>
-                    <message type="Update"></message>
-                    <message type="Complete"></message>
-                </messages>
-                <dependents>
-                    <task label="" type="Complete" value="">routine_kinetic_finish_v1_14</task>
-                </dependents>
+                <messages></messages>
+                <dependents></dependents>
             </task>
         </request>
     </taskTree>

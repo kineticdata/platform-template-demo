@@ -1,0 +1,144 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_2875_change_record_create</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>2875 Change Record Create</name>
+        <author></author>
+        <notes></notes>
+        <lastID>22</lastID>
+        <taskDefinition id="routine_2875_change_record_create" name="2875 Change Record Create" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Body" label="Body" required="true" tooltip="JSON Object Representing the Body">Test Default</parameter>
+                <parameter id="Summary" label="Summary" required="false" tooltip=""></parameter>
+                <parameter id="Details" label="Details" required="false" tooltip=""></parameter>
+                <parameter id="Originating Submission Id" label="Originating Submission Id" required="false" tooltip=""></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Change Number" tooltip=""></result>
+                <result name="sys id" tooltip=""></result>
+                <result name="Change Ticket JSON" tooltip=""></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="10" y="10">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_kinetic_submission_retrieve_v1_19</task>
+                </dependents>
+            </task>
+            <task definition_id="routine_retrieve_servicenow_change" id="routine_retrieve_servicenow_change_15" name="Get ServiceNow Change " x="972.7143" y="125.14285">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="sys id" label="sys id" menu="" required="true" tooltip="sys id of the Change Ticket">&lt;%= @results['Create ServiceNow Change']['sys id'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_16</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_16" name="Tree Return" x="1207.7144" y="123.14285">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Change Number" label="Change Number" menu="" required="false" tooltip="">&lt;%= @results['Get ServiceNow Change ']['Change Number'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="sys id" label="sys id" menu="" required="false" tooltip="">&lt;%= @results['Get ServiceNow Change ']['sys id'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Change Ticket JSON" label="Change Ticket JSON" menu="" required="false" tooltip="">&lt;%= @results['Get ServiceNow Change ']['Ticket JSON'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+            <task definition_id="routine_create_servicenow_change" id="routine_create_servicenow_change_18" name="Create ServiceNow Change" x="541" y="128">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Change Ticket Body" label="Change Ticket Body" menu="" required="true" tooltip="JSON Body of the Change Ticket">&lt;%= @inputs['Body'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">servicenow_attachment_create_v1_21</task>
+                </dependents>
+            </task>
+            <task definition_id="routine_kinetic_submission_retrieve_v1" id="routine_kinetic_submission_retrieve_v1_19" name="Get Submission" x="67" y="131">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Id" label="Id" menu="" required="true" tooltip="The Id of the submission to retrieve">&lt;%= @inputs['Originating Submission Id'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">utilities_echo_v1_22</task>
+                </dependents>
+            </task>
+            <task definition_id="servicenow_attachment_create_v1" id="servicenow_attachment_create_v1_21" name="Add Attachment to ServiceNow" x="762" y="124">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="table_name" label="Table Name" menu="" required="true" tooltip="Name of the table to attach the file to.">change_request</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="table_sys_id" label="Sys Id" menu="" required="true" tooltip="Sys_id of the record in the table specified in table_name that you want to attach the file to.">&lt;%=@results['Create ServiceNow Change']['sys id']%&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="attachment_input_type" label="Attachment Input Type" menu="Field,JSON" required="true" tooltip="Choose Field if the input for the attachment info as a Field Name or choose JSON if the input is an attachment's JSON from the Get Attachment Info handler. Note that if Field is specified, the fields entered should only allow one attachment.">Field</parameter>
+                    <parameter dependsOnId="attachment_input_type" dependsOnValue="Field" id="attachment_field" label="Attachment Field" menu="" required="false" tooltip="The Field Name of an attachment question to retrieve an attachment from.">DD 2875 PDF</parameter>
+                    <parameter dependsOnId="attachment_input_type" dependsOnValue="JSON" id="attachment_json" label="Attachment JSON" menu="" required="false" tooltip="The JSON of an attachment object retrieved from the Get Attachment Info handler."></parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="submission_id" label="Submission ID" menu="" required="true" tooltip="The id of the CE submission containing the attachment.">&lt;%= @results['Extract Part 3 Submission Id']['output'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_retrieve_servicenow_change_15</task>
+                </dependents>
+            </task>
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_22" name="Extract Part 3 Submission Id" x="316" y="127">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%= 
+children = JSON.parse(@results['Get Submission']['Children JSON'])
+id = ""
+
+children.each{|x|
+if x['label'].include?('(Part 3)')
+  id = x['id']
+  break
+end
+}
+
+id
+%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_create_servicenow_change_18</task>
+                </dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

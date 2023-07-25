@@ -1,49 +1,14 @@
 {
   "afterLogoutPath": null,
   "attributes": [
-    {
-      "name": "Bundle Package",
-      "values": [
-        "queue"
-      ]
-    },
-    {
-      "name": "Description",
-      "values": [
-        "Work tasks assigned to you or your team"
-      ]
-    },
-    {
-      "name": "Icon",
-      "values": [
-        "fa-list-ul"
-      ]
-    },
-    {
-      "name": "Notification Template Name - Complete",
-      "values": [
-        "Task Completed - Ad-hoc Task"
-      ]
-    },
-    {
-      "name": "Notification Template Name - Create",
-      "values": [
-        "Task Created"
-      ]
-    },
-    {
-      "name": "Owning Team",
-      "values": [
-        "Default"
-      ]
-    }
+
   ],
-  "bundlePath": "webpack",
-  "defaultFormConfirmationPage": "space.jsp",
-  "defaultFormDisplayPage": "space.jsp",
-  "defaultSubmissionLabelExpression": "${form('name')}",
+  "bundlePath": null,
+  "defaultFormConfirmationPage": null,
+  "defaultFormDisplayPage": null,
+  "defaultSubmissionLabelExpression": null,
   "displayType": "Display Page",
-  "displayValue": "space.jsp",
+  "displayValue": null,
   "fields": [
     {
       "name": "Deferral Token",
@@ -71,21 +36,49 @@
     },
     {
       "name": "Due Date",
-      "renderType": "text"
+      "renderType": "datetime"
     }
   ],
   "indexDefinitions": [
     {
-      "name": "closedBy",
+      "name": "coreState",
       "parts": [
-        "closedBy"
+        "coreState"
       ],
       "unique": false
     },
     {
-      "name": "createdBy",
+      "name": "coreState,values[Assigned Individual]",
       "parts": [
-        "createdBy"
+        "coreState",
+        "values[Assigned Individual]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "coreState,values[Assigned Individual],values[Assigned Team],values[Status]",
+      "parts": [
+        "coreState",
+        "values[Assigned Individual]",
+        "values[Assigned Team]",
+        "values[Status]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "coreState,values[Status],values[Assigned Individual]",
+      "parts": [
+        "coreState",
+        "values[Status]",
+        "values[Assigned Individual]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy,values[Due Date]",
+      "parts": [
+        "createdBy",
+        "values[Due Date]"
       ],
       "unique": false
     },
@@ -93,20 +86,6 @@
       "name": "handle",
       "parts": [
         "handle"
-      ],
-      "unique": false
-    },
-    {
-      "name": "submittedBy",
-      "parts": [
-        "submittedBy"
-      ],
-      "unique": false
-    },
-    {
-      "name": "updatedBy",
-      "parts": [
-        "updatedBy"
       ],
       "unique": false
     },
@@ -126,6 +105,15 @@
       "unique": false
     },
     {
+      "name": "values[Assigned Individual],createdBy,values[Due Date]",
+      "parts": [
+        "values[Assigned Individual]",
+        "createdBy",
+        "values[Due Date]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Assigned Individual],values[Assigned Team]",
       "parts": [
         "values[Assigned Individual]",
@@ -139,6 +127,25 @@
         "values[Assigned Individual]",
         "values[Assigned Team]",
         "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Assigned Individual],values[Assigned Team],createdBy,values[Due Date]",
+      "parts": [
+        "values[Assigned Individual]",
+        "values[Assigned Team]",
+        "createdBy",
+        "values[Due Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Assigned Individual],values[Assigned Team],values[Due Date]",
+      "parts": [
+        "values[Assigned Individual]",
+        "values[Assigned Team]",
+        "values[Due Date]"
       ],
       "unique": false
     },
@@ -162,6 +169,35 @@
       "unique": false
     },
     {
+      "name": "values[Assigned Individual],values[Assigned Team],values[Status],createdBy,values[Due Date]",
+      "parts": [
+        "values[Assigned Individual]",
+        "values[Assigned Team]",
+        "values[Status]",
+        "createdBy",
+        "values[Due Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Assigned Individual],values[Assigned Team],values[Status],values[Due Date]",
+      "parts": [
+        "values[Assigned Individual]",
+        "values[Assigned Team]",
+        "values[Status]",
+        "values[Due Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Assigned Individual],values[Due Date]",
+      "parts": [
+        "values[Assigned Individual]",
+        "values[Due Date]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Assigned Individual],values[Status]",
       "parts": [
         "values[Assigned Individual]",
@@ -175,6 +211,25 @@
         "values[Assigned Individual]",
         "values[Status]",
         "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Assigned Individual],values[Status],createdBy,values[Due Date]",
+      "parts": [
+        "values[Assigned Individual]",
+        "values[Status]",
+        "createdBy",
+        "values[Due Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Assigned Individual],values[Status],values[Due Date]",
+      "parts": [
+        "values[Assigned Individual]",
+        "values[Status]",
+        "values[Due Date]"
       ],
       "unique": false
     },
@@ -194,6 +249,23 @@
       "unique": false
     },
     {
+      "name": "values[Assigned Team],createdBy,values[Due Date]",
+      "parts": [
+        "values[Assigned Team]",
+        "createdBy",
+        "values[Due Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Assigned Team],values[Due Date]",
+      "parts": [
+        "values[Assigned Team]",
+        "values[Due Date]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Assigned Team],values[Status]",
       "parts": [
         "values[Assigned Team]",
@@ -207,6 +279,25 @@
         "values[Assigned Team]",
         "values[Status]",
         "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Assigned Team],values[Status],createdBy,values[Due Date]",
+      "parts": [
+        "values[Assigned Team]",
+        "values[Status]",
+        "createdBy",
+        "values[Due Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Assigned Team],values[Status],values[Due Date]",
+      "parts": [
+        "values[Assigned Team]",
+        "values[Status]",
+        "values[Due Date]"
       ],
       "unique": false
     },
@@ -252,43 +343,52 @@
         "createdBy"
       ],
       "unique": false
+    },
+    {
+      "name": "values[Status],createdBy,values[Due Date]",
+      "parts": [
+        "values[Status]",
+        "createdBy",
+        "values[Due Date]"
+      ],
+      "unique": false
     }
   ],
-  "loginPage": "",
+  "loginPage": null,
   "name": "Queue",
-  "resetPasswordPage": "",
+  "resetPasswordPage": null,
   "securityPolicies": [
     {
       "endpoint": "Display",
       "name": "Authenticated Users"
     },
     {
-      "endpoint": "Form Creation",
-      "name": "Kapp Owners"
-    },
-    {
       "endpoint": "Modification",
-      "name": "Kapp Owners"
+      "name": "Admins"
     },
     {
-      "endpoint": "Default Form Display",
-      "name": "Form Owners - Implicit Owners - Kapp Owners"
+      "endpoint": "Form Creation",
+      "name": "Admins"
     },
     {
       "endpoint": "Default Form Modification",
-      "name": "Form Owners - Kapp Owners"
+      "name": "Admins"
+    },
+    {
+      "endpoint": "Default Form Display",
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Default Submission Access",
-      "name": "Assigned Team - Assigned Individual - Observers - Creators"
+      "name": "Submitter"
     },
     {
       "endpoint": "Default Submission Modification",
-      "name": "Assigned Team - Assigned Individual - Observers"
+      "name": "Submitter"
     },
     {
       "endpoint": "Submission Support",
-      "name": "Submission Support"
+      "name": "Admins"
     }
   ],
   "slug": "queue"

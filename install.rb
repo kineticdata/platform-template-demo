@@ -3,13 +3,6 @@
 # Format with example values:
 #
 # {
-#   "agent" => {
-#     "component_type" => "agent",
-#     "bridge_api" => "/app/api/v1/bridges",
-#     "bridge_path" => "/app/api/v1/bridges/bridges/kinetic-core",
-#     "bridge_slug" => "kinetic-core",
-#     "filestore_api" => "/app/api/v1/filestores"
-#   },
 #   "core" => {
 #     "api" => "http://localhost:8080/kinetic/app/api/v1",
 #     "agent_api" => "http://localhost:8080/kinetic/foo/app/components/agent/app/api/v1",
@@ -21,11 +14,6 @@
 #     "service_user_password" => "secret",
 #     "task_api_v1" => "http://localhost:8080/kinetic/foo/app/components/task/app/api/v1",
 #     "task_api_v2" => "http://localhost:8080/kinetic/foo/app/components/task/app/api/v2"
-#   },
-#   "discussions" => {
-#     "api" => "http://localhost:8080/app/discussions/api/v1",
-#     "server" => "http://localhost:8080/app/discussions",
-#     "space_slug" => "foo"
 #   },
 #   "task" => {
 #     "api" => "http://localhost:8080/kinetic-task/app/api/v1",
@@ -110,47 +98,15 @@ logger.info "Installing gems for the \"#{template_name}\" template."
 Dir.chdir(platform_template_path) { system("bundle", "install") }
 
 require "kinetic_sdk"
+require File.join(File.expand_path(File.dirname(__FILE__)), "workflows.rb")
 
 # ------------------------------------------------------------------------------
 # common
 # ------------------------------------------------------------------------------
 
-# oAuth client for production bundle
-oauth_client_prod_bundle = {
-  "name" => "Kinetic Bundle - #{vars["core"]["space_slug"]}",
-  "description" => "oAuth Client for #{vars["core"]["space_slug"]} client-side bundles",
-  "clientId" => "kinetic-bundle",
-  "clientSecret" => KineticSdk::Utils::Random.simple(16),
-  "redirectUri" => "#{vars["core"]["server"]}/#/OAuthCallback",
-}
-
-# oAuth client for development bundle
-oauth_client_dev_bundle = {
-  "name" => "Kinetic Bundle - Dev",
-  "description" => "oAuth Client for client-side bundles in development mode",
-  "clientId" => "kinetic-bundle-dev",
-  "clientSecret" => KineticSdk::Utils::Random.simple(16),
-  "redirectUri" => "http://localhost:3000/app/oauth/callback",
-}
-
-# oAuth client for service user
-oauth_client_service_user = {
-  "name" => vars["core"]["service_user_username"],
-  "description" => "oAuth Client for #{vars["core"]["service_user_username"]} user",
-  "clientId" => vars["core"]["service_user_username"],
-  "clientSecret" => vars["core"]["service_user_password"],
-  "redirectUri" => "#{vars["core"]["server"]}/#/OAuthCallback",
-}
-
 # task source configurations
 task_source_properties = {
   "Kinetic Request CE" => {
-    "Space Slug" => nil,
-    "Web Server" => vars["core"]["server"],
-    "Proxy Username" => vars["core"]["service_user_username"],
-    "Proxy Password" => vars["core"]["service_user_password"],
-  },
-  "Kinetic Discussions" => {
     "Space Slug" => nil,
     "Web Server" => vars["core"]["server"],
     "Proxy Username" => vars["core"]["service_user_username"],
@@ -178,7 +134,7 @@ task_handler_configurations = {
     "port" => (smtp["port"] || "25").to_s,
     "tls" => (smtp["tls"] || smtp["tlsEnabled"] || "true").to_s,
     "username" => smtp["username"] || "joe.blow",
-    "password" => smtp["password"] || "password"
+    "password" => smtp["password"] || "password",
   },
   "kinetic_request_ce_notification_template_send" => {
     "smtp_server" => smtp["server"] || smtp["host"] || "mysmtp.com",
@@ -192,8 +148,8 @@ task_handler_configurations = {
     "api_username" => vars["core"]["service_user_username"],
     "api_password" => vars["core"]["service_user_password"],
     "space_slug" => nil,
-    "enable_debug_logging" => "No"
-  }
+    "enable_debug_logging" => "No",
+  },
 }
 task_handler_configurations = task_handler_configurations.merge(vars["data"]["handlers"] || {})
 
@@ -213,6 +169,22 @@ space_sdk = KineticSdk::Core.new({
   options: http_options.merge({ export_directory: "#{core_path}" }),
 })
 
+# Add Kinetic Platform Bridge Adapter and remove the Kinetic Core Adapter
+logger.info "Configuring Kinetic Platform Bridge and removing Kinetic Core Bridge"
+platform_bridge_body = { "slug": "kinetic-platform",
+                        "adapterClass": "com.kineticdata.bridgehub.adapter.kinetic.platform.KineticCoreAdapter",
+                        "properties": { "Username": vars["core"]["service_user_username"],
+                                        "Password": vars["core"]["service_user_password"],
+                                        "Kinetic Core Space Url": vars["core"]["server"] } }
+
+agent_url = "#{vars["core"]["server"]}/app/components/agents/system/app/api/v1/bridges"
+agent_conn = KineticSdk::CustomHttp.new({
+  username: vars["core"]["service_user_username"],
+  password: vars["core"]["service_user_password"],
+})
+agent_conn.post(agent_url, platform_bridge_body, agent_conn.default_headers)
+agent_conn.delete("#{agent_url}/kinetic-core")
+
 # cleanup any kapps that are precreated with the space (catalog)
 (space_sdk.find_kapps.content["kapps"] || []).each do |item|
   space_sdk.delete_kapp(item["slug"])
@@ -229,11 +201,6 @@ space_sdk.import_space(vars["core"]["space_slug"])
 
 # set space attributes
 space_attributes_map = {
-  "Discussion Id" => [""],
-  "Task Server Scheme" => [URI(vars["task"]["server"]).scheme],
-  "Task Server Host" => [URI(vars["task"]["server"]).host],
-  "Task Server Space Slug" => [vars["task"]["space_slug"]],
-  "Task Server Url" => [vars["task"]["server"]],
   "Web Server Url" => [vars["core"]["server"]],
 }
 # set space attributes passed in the variable data
@@ -263,38 +230,6 @@ Dir["#{core_path}/**/*.ndjson"].sort.each do |filename|
   end
 end
 
-# update kinetic task webhook endpoints to point to the correct task server
-space_sdk.find_webhooks_on_space.content["webhooks"].each do |webhook|
-  url = webhook["url"]
-  # if the webhook contains a kinetic task endpoint
-  if url.include?("/kinetic-task/app/api/v1")
-    # replace the server/host portion
-    apiIndex = url.index("/app/api/v1")
-    url = url.sub(url.slice(0..apiIndex - 1), vars["task"]["server"])
-    # update the webhook
-    space_sdk.update_webhook_on_space(webhook["name"], {
-      "url" => url,
-      "authStrategy" => {},
-    })
-  end
-end
-space_sdk.find_kapps.content["kapps"].each do |kapp|
-  space_sdk.find_webhooks_on_kapp(kapp["slug"]).content["webhooks"].each do |webhook|
-    url = webhook["url"]
-    # if the webhook contains a kinetic task endpoint
-    if url.include?("/kinetic-task/app/api/v1")
-      # replace the server/host portion
-      apiIndex = url.index("/app/api/v1")
-      url = url.sub(url.slice(0..apiIndex - 1), vars["task"]["server"])
-      # update the webhook
-      space_sdk.update_webhook_on_kapp(kapp["slug"], webhook["name"], {
-        "url" => url,
-        "authStrategy" => {},
-      })
-    end
-  end
-end
-
 # update each bridge model mapping with the corresponding bridge in the agent platform component
 space_sdk.find_bridge_models.content["models"].each do |model|
   exported_model = space_sdk.find_bridge_model(model["name"], { "export" => true }).content["model"]
@@ -302,15 +237,6 @@ space_sdk.find_bridge_models.content["models"].each do |model|
     mapping.delete("bridgeName")
     mapping["bridgeSlug"] = "kinetic-core"
     space_sdk.update_bridge_model_mapping(model["name"], mapping["name"], mapping)
-  end
-end
-
-# create or update oAuth clients
-[oauth_client_prod_bundle, oauth_client_dev_bundle, oauth_client_service_user].each do |client|
-  if space_sdk.find_oauth_client(client["clientId"]).status == 404
-    space_sdk.add_oauth_client(client)
-  else
-    space_sdk.update_oauth_client(client["clientId"], client)
   end
 end
 
@@ -370,12 +296,6 @@ Dir["#{task_path}/sources/*.json"].each do |file|
   not_installed ? task_sdk.add_source(required_source) : task_sdk.update_source(required_source)
 end
 
-task_sdk.import_routines(true)
-task_sdk.import_categories
-
-# import trees and force overwrite
-task_sdk.import_trees(true)
-
 # configure handler info values
 task_sdk.find_handlers.content["handlers"].each do |handler|
   handler_definition_id = handler["definitionId"]
@@ -391,16 +311,6 @@ task_sdk.find_handlers.content["handlers"].each do |handler|
       task_sdk.update_handler(handler_definition_id, {
         "properties" => {
           "api_location" => vars["core"]["api"],
-          "api_username" => vars["core"]["service_user_username"],
-          "api_password" => vars["core"]["service_user_password"],
-        },
-      })
-    elsif handler_definition_id.start_with?("kinetic_discussions_api_v1")
-      logger.info "Updating handler #{handler_definition_id}"
-      task_sdk.update_handler(handler_definition_id, {
-        "properties" => {
-          "api_oauth_location" => "#{vars["core"]["server"]}/app/oauth/token?grant_type=client_credentials&response_type=token",
-          "api_location" => vars["discussions"]["api"],
           "api_username" => vars["core"]["service_user_username"],
           "api_password" => vars["core"]["service_user_password"],
         },
@@ -457,10 +367,22 @@ end
 
 # update the engine properties
 task_sdk.update_engine({
-  "Max Threads" => "2",
+  "Max Threads" => "5",
   "Sleep Delay" => "1",
   "Trigger Query" => "'Selection Criterion'=null",
 })
+
+# import routines and force overwrite
+task_sdk.import_routines(true)
+
+# import categories
+task_sdk.import_categories
+
+# import trees and force overwrite
+task_sdk.import_trees(true)
+
+# import workflows
+import_workflows(core_path, space_sdk)
 
 # ------------------------------------------------------------------------------
 # service portal specific
@@ -484,104 +406,7 @@ if (vars["data"]["requesting_user"])
       { "team" => { "name" => "Role::Employee" } },
       { "team" => { "name" => "Role::Submission Support" } },
     ],
-    "profileAttributesMap" => { "Guided Tour" => ["Welcome Tour", "Services", "Queue"] },
   })
-end
-
-# temporarily disable webooks while provisioning requesting user / teams
-space_sdk.find_webhooks_on_space.content["webhooks"].each do |webhook|
-  filter = webhook["filter"].empty? ? "false" : "false && #{webhook["filter"]}"
-  space_sdk.update_webhook_on_space(webhook["name"], {
-    "filter" => filter,
-  })
-end
-space_sdk.find_kapps.content["kapps"].each do |kapp|
-  space_sdk.find_webhooks_on_kapp(kapp["slug"]).content["webhooks"].each do |webhook|
-    filter = webhook["filter"].empty? ? "false" : "false && #{webhook["filter"]}"
-    space_sdk.update_webhook_on_kapp(kapp["slug"], webhook["name"], {
-      "filter" => filter,
-    })
-  end
-end
-
-# Create a Discussion SDK connection for the requester user
-discussions_options = http_options.merge({
-  oauth_client_id: oauth_client_prod_bundle["clientId"],
-  oauth_client_secret: oauth_client_prod_bundle["clientSecret"],
-})
-discussions_sdk = KineticSdk::Discussions.new({
-  space_server_url: vars["core"]["server"],
-  space_slug: vars["core"]["space_slug"],
-  username: vars["core"]["service_user_username"],
-  password: vars["core"]["service_user_password"],
-  options: discussions_options,
-})
-
-# Keep track of which discussions to invite the requester to
-requester_discussion_ids = []
-
-# Create an 'All Company' discussion
-all_company_discussion = discussions_sdk.add_discussion({
-  "title" => "All Company",
-  "description" => "All Company Discussion",
-  "owningUsers" => [
-    { "username": vars["data"]["requesting_user"]["username"] },
-  ],
-}).content["discussion"]
-
-# Create an initial message in the 'All Company' discussion
-discussions_sdk.add_message(all_company_discussion["id"], "Welcome to kinops!!!")
-# Set the value of the "Discussion Id" Space attribute
-space_sdk.add_space_attribute("Discussion Id", all_company_discussion["id"])
-# Add the requester to the space discussion
-requester_discussion_ids.unshift(all_company_discussion["id"])
-
-# For each of the teams
-(space_sdk.find_teams.content["teams"] || []).each do |team|
-
-  # Skip if the team is a Role
-  next if team["name"].start_with?("Role::")
-
-  # Create a team discussion
-  discussion = discussions_sdk.add_discussion({
-    "title" => team["name"],
-    "description" => "#{team["name"]} Discussion",
-    "owningTeams" => [
-      { "name": team["name"] },
-    ],
-  }).content["discussion"]
-
-  # Create an initial message in the team discussion
-  discussions_sdk.add_message(discussion["id"], "Welcome to the #{team["name"]} Team!!!")
-  # Add the team as a related item to the discussion
-  discussions_sdk.add_related_item(discussion["id"], "Team", team["slug"])
-  # Set the value of the "Discussion Id" Space attribute
-  space_sdk.add_team_attribute(team["name"], "Discussion Id", discussion["id"])
-  # Add the requester to the team discussion
-  if ["Administrators", "Default"].include?(team["name"])
-    requester_discussion_ids.unshift(discussion["id"])
-  end
-end
-
-# Generate appropriate discussion invites for the requester
-requester_discussion_ids.each do |discussion_id|
-  discussions_sdk.add_invitation_by_username(discussion_id, vars["data"]["requesting_user"]["username"])
-end
-
-# re-enable webooks while provisioning requesting user / teams
-space_sdk.find_webhooks_on_space.content["webhooks"].each do |webhook|
-  filter = webhook["filter"].start_with?("false && ") ? webhook["filter"].gsub("false && ", "") : ""
-  space_sdk.update_webhook_on_space(webhook["name"], {
-    "filter" => filter,
-  })
-end
-space_sdk.find_kapps.content["kapps"].each do |kapp|
-  space_sdk.find_webhooks_on_kapp(kapp["slug"]).content["webhooks"].each do |webhook|
-    filter = webhook["filter"].start_with?("false && ") ? webhook["filter"].gsub("false && ", "") : ""
-    space_sdk.update_webhook_on_kapp(kapp["slug"], webhook["name"], {
-      "filter" => filter,
-    })
-  end
 end
 
 # ------------------------------------------------------------------------------

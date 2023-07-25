@@ -1,0 +1,780 @@
+{
+  "builderVersion": "",
+  "schemaVersion": "1.0",
+  "version": "",
+  "processOwnerEmail": "",
+  "lastId": 6,
+  "name": "Submitted",
+  "notes": "",
+  "connectors": [
+    {
+      "from": "start",
+      "to": "routine_kinetic_submission_activity_create_v1_3",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "smtp_email_send_v1_1",
+      "to": "utilities_defer_v1_6",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_kinetic_user_retrieve_v1_2",
+      "to": "smtp_email_send_v1_1",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_kinetic_submission_activity_create_v1_3",
+      "to": "routine_kinetic_submission_update_v1_4",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_kinetic_submission_update_v1_4",
+      "to": "routine_kinetic_user_retrieve_v1_2",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "utilities_defer_v1_6",
+      "to": "system_submission_create_v1_5",
+      "label": "",
+      "value": "",
+      "type": "Create"
+    }
+  ],
+  "nodes": [
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": false,
+      "name": "Start",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_submission_activity_create_v1_3"
+          }
+        ]
+      },
+      "id": "start",
+      "position": {
+        "x": 173,
+        "y": 14
+      },
+      "version": 1,
+      "parameters": [
+
+      ],
+      "definitionId": "system_start_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": true,
+      "name": "Email - Submission Received",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "utilities_defer_v1_6"
+          }
+        ]
+      },
+      "id": "smtp_email_send_v1_1",
+      "position": {
+        "x": 99,
+        "y": 414.5
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Determine what to return if an error is encountered.",
+          "id": "error_handling",
+          "label": "Error Handling",
+          "menu": "Error Message,Raise Error",
+          "value": "Error Message",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The email address of the simulated sender.",
+          "id": "from",
+          "label": "From (Email Address)",
+          "menu": "",
+          "value": "wally@kinops.io",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The email address of the intended recipient.",
+          "id": "to",
+          "label": "To (Email Address)",
+          "menu": "",
+          "value": "<%= @results['Retrieve Submitter']['Email'] %>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The email address of the intended recipient.",
+          "id": "bcc",
+          "label": "Bcc (Email Address)",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The subject of the email.",
+          "id": "subject",
+          "label": "Subject",
+          "menu": "",
+          "value": "Thanks for submitting the <%=  @form['Name'] %> form!",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "HTML representing the body of a rich email.",
+          "id": "htmlbody",
+          "label": "HTML Body",
+          "menu": "",
+          "value": "<p>Hi <%= @results['Retrieve Submitter']['Display Name'] %>!</p>\n\n<p>You've successfully submitted the <%= @form['Name'] %> form!\n\n<p>To view the status of your request click the link below. <br/>\n<%=  @space_attributes['Web Server Url'] %>/submissions/<%=  @submission['Id'] %></p>\n\n<p>Thanks! <br/>\nYour Kinetic Platform Team</p>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A plaintext message that will be displayed if the recipient can't display multipart HTML emails.",
+          "id": "textbody",
+          "label": "Alternate (text) Body",
+          "menu": "",
+          "value": "",
+          "required": false
+        }
+      ],
+      "definitionId": "smtp_email_send_v1"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": false,
+      "name": "Retrieve Submitter",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "smtp_email_send_v1_1"
+          }
+        ]
+      },
+      "id": "routine_kinetic_user_retrieve_v1_2",
+      "position": {
+        "x": 101,
+        "y": 319.5
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The User's username",
+          "id": "Username",
+          "label": "Username",
+          "menu": "",
+          "value": "<%=  @submission['Submitted By'] %>",
+          "required": true
+        }
+      ],
+      "definitionId": "routine_kinetic_user_retrieve_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": true,
+      "visible": false,
+      "name": "Submission Submitted Activity Record",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_submission_update_v1_4"
+          }
+        ]
+      },
+      "id": "routine_kinetic_submission_activity_create_v1_3",
+      "position": {
+        "x": 100,
+        "y": 126.5
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the submission to create the activity record for",
+          "id": "Submission Id",
+          "label": "Submission Id",
+          "menu": "",
+          "value": "<%=  @submission['Id'] %>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Data to store in the submission activity",
+          "id": "Data",
+          "label": "Data",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Description of the submission activity",
+          "id": "Description",
+          "label": "Description",
+          "menu": "",
+          "value": "Thanks for using the Self Service Portal. We've successfully received your <%=  @form['Name'] %> submission and are routing it for fulfillment!",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Label for the submission activity",
+          "id": "Label",
+          "label": "Label",
+          "menu": "",
+          "value": "We've received you <%=  @form['Name'] %> Submission",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Type of submission activity",
+          "id": "Type",
+          "label": "Type",
+          "menu": "",
+          "value": "Submission Submitted",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_kinetic_submission_activity_create_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": true,
+      "visible": false,
+      "name": "Set Status - In Progress",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_user_retrieve_v1_2"
+          }
+        ]
+      },
+      "id": "routine_kinetic_submission_update_v1_4",
+      "position": {
+        "x": 100,
+        "y": 226.5
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The id of the submission to update",
+          "id": "Id",
+          "label": "Id",
+          "menu": "",
+          "value": "<%=  @submission['Id'] %>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The submissions core state",
+          "id": "Updated - Core State",
+          "label": "Updated - Core State",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The page to set the submission to",
+          "id": "Updated - Current Page Name",
+          "label": "Updated - Current Page Name",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The direction of the next page (next or previous)",
+          "id": "Updated - Current Page Navigation",
+          "label": "Updated - Current Page Navigation",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The Id of the submissions origin",
+          "id": "Updated - Origin Id",
+          "label": "Updated - Origin Id",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The Id of the submissions parent",
+          "id": "Updated - Parent Id",
+          "label": "Updated - Parent Id",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A JSON representation of the submissions values",
+          "id": "Updated - Values JSON",
+          "label": "Updated - Values JSON",
+          "menu": "",
+          "value": "<%={\n  \"Status\" => \"In Progress\"\n}.to_json%>",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_kinetic_submission_update_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": true,
+      "name": "Create Work Order",
+      "messages": [
+
+      ],
+      "dependents": "",
+      "id": "system_submission_create_v1_5",
+      "position": {
+        "x": 403,
+        "y": 510.5
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "kappSlug",
+          "label": "Kapp Slug",
+          "menu": "",
+          "value": "queue",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "formSlug",
+          "label": "Form Slug",
+          "menu": "",
+          "value": "work-order",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "coreState",
+          "label": "Core State",
+          "menu": "",
+          "value": "Draft",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "currentPage",
+          "label": "Current Page",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "origin",
+          "label": "Origin",
+          "menu": "",
+          "value": "<%=  @submission['Id'] %>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "parent",
+          "label": "Parent",
+          "menu": "",
+          "value": "<%=  @submission['Id'] %>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Status",
+          "label": "Status",
+          "menu": "",
+          "value": "Open",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Pending Client Action",
+          "label": "Pending Client Action",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Pending Reason",
+          "label": "Pending Reason",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Resolution",
+          "label": "Resolution",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Cancellation Reason",
+          "label": "Cancellation Reason",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Notes for Customer",
+          "label": "Notes for Customer",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Assigned Individual",
+          "label": "Assigned Individual",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Assigned Individual Display Name",
+          "label": "Assigned Individual Display Name",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Assigned Team",
+          "label": "Assigned Team",
+          "menu": "",
+          "value": "Default",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Assigned Team Display Name",
+          "label": "Assigned Team Display Name",
+          "menu": "",
+          "value": "Default",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Deferral Token",
+          "label": "Deferral Token",
+          "menu": "",
+          "value": "<%= @results['Deferral - Work Order']['deferral_token'] %>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Details",
+          "label": "Details",
+          "menu": "",
+          "value": "<%=\n# Parse Source Data values\ndata = JSON.parse(@source['Data'])['values']\n# Loop over each value and remove nil's and join arrays\nresult = {}\n\n# Requested For\nif data['Requested For Display Name'].nil?\n  result['Requested For'] = data['Requested For']\nelse\n  result['Requested For'] = \"#{data['Requested For Display Name']} (#{data['Requested For']})\"\nend\n\n# Requested By\nif data['Requested By'] != data['Requested For']\n  if data['Requested By Display Name'].nil?\n    result['Requested By'] = data['Requested By']\n  else\n    result['Requested By'] = \"#{data['Requested By Display Name']} (#{data['Requested By']})\"\n  end\nend\n\n# Define omitted fields\nommitted_fields = [\n  'Requested By',\n  'Requested By Display Name',\n  'Requested For',\n  'Requested For Display Name',\n  'Status',\n  'Observing Teams',\n  'Observing Individuals'\n]\n\n# Add each of the remaining fields\ndata.each do |k, v|\n  # If the key is for an omitted field or the value is blank\n  if ommitted_fields.include?(k) || v.nil? || v == ''\n    next\n  # If the field is for a complex type (IE list)\n  elsif v.is_a?(Array)\n    unless v.empty?\n      # Check to see if it's a Hash (Attachments)\n      if v[0].is_a?(Hash)\n        output = ''\n        v.each_with_index do |val, index|\n          next unless val.key?('contentType')\n          output << if index == v.size - 1\n                      \"Attachment Name: #{val['name']} (#{val['contentType']})\"\n                    else\n                      \"Attachment Name: #{val['name']} (#{val['contentType']})\\n\"\n                    end\n        end\n        result[k] = output\n      else\n        result[k] = v.join(', ')\n      end\n      end\n  # If the field is for a date/time\n  elsif v =~ /^\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d\\+00:00$/\n    result[k] = DateTime.parse(v).strftime('%c')\n  # If the field is for a date\n  elsif v =~ /^\\d\\d\\d\\d-\\d\\d-\\d\\d$/\n    result[k] = DateTime.parse(v).strftime('%D')\n  # If the field is for a time\n  elsif v =~ /^\\d\\d:\\d\\d$/\n    result[k] = DateTime.parse(v).strftime('%r')\n  # If the field is a normal field\n  else\n    result[k] = v\n  end\nend\n\ntable = ''\nresult.keys.each do |key|\n  table << \"#{key}: #{result[key]}\\n\"\nend\ntable%>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Due Date",
+          "label": "Due Date",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Observing Individuals",
+          "label": "Observing Individuals",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Observing Teams",
+          "label": "Observing Teams",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Originating Id",
+          "label": "Originating Id",
+          "menu": "",
+          "value": "<%=  @submission['Id'] %>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Originating System",
+          "label": "Originating System",
+          "menu": "",
+          "value": "Kinetic Core",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Originating Url",
+          "label": "Originating Url",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Scheduled Date",
+          "label": "Scheduled Date",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Summary",
+          "label": "Summary",
+          "menu": "",
+          "value": "<%=\ndata = JSON.parse(@source['Data'])\nsubmitter = data['submission']['submittedBy']\nif data['values'].has_key?('Requested For Display Name') && !data['values']['Requested For Display Name'].nil?\n   submitter = data['values']['Requested For Display Name']\nelsif data['values'].has_key?('Requested By') && !data['values'].nil?\n   submitter = data['values']['Requested By Display Name']\nend\n\n\"#{data['form']['name']} has been requested by #{submitter}\" %>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Priority",
+          "label": "Priority",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Requested For VIP",
+          "label": "Requested For VIP",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.System Input",
+          "label": "System Input",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Bulk Action",
+          "label": "Bulk Action",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Is Major Incident",
+          "label": "Is Major Incident",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "values.Related Major Incident",
+          "label": "Related Major Incident",
+          "menu": "",
+          "value": "",
+          "required": false
+        }
+      ],
+      "definitionId": "system_submission_create_v1"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": true,
+      "name": "Deferral - Work Order",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Create",
+            "value": "",
+            "content": "system_submission_create_v1_5"
+          }
+        ]
+      },
+      "id": "utilities_defer_v1_6",
+      "position": {
+        "x": 98,
+        "y": 506.5
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "deferral_value",
+          "label": "Initial Deferral Value",
+          "menu": "",
+          "value": "",
+          "required": false
+        }
+      ],
+      "definitionId": "utilities_defer_v1"
+    }
+  ]
+}

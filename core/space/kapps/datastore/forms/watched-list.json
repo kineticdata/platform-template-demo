@@ -1,0 +1,205 @@
+{
+  "anonymous": false,
+  "attributes": [
+
+  ],
+  "bridgedResources": [
+
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": null,
+  "description": "A list of submissions that are being \"watched\" by individuals.",
+  "indexDefinitions": [
+    {
+      "name": "closedBy",
+      "parts": [
+        "closedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "coreState,type",
+      "parts": [
+        "coreState",
+        "type"
+      ],
+      "unique": false
+    },
+    {
+      "name": "coreState,values[Watched By]",
+      "parts": [
+        "coreState",
+        "values[Watched By]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Submission Id]",
+      "parts": [
+        "values[Submission Id]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Submission Id],values[Watched By]:UNIQUE",
+      "parts": [
+        "values[Submission Id]",
+        "values[Watched By]"
+      ],
+      "unique": true
+    },
+    {
+      "name": "values[Watched By]",
+      "parts": [
+        "values[Watched By]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "Watched List",
+  "notes": "Submissions on this form should have their parent attribute set to the same value as the Submission Id.",
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "field",
+          "name": "Watched By",
+          "label": "Watched By",
+          "key": "f1",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Submission Id",
+          "label": "Submission Id",
+          "key": "f2",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Submission Handle",
+          "label": "Submission Handle",
+          "key": "f4",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "button",
+          "label": "Submit",
+          "name": "Submit Button",
+          "visible": true,
+          "enabled": true,
+          "renderType": "submit-page",
+          "renderAttributes": {
+          }
+        }
+      ],
+      "events": [
+
+      ],
+      "name": "Page 1",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+    {
+      "endpoint": "Submission Access",
+      "name": "Watched By - Helpdesk - DataAdministration"
+    },
+    {
+      "endpoint": "Submission Modification",
+      "name": "Watched By - Helpdesk - DataAdministration"
+    }
+  ],
+  "slug": "watched-list",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Watched By')}: ${values('Submission Id')}",
+  "type": "Legacy"
+}

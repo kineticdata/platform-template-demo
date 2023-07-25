@@ -1,0 +1,70 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_retrieve_servicenow_change</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Retrieve ServiceNow Change</name>
+        <author></author>
+        <notes></notes>
+        <lastID>19</lastID>
+        <taskDefinition id="routine_retrieve_servicenow_change" name="Retrieve ServiceNow Change" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="sys id" label="sys id" required="true" tooltip="sys id of the Change Ticket"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Change Number" tooltip=""></result>
+                <result name="sys id" tooltip=""></result>
+                <result name="Ticket JSON" tooltip=""></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="47" y="113">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">servicenow_object_retrieve_v1_3</task>
+                </dependents>
+            </task>
+            <task definition_id="servicenow_object_retrieve_v1" id="servicenow_object_retrieve_v1_3" name="Get Service Now Change" x="244.71429999999998" y="120.14285000000001">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="table" label="Table" menu="" required="true" tooltip="The name of the table to retrieve info from (ie. change_request,incident, task,etc).">change_request</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="id" label="Id" menu="" required="true" tooltip="The id of the object to retrieve.">&lt;%= @inputs['sys id'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="No Error" type="Complete" value="@results['Get Service Now Change']['Handler Error Message'].to_s.empty?">system_tree_return_v1_18</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_18" name="Return" x="660.7143" y="121.14285000000001">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Change Number" label="Change Number" menu="" required="false" tooltip="">&lt;%= JSON.parse( @results['Get Service Now Change']['Object JSON'].gsub('=&gt;', ':') )['number'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="sys id" label="sys id" menu="" required="false" tooltip="">&lt;%= @inputs['sys id'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="Ticket JSON" label="Ticket JSON" menu="" required="false" tooltip="">&lt;%= JSON.parse( @results['Get Service Now Change']['Object JSON'].gsub('=&gt;', ':') ).to_json%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

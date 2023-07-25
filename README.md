@@ -1,6 +1,6 @@
-# platform-template-service-portal
+# platform-template-demo
 
-This platform template contains forms and workflow for use as a service portal.
+This platform template is used for provisioning new demo environments. Each branch contains customer specific requirements or use cases.
 
 ## Installation
 

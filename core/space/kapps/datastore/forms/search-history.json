@@ -18,13 +18,6 @@
   "description": "Form used to track Search History from within the system.",
   "indexDefinitions": [
     {
-      "name": "closedBy",
-      "parts": [
-        "closedBy"
-      ],
-      "unique": false
-    },
-    {
       "name": "createdBy",
       "parts": [
         "createdBy"
@@ -53,13 +46,6 @@
       "unique": false
     },
     {
-      "name": "values[Kapp Slug]",
-      "parts": [
-        "values[Kapp Slug]"
-      ],
-      "unique": false
-    },
-    {
       "name": "values[Number of Results Found]",
       "parts": [
         "values[Number of Results Found]"
@@ -72,6 +58,13 @@
         "values[Search Term]"
       ],
       "unique": false
+    },
+    {
+      "name": "values[Source]",
+      "parts": [
+        "values[Source]"
+      ],
+      "unique": false
     }
   ],
   "name": "Search History",
@@ -82,6 +75,31 @@
       "displayCondition": null,
       "displayPage": "",
       "elements": [
+        {
+          "type": "field",
+          "name": "Source",
+          "label": "Source",
+          "key": "f7",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
         {
           "type": "field",
           "name": "Search Term",
@@ -102,7 +120,6 @@
 
           ],
           "renderAttributes": {
-
           },
           "dataType": "string",
           "renderType": "text",
@@ -117,7 +134,7 @@
           "defaultResourceName": null,
           "visible": true,
           "enabled": true,
-          "required": true,
+          "required": false,
           "requiredMessage": null,
           "omitWhenHidden": null,
           "pattern": null,
@@ -128,7 +145,6 @@
 
           ],
           "renderAttributes": {
-
           },
           "dataType": "string",
           "renderType": "text",
@@ -136,14 +152,14 @@
         },
         {
           "type": "field",
-          "name": "Kapp Slug",
-          "label": "Kapp Slug",
-          "key": "f2",
+          "name": "Number of Knowledge Articles Found",
+          "label": "Number of Knowledge Articles Found",
+          "key": "f4",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
           "enabled": true,
-          "required": true,
+          "required": false,
           "requiredMessage": null,
           "omitWhenHidden": null,
           "pattern": null,
@@ -154,7 +170,56 @@
 
           ],
           "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Number of Services Found",
+          "label": "Number of Services Found",
+          "key": "f5",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
 
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Number of Tickets Found",
+          "label": "Number of Tickets Found",
+          "key": "f6",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
           },
           "dataType": "string",
           "renderType": "text",

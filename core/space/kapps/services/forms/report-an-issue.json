@@ -1,0 +1,288 @@
+{
+  "anonymous": false,
+  "attributes": [
+    {
+      "name": "Approval Form Slug",
+      "values": [
+        "approval"
+      ]
+    },
+    {
+      "name": "Approver",
+      "values": [
+        "matthew.howe@kineticdata.com"
+      ]
+    },
+    {
+      "name": "Background Image",
+      "values": [
+        "/usarmy37.jpg"
+      ]
+    },
+    {
+      "name": "Custom Submission Workflow",
+      "values": [
+        "Submitted"
+      ]
+    },
+    {
+      "name": "Icon",
+      "values": [
+        "la-ambulance"
+      ]
+    },
+    {
+      "name": "Owning Team",
+      "values": [
+        "EITaaS Service Desk"
+      ]
+    },
+    {
+      "name": "Task Assignee Team",
+      "values": [
+        "EITaaS Service Desk"
+      ]
+    },
+    {
+      "name": "Task Form Slug",
+      "values": [
+        "work-order-with-actions---incident"
+      ]
+    },
+    {
+      "name": "User Profile Access",
+      "values": [
+        "All with Guest"
+      ]
+    }
+  ],
+  "bridgedResources": [
+
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": "<style>\n  .km-article{\n    margin-bottom: 15px;\n  }\n  .km-title,.article-close{\n    font-size: 1rem;\n    cursor:pointer;\n    color:blue;\n  }\n  .article-close{\n    cursor:pointer;\n    color:blue;\n  }\n  .km-snippet-label{\n    text-decoration: underline;\n  }\n  .km-title .skeleton{\n    width: 25%;\n    background-color: rgba(17,17,17,.7);\n  }\n  .km-snippet .skeleton{\n    width: 75%;\n    background-color: rgba(17,17,17,.7);\n  }\n  .km-skeleton{\n    background-repeat: no-repeat;\n    background-image: \n      /*layer 3: background animation*/    \n      linear-gradient(90deg, rgba(211,211,211, 0) 33%, rgba(211,211,211, .8) 50%, rgba(211,211,212, 0) 66%),\n      /* layer 2: title */\n      /* white rectangle with 40px height */\n      linear-gradient(white 1rem, transparent 0),  /*linear-gradient(white 40px, transparent 0),*/\n      /* layer 1: snippet */\n      /* white rectangle with 40px height */\n      linear-gradient(white 1rem, transparent 0),  /*linear-gradient(white 40px, transparent 0),*/\n      /* layer 0: card bg */\n      /* gray rectangle that covers whole element */\n      linear-gradient(#f3f3f3 100%, transparent 0);\n    background-size:\n      80% 4rem,  /* animation */\n      65% 1rem,   /* title */\n      80% 1rem,   /* snippet */\n      100% 100%;  /* card bg */\n    background-position:\n      -150% 0,    /* animation */\n      0 0,        /* title */\n      0 1.5rem,   /* snippet */\n      0 0;        /* card bg */\n    animation: loading 1.5s infinite;\n    }\n  @keyframes loading {\n  to {\n    background-position:\n      350% 0,  /* animation */        \n      0 0, /* title */  \n      0 1.5rem, /* snippet */\n      0 0;\n  }\n  \n</style>",
+  "description": "This form is used to report an issue against a piece of equipment, or an application, or other situation.  This form should not be used for requests for new / updated equipment or access.",
+  "indexDefinitions": [
+    {
+      "name": "closedBy",
+      "parts": [
+        "closedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "Something is Broken",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": "",
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Greeting",
+          "text": "<!--<section><div class=\"section-title\">How can we help?</div></section>-->\n<section><div class=\"section-title\">We can help!</div></section>",
+          "visible": true,
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Questions",
+          "title": "",
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Summary",
+              "label": "What is happening?",
+              "key": "f910",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Detail",
+              "label": "Details (provide additional information about your issue)",
+              "key": "f1",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 4
+            },
+            {
+              "type": "field",
+              "name": "Attachments",
+              "label": "Include any supporting documents (such as screen shots, etc.)",
+              "key": "f923",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+                {
+                  "content": "value.filter(function(item) { return item.size > 5242880 }).length === 0",
+                  "message": "Each file must be less than 5MB"
+                }
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "file",
+              "renderType": "attachment",
+              "allowMultiple": true
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Footer",
+          "title": null,
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+            "class": "text-right"
+          },
+          "elements": [
+            {
+              "type": "button",
+              "label": "Save",
+              "name": "Save",
+              "visible": false,
+              "enabled": false,
+              "renderType": "save",
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "button",
+              "label": "Submit",
+              "name": "Submit",
+              "visible": true,
+              "enabled": true,
+              "renderType": "submit-page",
+              "renderAttributes": {
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+
+      ],
+      "name": "Page 1",
+      "renderType": "submittable",
+      "type": "page"
+    },
+    {
+      "advanceCondition": null,
+      "displayCondition": "values('Knowledge Article Solved Issue') === \"True\"",
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Confirmation Text",
+          "text": "<h6>Thank you, your issue and its resolution via a knowledge article has been logged.</h6>\n<p>Automatically redirecting you to the Verizon EITaaS home page...</p>",
+          "visible": true,
+          "renderAttributes": {
+            "style": "margin-top:25px;"
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "Redirect on page load",
+          "type": "Load",
+          "action": "Custom",
+          "code": "//Redirect the user to the service portal after 5 seconds\nsetTimeout( function(){ \n  location.href = '/#/service-portal'; \n}, 5000);"
+        }
+      ],
+      "name": "Article Resolved Issue",
+      "renderType": "confirmation",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+
+  ],
+  "slug": "report-an-issue",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Summary')}",
+  "type": "Incident"
+}

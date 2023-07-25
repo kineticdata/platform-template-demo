@@ -144,13 +144,6 @@
       "unique": false
     },
     {
-      "name": "values[Discussion Id]",
-      "parts": [
-        "values[Discussion Id]"
-      ],
-      "unique": false
-    },
-    {
       "name": "values[Observing Individuals]",
       "parts": [
         "values[Observing Individuals]"
@@ -263,7 +256,6 @@
           "visible": true,
           "omitWhenHidden": null,
           "renderAttributes": {
-
           },
           "elements": [
             {
@@ -286,7 +278,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -312,7 +303,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -339,7 +329,6 @@
               "enabled": true,
               "renderType": "save",
               "renderAttributes": {
-
               }
             },
             {
@@ -350,7 +339,6 @@
               "enabled": true,
               "renderType": "submit-page",
               "renderAttributes": {
-
               }
             }
           ]
@@ -363,7 +351,6 @@
           "visible": false,
           "omitWhenHidden": false,
           "renderAttributes": {
-
           },
           "elements": [
             {
@@ -386,7 +373,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -412,7 +398,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -438,7 +423,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -464,33 +448,6 @@
 
               ],
               "renderAttributes": {
-
-              },
-              "dataType": "string",
-              "renderType": "text",
-              "rows": 1
-            },
-            {
-              "type": "field",
-              "name": "Discussion Id",
-              "label": "Discussion Id",
-              "key": "f902",
-              "defaultValue": null,
-              "defaultResourceName": null,
-              "visible": true,
-              "enabled": true,
-              "required": false,
-              "requiredMessage": null,
-              "omitWhenHidden": null,
-              "pattern": null,
-              "constraints": [
-
-              ],
-              "events": [
-
-              ],
-              "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -516,7 +473,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "json",
               "renderType": "checkbox",
@@ -546,7 +502,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "json",
               "renderType": "checkbox",
@@ -576,7 +531,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",

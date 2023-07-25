@@ -1,0 +1,66 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_create_servicenow_change</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Create ServiceNow Change</name>
+        <author></author>
+        <notes></notes>
+        <lastID>23</lastID>
+        <taskDefinition id="routine_create_servicenow_change" name="Create ServiceNow Change" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Change Ticket Body" label="Change Ticket Body" required="true" tooltip="JSON Body of the Change Ticket"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="sys id" tooltip=""></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="354" y="85">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">servicenow_object_create_v1_20</task>
+                </dependents>
+            </task>
+            <task definition_id="servicenow_object_create_v1" id="servicenow_object_create_v1_20" name="Create ServiceNow Change" x="508" y="92">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="table" label="Table" menu="" required="true" tooltip="The name of the table to create the object in (ie. change_request,incident, task,etc).">change_request</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="json_body" label="JSON Body" menu="" required="true" tooltip="The JSON body of the object to create.">&lt;%= @inputs['Change Ticket Body'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_21</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_21" name="Tree Return" x="821" y="91">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="sys id" label="sys id" menu="" required="false" tooltip="">&lt;%= @results['Create ServiceNow Change']['Id'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

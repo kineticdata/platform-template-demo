@@ -3,16 +3,11 @@
   "status": "Active",
   "type": "Kinetic Request CE",
   "policyRules": [
-    {
-      "name": "Valid Signature",
-      "rule": "@auth.validate_signature()",
-      "message": "The request signature is invalid",
-      "type": "API Access"
-    }
+
   ],
   "properties": {
-    "Proxy Username": "integration-user",
-    "Web Server": "https://service-portal-template.kinops.io",
+    "Proxy Username": "space-integration-user",
+    "Web Server": "https://demo.kinops.io",
     "Space Slug": ""
   }
 }

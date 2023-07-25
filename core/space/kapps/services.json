@@ -1,106 +1,7 @@
 {
   "afterLogoutPath": null,
   "attributes": [
-    {
-      "name": "Approval Form Slug",
-      "values": [
-        "approval"
-      ]
-    },
-    {
-      "name": "Bundle Package",
-      "values": [
-        "services"
-      ]
-    },
-    {
-      "name": "Description",
-      "values": [
-        "Browse, request and check status of services"
-      ]
-    },
-    {
-      "name": "Icon",
-      "values": [
-        "fa-book"
-      ]
-    },
-    {
-      "name": "Kapp Configuration Status",
-      "values": [
-        "true"
-      ]
-    },
-    {
-      "name": "Notification Template Name - Complete",
-      "values": [
-        "Service Completed"
-      ]
-    },
-    {
-      "name": "Notification Template Name - Create",
-      "values": [
-        "Service Submitted"
-      ]
-    },
-    {
-      "name": "Owning Team",
-      "values": [
-        "Default",
-        "Default"
-      ]
-    },
-    {
-      "name": "Record Search History",
-      "values": [
-        "All"
-      ]
-    },
-    {
-      "name": "Service Days Due",
-      "values": [
-        "7"
-      ]
-    },
-    {
-      "name": "Shared Bridged Resource Form Slug",
-      "values": [
-        "shared-resources"
-      ]
-    },
-    {
-      "name": "Statuses - Active",
-      "values": [
-        "Awaiting Approval",
-        "In Progress",
-        "Pending Approval",
-        "Submitted"
-      ]
-    },
-    {
-      "name": "Statuses - Cancelled",
-      "values": [
-        "Cancelled"
-      ]
-    },
-    {
-      "name": "Statuses - Inactive",
-      "values": [
-        "Draft"
-      ]
-    },
-    {
-      "name": "Task Assignee Team",
-      "values": [
-        "Default"
-      ]
-    },
-    {
-      "name": "Task Form Slug",
-      "values": [
-        "work-order"
-      ]
-    }
+
   ],
   "bundlePath": "webpack",
   "defaultFormConfirmationPage": "space.jsp",
@@ -110,14 +11,6 @@
   "displayValue": "space.jsp",
   "fields": [
     {
-      "name": "Deferral Token",
-      "renderType": "text"
-    },
-    {
-      "name": "Requested By",
-      "renderType": "text"
-    },
-    {
       "name": "Assigned Individual",
       "renderType": "text"
     },
@@ -126,7 +19,15 @@
       "renderType": "text"
     },
     {
-      "name": "Status",
+      "name": "Deferral Token",
+      "renderType": "text"
+    },
+    {
+      "name": "Due Date",
+      "renderType": "text"
+    },
+    {
+      "name": "Requested By",
       "renderType": "text"
     },
     {
@@ -134,7 +35,7 @@
       "renderType": "text"
     },
     {
-      "name": "Due Date",
+      "name": "Status",
       "renderType": "text"
     }
   ],
@@ -164,13 +65,6 @@
       "name": "submittedBy",
       "parts": [
         "submittedBy"
-      ],
-      "unique": false
-    },
-    {
-      "name": "updatedBy",
-      "parts": [
-        "updatedBy"
       ],
       "unique": false
     },
@@ -239,6 +133,13 @@
       "parts": [
         "type",
         "values[Requested For]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
       ],
       "unique": false
     },

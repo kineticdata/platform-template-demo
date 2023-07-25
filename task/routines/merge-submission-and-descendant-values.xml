@@ -1,0 +1,94 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_merge_submission_and_descendant_values</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>Merge Submission and Descendant Values</name>
+        <author></author>
+        <notes></notes>
+        <lastID>4</lastID>
+        <taskDefinition id="routine_merge_submission_and_descendant_values" name="Merge Submission and Descendant Values" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Origin Id" label="Origin Id" required="true" tooltip="Origin Submission Id"></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Values JSON" tooltip="Values"></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="229" y="18">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">kinetic_core_api_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="kinetic_core_api_v1" id="kinetic_core_api_v1_1" name="Get Descendant Values" x="162" y="129">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="method" label="Method" menu="GET,POST,PUT,PATCH,DELETE" required="true" tooltip="GET,POST,PUT,PATCH,DELETE (Defaults to GET)">GET</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="path" label="Path" menu="" required="true" tooltip="Example: /kapps/:kappSlug/forms/:formSlug">/submissions/&lt;%= @inputs['Origin Id'] %&gt;?include=values,descendants.values</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="body" label="Body" menu="" required="false" tooltip="JSON body if applicable (POST,PUT,PATCH)"></parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">utilities_echo_v1_2</task>
+                </dependents>
+            </task>
+            <task definition_id="utilities_echo_v1" id="utilities_echo_v1_2" name="Merge Data" x="161" y="241">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>true</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="input" label="Input" menu="" required="true" tooltip="">&lt;%= 
+submision = JSON.parse(@results['Get Descendant Values']['Response Body'])['submission']
+descendants = submision['descendants']
+values=submision['values']
+descendants.each { |d| 
+  if !d['values'].empty?
+    #puts d['values']
+    d['values'].each {|k,v| 
+      values[k]=v
+    }
+  end
+}
+values.to_json
+%&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_3</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_3" name="Return" x="160" y="362">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Values JSON" label="Values JSON" menu="" required="false" tooltip="Values">&lt;%= @results['Merge Data']['output'] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

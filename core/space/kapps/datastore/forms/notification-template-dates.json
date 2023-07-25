@@ -18,13 +18,6 @@
   "description": "Store of date formats for Notifications",
   "indexDefinitions": [
     {
-      "name": "closedBy",
-      "parts": [
-        "closedBy"
-      ],
-      "unique": false
-    },
-    {
       "name": "createdBy",
       "parts": [
         "createdBy"
@@ -102,7 +95,6 @@
 
           ],
           "renderAttributes": {
-
           },
           "dataType": "string",
           "renderType": "radio",
@@ -139,7 +131,6 @@
 
           ],
           "renderAttributes": {
-
           },
           "dataType": "string",
           "renderType": "text",
@@ -152,7 +143,6 @@
           "text": "The Name of the date format is the name you will be including in your message templates inside the ${\"${format('DateName')}\"} tag. It should likely be something human readable and short but descriptive, like ShortDatewithTime.",
           "visible": true,
           "renderAttributes": {
-
           }
         },
         {
@@ -186,7 +176,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -199,7 +188,6 @@
               "text": "The date format should be a ruby date format such as %m-%e-%y %H:%M for 03-17-16 15:19. Examples and explanation can be found at <a href=\"http://www.foragoodstrftime.com/\" target=\"_blank\">http://www.foragoodstrftime.com/</a>",
               "visible": true,
               "renderAttributes": {
-
               }
             }
           ]

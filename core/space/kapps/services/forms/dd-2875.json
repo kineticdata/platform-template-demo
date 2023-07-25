@@ -1,0 +1,822 @@
+{
+  "anonymous": false,
+  "attributes": [
+    {
+      "name": "Custom Submission Workflow",
+      "values": [
+        "Submitted"
+      ]
+    },
+    {
+      "name": "Form Configuration",
+      "values": [
+        "{\"columns\":[{\"name\":\"Type of Request\",\"label\":\"Type of Request\",\"type\":\"value\",\"visible\":false},{\"name\":\"User Id\",\"label\":\"User Id\",\"type\":\"value\",\"visible\":false},{\"name\":\"INITIAL DATE\",\"label\":\"INITIAL DATE\",\"type\":\"value\",\"visible\":false},{\"name\":\"System Name\",\"label\":\"System Name\",\"type\":\"value\",\"visible\":false},{\"name\":\"Location\",\"label\":\"Location\",\"type\":\"value\",\"visible\":false},{\"name\":\"Full Name\",\"label\":\"Full Name\",\"type\":\"value\",\"visible\":false},{\"name\":\"Organization\",\"label\":\"Organization\",\"type\":\"value\",\"visible\":false},{\"name\":\"Office Department\",\"label\":\"Office Department\",\"type\":\"value\",\"visible\":false},{\"name\":\"Phone\",\"label\":\"Phone\",\"type\":\"value\",\"visible\":false},{\"name\":\"Email\",\"label\":\"Email\",\"type\":\"value\",\"visible\":false},{\"name\":\"Job Title and Rank Grade\",\"label\":\"Job Title and Rank Grade\",\"type\":\"value\",\"visible\":false},{\"name\":\"Address\",\"label\":\"Address\",\"type\":\"value\",\"visible\":false},{\"name\":\"Citizenship\",\"label\":\"Citizenship\",\"type\":\"value\",\"visible\":false},{\"name\":\"Designation of Person\",\"label\":\"Designation of Person\",\"type\":\"value\",\"visible\":false},{\"name\":\"IA Training\",\"label\":\"IA Training\",\"type\":\"value\",\"visible\":false},{\"name\":\"Training Date\",\"label\":\"Training Date\",\"type\":\"value\",\"visible\":false},{\"name\":\"SIGNATURE\",\"label\":\"SIGNATURE\",\"type\":\"value\",\"visible\":false},{\"name\":\"Signature Date\",\"label\":\"Signature Date\",\"type\":\"value\",\"visible\":false},{\"name\":\"First Name\",\"label\":\"First Name\",\"type\":\"value\",\"visible\":false},{\"name\":\"Middle Name\",\"label\":\"Middle Name\",\"type\":\"value\",\"visible\":false},{\"name\":\"Last Name\",\"label\":\"Last Name\",\"type\":\"value\",\"visible\":false},{\"name\":\"handle\",\"label\":\"Handle\",\"type\":\"system\",\"visible\":true},{\"name\":\"label\",\"label\":\"Label\",\"type\":\"system\",\"visible\":true},{\"name\":\"createdAt\",\"label\":\"Created At\",\"type\":\"system\",\"visible\":false},{\"name\":\"createdBy\",\"label\":\"Created By\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedAt\",\"label\":\"Updated At\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedBy\",\"label\":\"Updated By\",\"type\":\"system\",\"visible\":false},{\"name\":\"id\",\"label\":\"Id\",\"type\":\"system\",\"visible\":false}]}"
+      ]
+    },
+    {
+      "name": "Icon",
+      "values": [
+        "fa-shield"
+      ]
+    }
+  ],
+  "bridgedResources": [
+
+  ],
+  "categorizations": [
+    {
+      "category": {
+        "slug": "information-security"
+      }
+    }
+  ],
+  "customHeadContent": "<style>\n  .paper-form {\n    display: flex;\n    flex-wrap: wrap;\n    border: 1px solid #1b1c1d;\n  }\n  .paper-form > .section-title {\n    margin: 0;\n    font-size: 1.125rem;\n    font-weight: 700;\n    text-align: center;\n  }\n  .paper-form > .paper-form {\n    padding: 0;\n    border: none;\n  }\n  .paper-form > section,\n  .paper-form > div {\n    position: relative;\n    flex: 1 1 100%;\n    border: 1px solid #1b1c1d;\n    padding: 0.125rem 0.25rem;\n    margin: 0;\n    max-width: 100%;\n    break-inside: avoid;\n  }\n  .paper-form > section.sr-only,\n  .paper-form > div.sr-only {\n    border: none;\n    padding: 0;\n    height: 0;\n  }\n  .paper-form > section.col1,\n  .paper-form > div.col1 {\n    flex-basis: calc(100% * 1 / 12);\n    min-width: calc(6rem + 1 * 1rem);\n  }\n  .paper-form > section.col0p,\n  .paper-form > div.col0p {\n    flex-basis: calc(100% * 0.5 / 12);\n    min-width: calc(6rem + 0.5 * 1rem);\n  }\n  .paper-form > section.col2,\n  .paper-form > div.col2 {\n    flex-basis: calc(100% * 2 / 12);\n    min-width: calc(6rem + 2 * 1rem);\n  }\n  .paper-form > section.col1p,\n  .paper-form > div.col1p {\n    flex-basis: calc(100% * 1.5 / 12);\n    min-width: calc(6rem + 1.5 * 1rem);\n  }\n  .paper-form > section.col3,\n  .paper-form > div.col3 {\n    flex-basis: calc(100% * 3 / 12);\n    min-width: calc(6rem + 3 * 1rem);\n  }\n  .paper-form > section.col2p,\n  .paper-form > div.col2p {\n    flex-basis: calc(100% * 2.5 / 12);\n    min-width: calc(6rem + 2.5 * 1rem);\n  }\n  .paper-form > section.col4,\n  .paper-form > div.col4 {\n    flex-basis: calc(100% * 4 / 12);\n    min-width: calc(6rem + 4 * 1rem);\n  }\n  .paper-form > section.col3p,\n  .paper-form > div.col3p {\n    flex-basis: calc(100% * 3.5 / 12);\n    min-width: calc(6rem + 3.5 * 1rem);\n  }\n  .paper-form > section.col5,\n  .paper-form > div.col5 {\n    flex-basis: calc(100% * 5 / 12);\n    min-width: calc(6rem + 5 * 1rem);\n  }\n  .paper-form > section.col4p,\n  .paper-form > div.col4p {\n    flex-basis: calc(100% * 4.5 / 12);\n    min-width: calc(6rem + 4.5 * 1rem);\n  }\n  .paper-form > section.col6,\n  .paper-form > div.col6 {\n    flex-basis: calc(100% * 6 / 12);\n    min-width: calc(6rem + 6 * 1rem);\n  }\n  .paper-form > section.col5p,\n  .paper-form > div.col5p {\n    flex-basis: calc(100% * 5.5 / 12);\n    min-width: calc(6rem + 5.5 * 1rem);\n  }\n  .paper-form > section.col7,\n  .paper-form > div.col7 {\n    flex-basis: calc(100% * 7 / 12);\n    min-width: calc(6rem + 7 * 1rem);\n  }\n  .paper-form > section.col6p,\n  .paper-form > div.col6p {\n    flex-basis: calc(100% * 6.5 / 12);\n    min-width: calc(6rem + 6.5 * 1rem);\n  }\n  .paper-form > section.col8,\n  .paper-form > div.col8 {\n    flex-basis: calc(100% * 8 / 12);\n    min-width: calc(6rem + 8 * 1rem);\n  }\n  .paper-form > section.col7p,\n  .paper-form > div.col7p {\n    flex-basis: calc(100% * 7.5 / 12);\n    min-width: calc(6rem + 7.5 * 1rem);\n  }\n  .paper-form > section.col9,\n  .paper-form > div.col9 {\n    flex-basis: calc(100% * 9 / 12);\n    min-width: calc(6rem + 9 * 1rem);\n  }\n  .paper-form > section.col8p,\n  .paper-form > div.col8p {\n    flex-basis: calc(100% * 8.5 / 12);\n    min-width: calc(6rem + 8.5 * 1rem);\n  }\n  .paper-form > section.col10,\n  .paper-form > div.col10 {\n    flex-basis: calc(100% * 10 / 12);\n    min-width: calc(6rem + 10 * 1rem);\n  }\n  .paper-form > section.col9p,\n  .paper-form > div.col9p {\n    flex-basis: calc(100% * 9.5 / 12);\n    min-width: calc(6rem + 9.5 * 1rem);\n  }\n  .paper-form > section.col11,\n  .paper-form > div.col11 {\n    flex-basis: calc(100% * 11 / 12);\n    min-width: calc(6rem + 11 * 1rem);\n  }\n  .paper-form > section.col10p,\n  .paper-form > div.col10p {\n    flex-basis: calc(100% * 10.5 / 12);\n    min-width: calc(6rem + 10.5 * 1rem);\n  }\n  .paper-form > section.col12,\n  .paper-form > div.col12 {\n    flex-basis: calc(100% * 12 / 12);\n    min-width: calc(6rem + 12 * 1rem);\n  }\n  .paper-form > section.col11p,\n  .paper-form > div.col11p {\n    flex-basis: calc(100% * 11.5 / 12);\n    min-width: calc(6rem + 11.5 * 1rem);\n  }\n  .paper-form > section.inline-group,\n  .paper-form > div.inline-group {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  .paper-form > section.inline-group > .inline-group-label,\n  .paper-form > div.inline-group > .inline-group-label {\n    flex: 0 0 100%;\n    line-height: 1.2;\n    font-weight: bold;\n    color: #1b1c1d;\n  }\n  .paper-form > section.inline-group > .inline-group-label em,\n  .paper-form > div.inline-group > .inline-group-label em {\n    font-size: 0.75rem;\n    font-weight: 400;\n  }\n  .paper-form > section.inline-group > section,\n  .paper-form > section.inline-group > div,\n  .paper-form > div.inline-group > section,\n  .paper-form > div.inline-group > div {\n    flex: 0 1 auto;\n    margin: 0;\n  }\n  .paper-form > section.inline-group > section.col1,\n  .paper-form > section.inline-group > div.col1,\n  .paper-form > div.inline-group > section.col1,\n  .paper-form > div.inline-group > div.col1 {\n    flex-basis: calc(100% * 1 / 12);\n  }\n  .paper-form > section.inline-group > section.col0p,\n  .paper-form > section.inline-group > div.col0p,\n  .paper-form > div.inline-group > section.col0p,\n  .paper-form > div.inline-group > div.col0p {\n    flex-basis: calc(100% * 0.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col2,\n  .paper-form > section.inline-group > div.col2,\n  .paper-form > div.inline-group > section.col2,\n  .paper-form > div.inline-group > div.col2 {\n    flex-basis: calc(100% * 2 / 12);\n  }\n  .paper-form > section.inline-group > section.col1p,\n  .paper-form > section.inline-group > div.col1p,\n  .paper-form > div.inline-group > section.col1p,\n  .paper-form > div.inline-group > div.col1p {\n    flex-basis: calc(100% * 1.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col3,\n  .paper-form > section.inline-group > div.col3,\n  .paper-form > div.inline-group > section.col3,\n  .paper-form > div.inline-group > div.col3 {\n    flex-basis: calc(100% * 3 / 12);\n  }\n  .paper-form > section.inline-group > section.col2p,\n  .paper-form > section.inline-group > div.col2p,\n  .paper-form > div.inline-group > section.col2p,\n  .paper-form > div.inline-group > div.col2p {\n    flex-basis: calc(100% * 2.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col4,\n  .paper-form > section.inline-group > div.col4,\n  .paper-form > div.inline-group > section.col4,\n  .paper-form > div.inline-group > div.col4 {\n    flex-basis: calc(100% * 4 / 12);\n  }\n  .paper-form > section.inline-group > section.col3p,\n  .paper-form > section.inline-group > div.col3p,\n  .paper-form > div.inline-group > section.col3p,\n  .paper-form > div.inline-group > div.col3p {\n    flex-basis: calc(100% * 3.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col5,\n  .paper-form > section.inline-group > div.col5,\n  .paper-form > div.inline-group > section.col5,\n  .paper-form > div.inline-group > div.col5 {\n    flex-basis: calc(100% * 5 / 12);\n  }\n  .paper-form > section.inline-group > section.col4p,\n  .paper-form > section.inline-group > div.col4p,\n  .paper-form > div.inline-group > section.col4p,\n  .paper-form > div.inline-group > div.col4p {\n    flex-basis: calc(100% * 4.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col6,\n  .paper-form > section.inline-group > div.col6,\n  .paper-form > div.inline-group > section.col6,\n  .paper-form > div.inline-group > div.col6 {\n    flex-basis: calc(100% * 6 / 12);\n  }\n  .paper-form > section.inline-group > section.col5p,\n  .paper-form > section.inline-group > div.col5p,\n  .paper-form > div.inline-group > section.col5p,\n  .paper-form > div.inline-group > div.col5p {\n    flex-basis: calc(100% * 5.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col7,\n  .paper-form > section.inline-group > div.col7,\n  .paper-form > div.inline-group > section.col7,\n  .paper-form > div.inline-group > div.col7 {\n    flex-basis: calc(100% * 7 / 12);\n  }\n  .paper-form > section.inline-group > section.col6p,\n  .paper-form > section.inline-group > div.col6p,\n  .paper-form > div.inline-group > section.col6p,\n  .paper-form > div.inline-group > div.col6p {\n    flex-basis: calc(100% * 6.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col8,\n  .paper-form > section.inline-group > div.col8,\n  .paper-form > div.inline-group > section.col8,\n  .paper-form > div.inline-group > div.col8 {\n    flex-basis: calc(100% * 8 / 12);\n  }\n  .paper-form > section.inline-group > section.col7p,\n  .paper-form > section.inline-group > div.col7p,\n  .paper-form > div.inline-group > section.col7p,\n  .paper-form > div.inline-group > div.col7p {\n    flex-basis: calc(100% * 7.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col9,\n  .paper-form > section.inline-group > div.col9,\n  .paper-form > div.inline-group > section.col9,\n  .paper-form > div.inline-group > div.col9 {\n    flex-basis: calc(100% * 9 / 12);\n  }\n  .paper-form > section.inline-group > section.col8p,\n  .paper-form > section.inline-group > div.col8p,\n  .paper-form > div.inline-group > section.col8p,\n  .paper-form > div.inline-group > div.col8p {\n    flex-basis: calc(100% * 8.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col10,\n  .paper-form > section.inline-group > div.col10,\n  .paper-form > div.inline-group > section.col10,\n  .paper-form > div.inline-group > div.col10 {\n    flex-basis: calc(100% * 10 / 12);\n  }\n  .paper-form > section.inline-group > section.col9p,\n  .paper-form > section.inline-group > div.col9p,\n  .paper-form > div.inline-group > section.col9p,\n  .paper-form > div.inline-group > div.col9p {\n    flex-basis: calc(100% * 9.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col11,\n  .paper-form > section.inline-group > div.col11,\n  .paper-form > div.inline-group > section.col11,\n  .paper-form > div.inline-group > div.col11 {\n    flex-basis: calc(100% * 11 / 12);\n  }\n  .paper-form > section.inline-group > section.col10p,\n  .paper-form > section.inline-group > div.col10p,\n  .paper-form > div.inline-group > section.col10p,\n  .paper-form > div.inline-group > div.col10p {\n    flex-basis: calc(100% * 10.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col12,\n  .paper-form > section.inline-group > div.col12,\n  .paper-form > div.inline-group > section.col12,\n  .paper-form > div.inline-group > div.col12 {\n    flex-basis: calc(100% * 12 / 12);\n  }\n  .paper-form > section.inline-group > section.col11p,\n  .paper-form > section.inline-group > div.col11p,\n  .paper-form > div.inline-group > section.col11p,\n  .paper-form > div.inline-group > div.col11p {\n    flex-basis: calc(100% * 11.5 / 12);\n  }\n  .paper-form > section[data-tooltip]:before,\n  .paper-form > div[data-tooltip]:before {\n    content: attr(data-tooltip);\n    font-size: 0.75rem;\n    position: absolute;\n    bottom: calc(100% - 1rem);\n    left: 0;\n    width: 100%;\n    padding: 0.25rem 0.625rem;\n    background-color: #1474e5;\n    color: #ffffff;\n    border-radius: 0.125rem 0.125rem 0 0;\n    opacity: 0;\n    pointer-events: none;\n    transition: all 0.3s;\n    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.25);\n  }\n  .paper-form > section[data-tooltip]:focus-within:before,\n  .paper-form > div[data-tooltip]:focus-within:before {\n    opacity: 1;\n    bottom: 100%;\n  }\n  .paper-form .inline-group,\n  .paper-form .form-group,\n  .paper-form .radio,\n  .paper-form .checkbox {\n    margin-bottom: 0;\n  }\n  .paper-form .inline-group label,\n  .paper-form .form-group label,\n  .paper-form .radio label,\n  .paper-form .checkbox label {\n    line-height: 1.2;\n    font-weight: bold;\n    color: #1b1c1d;\n    word-break: break-word;\n  }\n  .paper-form .form-group.inline-field,\n  .paper-form .radio.inline-field,\n  .paper-form .checkbox.inline-field {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  .paper-form .form-group.inline-field label.field-label,\n  .paper-form .radio.inline-field label.field-label,\n  .paper-form .checkbox.inline-field label.field-label {\n    flex: 0 0 auto;\n    width: auto;\n    margin-right: 1rem;\n    line-height: calc(0.875rem * 1.5 + 0.5rem);\n  }\n  .paper-form .form-group label.field-label:empty, .paper-form .form-group label.field-label.hide-label,\n  .paper-form .radio label.field-label:empty,\n  .paper-form .radio label.field-label.hide-label,\n  .paper-form .checkbox label.field-label:empty,\n  .paper-form .checkbox label.field-label.hide-label {\n    display: none;\n  }\n  .paper-form .form-group label.field-label em,\n  .paper-form .radio label.field-label em,\n  .paper-form .checkbox label.field-label em {\n    font-size: 0.75rem;\n    font-weight: 400;\n    margin-left: 0.25rem;\n  }\n  .paper-form .form-group.inline-field .form-control,\n  .paper-form .form-group.inline-field .form-control-plaintext,\n  .paper-form .form-group.inline-field input[type=text],\n  .paper-form .form-group.inline-field input[type=password],\n  .paper-form .form-group.inline-field input[type=color],\n  .paper-form .form-group.inline-field input[type=date],\n  .paper-form .form-group.inline-field input[type=datetime-local],\n  .paper-form .form-group.inline-field input[type=email],\n  .paper-form .form-group.inline-field input[type=month],\n  .paper-form .form-group.inline-field input[type=number],\n  .paper-form .form-group.inline-field input[type=search],\n  .paper-form .form-group.inline-field input[type=tel],\n  .paper-form .form-group.inline-field input[type=time],\n  .paper-form .form-group.inline-field input[type=url],\n  .paper-form .form-group.inline-field input[type=week],\n  .paper-form .form-group.inline-field select {\n    width: auto;\n  }\n  .paper-form .radio label:not(.field-label),\n  .paper-form .checkbox label:not(.field-label) {\n    margin-bottom: 0;\n    line-height: 1.5;\n    margin-top: 0.25rem;\n    margin-bottom: 0.25rem;\n  }\n  .paper-form .radio label:not(.field-label) input,\n  .paper-form .checkbox label:not(.field-label) input {\n    margin-right: 0.625rem;\n  }\n  .paper-form .radio label.field-label:empty + label:last-child,\n  .paper-form .checkbox label.field-label:empty + label:last-child {\n    font-weight: bold;\n  }\n  .paper-form .form-control,\n  .paper-form .form-control-plaintext,\n  .paper-form input[type=text],\n  .paper-form input[type=password],\n  .paper-form input[type=color],\n  .paper-form input[type=date],\n  .paper-form input[type=datetime-local],\n  .paper-form input[type=email],\n  .paper-form input[type=month],\n  .paper-form input[type=number],\n  .paper-form input[type=search],\n  .paper-form input[type=tel],\n  .paper-form input[type=time],\n  .paper-form input[type=url],\n  .paper-form input[type=week],\n  .paper-form select,\n  .paper-form textarea {\n    border-radius: 0;\n    border-color: #d4d5d6;\n    font-size: 0.875rem;\n    line-height: 1.5;\n    padding: 0.25rem 0.5rem;\n    height: calc(0.875rem * 1.5 + 0.5rem);\n    color: #4f5051;\n  }\n  .paper-form textarea,\n  .paper-form textarea:not(.form-control) {\n    height: auto;\n  }\n  .paper-form .form-control-plaintext {\n    height: auto;\n    border: 1px solid #d4d5d6;\n    background-color: white;\n    min-height: calc(0.875rem * 1.5 + 0.5rem);\n    white-space: pre-wrap;\n    border: none;\n    padding: 0;\n  }\n  .paper-form p {\n    margin: 0;\n  }\n  .paper-form .font-xl {\n    font-size: 1.125rem;\n  }\n  .paper-form .font-lg {\n    font-size: 1rem;\n  }\n  .paper-form .font-md {\n    font-size: 0.875rem;\n  }\n  .paper-form .font-sm {\n    font-size: 0.75rem;\n  }\n  .paper-form .strong {\n    font-weight: 700;\n  }\n</style>",
+  "description": "",
+  "indexDefinitions": [
+    {
+      "name": "closedBy",
+      "parts": [
+        "closedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[SYSTEM NAME]",
+      "parts": [
+        "values[SYSTEM NAME]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "DD 2875",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Paper Form",
+          "title": "SYSTEM AUTHORIZATION ACCESS REQUEST (SAAR)",
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+            "class": "paper-form"
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Privacy Act Statement",
+              "text": "<div class=\"strong text-center\">PRIVACY ACT STATEMENT</div>\n<div class=\"font-sm\">\n  <div>\n    <strong>AUTHORITY:</strong> Executive Order 10450, 9397; and Public Law\n    99-474, the Computer Fraud and Abuse Act.\n  </div>\n  <div>\n    <strong>PRINCIPAL PURPOSE:</strong> To record names, signatures, and other identifiers for the purpose of\n    validating the trustworthiness of individuals requesting access to\n    Department of Defense (DoD) systems and information. NOTE: Records may\n    be maintained in both electronic and/or paper form.\n  </div>\n  <div>\n    <strong>ROUTINE USES:</strong> None.\n  </div>\n  <div>\n    <strong>DISCLOSURE:</strong> Disclosure of this information is voluntary; however, failure to provide\n    the requested information may impede, delay or prevent further\n    processing of this request.\n  </div>\n</div>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Type of Request Group",
+              "title": null,
+              "visible": true,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+                "class": "col9 inline-group"
+              },
+              "elements": [
+                {
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "Type of Request Label",
+                  "text": "TYPE OF REQUEST",
+                  "visible": true,
+                  "renderAttributes": {
+                    "class": "inline-group-label"
+                  }
+                },
+                {
+                  "type": "field",
+                  "name": "TYPE OF REQUEST",
+                  "label": "",
+                  "key": "f1",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "radio",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "INITIAL",
+                      "value": "INITIAL"
+                    },
+                    {
+                      "label": "MODIFICATION",
+                      "value": "MODIFICATION"
+                    },
+                    {
+                      "label": "DEACTIVATION",
+                      "value": "DEACTIVATION"
+                    },
+                    {
+                      "label": "USER ID",
+                      "value": "USER ID"
+                    }
+                  ]
+                },
+                {
+                  "type": "field",
+                  "name": "User Id",
+                  "label": "",
+                  "key": "f2",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                    "placeholder": "USER ID",
+                    "class": "hide-label"
+                  },
+                  "dataType": "string",
+                  "renderType": "text",
+                  "rows": 1
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "DATE",
+              "label": "DATE",
+              "key": "f27",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col3"
+              },
+              "dataType": "string",
+              "renderType": "date"
+            },
+            {
+              "type": "field",
+              "name": "SYSTEM NAME",
+              "label": "SYSTEM NAME",
+              "key": "f62",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col7p"
+              },
+              "dataType": "string",
+              "renderType": "dropdown",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Unclassified Network",
+                  "value": "Unclassified Network"
+                },
+                {
+                  "label": "US Secret Network",
+                  "value": "US Secret Network"
+                },
+                {
+                  "label": "Coalition Classified Network",
+                  "value": "Coalition Classified Network"
+                },
+                {
+                  "label": "Unclassified Software Application",
+                  "value": "Unclassified Software Application"
+                },
+                {
+                  "label": "US Secret Software Application",
+                  "value": "US Secret Software Application"
+                },
+                {
+                  "label": "Coalition Software Application",
+                  "value": "Coalition Software Application"
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "LOCATION",
+              "label": "LOCATION",
+              "key": "f5",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "data-help-text": "(Physical Location of System)",
+                "class": "col4p"
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Part 1",
+              "text": "<strong>PART I</strong> <em class=\"font-sm\">(To be completed by Requestor)</em>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "field",
+              "name": "1 NAME",
+              "label": "1. NAME",
+              "key": "f6",
+              "defaultValue": "${identity('displayName')}",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "data-help-text": "(Last, First, Middle Initial)",
+                "class": "col6",
+                "data-tooltip": "The last name, first name and middle initial of the user."
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "2 ORGANIZATION",
+              "label": "2. ORGANIZATION",
+              "key": "f10",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col6",
+                "data-tooltip": "The user's current organization (i.e. DISA, SDI, DoD and government agency or commercial firm)."
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "3 OFFICE SYMBOL DEPARTMENT",
+              "label": "3. OFFICE SYMBOL/DEPARTMENT",
+              "key": "f12",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col6",
+                "data-tooltip": "The office symbol within the current organization (i.e. SDI)."
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "4 PHONE",
+              "label": "4. PHONE",
+              "key": "f11",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col6",
+                "data-helpt-text": "(DSN or Commercial)",
+                "data-tooltip": "The Defense Switching Network (DSN) phone number of the user. If DSN is unavailable, indicate commercial number."
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "5 OFFICIAL E-MAIL ADDRESS",
+              "label": "5. OFFICIAL E-MAIL ADDRESS",
+              "key": "f13",
+              "defaultValue": "${identity('email')}",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col6",
+                "data-tooltip": "The user's official e-mail address."
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "6 JOB TITLE AND GRADE RANK",
+              "label": "6. JOB TITLE AND GRADE/RANK",
+              "key": "f17",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col6",
+                "data-tooltip": "The civilian job title (Example: Systems Analyst, GS-14, Pay Clerk, GS-5)/military rank (COL, United States Army, CMSgt, USAF) or \"CONT\" if user is a contractor."
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "7 OFFICIAL MAILING ADDRESS",
+              "label": "7. OFFICIAL MAILING ADDRESS",
+              "key": "f16",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col6",
+                "data-tooltip": "The user's official mailing address."
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 4
+            },
+            {
+              "type": "field",
+              "name": "8 CITIZENSHIP",
+              "label": "8. CITIZENSHIP",
+              "key": "f23",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col3 vertical"
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "US",
+                  "value": "US"
+                },
+                {
+                  "label": "FN",
+                  "value": "FN"
+                },
+                {
+                  "label": "OTHER",
+                  "value": "OTHER"
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "9 DESIGNATION OF PERSON",
+              "label": "9. DESIGNATION OF PERSON",
+              "key": "f24",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col3 vertical"
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "MILITARY",
+                  "value": "MILITARY"
+                },
+                {
+                  "label": "CIVILIAN",
+                  "value": "CIVILIAN"
+                },
+                {
+                  "label": "CONTRACTOR",
+                  "value": "CONTRACTOR"
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "IA Training and Awareness Group",
+              "title": null,
+              "visible": true,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+                "class": "inline-group",
+                "data-help-text": "(Complete as required for user or functional level access.)",
+                "data-tooltip": "User must indicate if he/she has completed the Annual Information Awareness Training and the date."
+              },
+              "elements": [
+                {
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "IA Training and Awareness Label",
+                  "text": "10. IA TRAINING AND AWARENESS CERTIFICATION REQUIREMENTS",
+                  "visible": true,
+                  "renderAttributes": {
+                    "class": "inline-group-label"
+                  }
+                },
+                {
+                  "type": "field",
+                  "name": "10 IA TRAINING AND AWARENESS CERTIFICATION REQUIREMENTS",
+                  "label": "",
+                  "key": "f29",
+                  "defaultValue": "",
+                  "defaultResourceName": "",
+                  "visible": true,
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "json",
+                  "renderType": "checkbox",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "I have completed Annual Information Awareness Training.",
+                      "value": "Completed Training"
+                    }
+                  ]
+                },
+                {
+                  "type": "field",
+                  "name": "10 DATE",
+                  "label": "DATE",
+                  "key": "f31",
+                  "defaultValue": "",
+                  "defaultResourceName": "IA Training",
+                  "visible": true,
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                    "class": "inline-field ml-auto"
+                  },
+                  "dataType": "string",
+                  "renderType": "date"
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "User Signature Section",
+              "title": null,
+              "visible": true,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+                "class": "col9 inline-group"
+              },
+              "elements": [
+                {
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "User Signature Widget",
+                  "text": null,
+                  "visible": true,
+                  "renderAttributes": {
+                  }
+                },
+                {
+                  "type": "field",
+                  "name": "11 USER SIGNATURE",
+                  "label": "11. USER SIGNATURE",
+                  "key": "f61",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": false,
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": false,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "file",
+                  "renderType": "attachment",
+                  "allowMultiple": false
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "12 DATE",
+              "label": "12. DATE",
+              "key": "f30",
+              "defaultValue": "",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col3",
+                "data-tooltip": "The date that the user signs the form."
+              },
+              "dataType": "string",
+              "renderType": "date"
+            }
+          ]
+        },
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Footer Notice",
+          "text": "<div class=\"footer-notice d-flex justify-content-between\">\n  <strong>DD FORM 2875, AUG 2009</strong>\n  <span>PREVIOUS EDITION IS OBSOLETE.</span>\n</div>",
+          "visible": true,
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Review Container",
+          "text": null,
+          "visible": false,
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Buttons",
+          "title": null,
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "button",
+              "label": "Submit",
+              "name": "Submit Button",
+              "visible": true,
+              "enabled": true,
+              "renderType": "submit-page",
+              "renderAttributes": {
+                "class": "d-flex mt-5"
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "Add User Signature Widget",
+          "type": "Load",
+          "action": "Custom",
+          "code": "var ModalHeaderContentRenderer = function(props, options) {\n  return [\n    {\n      tag: 'h4',\n      props: { className: 'modal-title' },\n      children: [\n        {\n          tag: 'button',\n          props: { type: 'button', className: 'btn btn-link', onClick: props.toggle },\n          children: K.translate('Close'),\n        },\n        { tag: 'span', children: K.translate(props.title) },\n        !props.signed &&\n          props.valid && {\n            tag: 'button',\n            props: {\n              type: 'button',\n              className: 'btn btn-link',\n              onClick: props.reset,\n            },\n            children: K.translate('Reset'),\n          },\n      ].filter(Boolean),\n    },\n    {\n      tag: 'small',\n      props: { className: 'text-muted px-3 py-1' },\n      children: K.translate(\n        'User must sign the DD Form 2875 with the understanding that they are responsible and accountable for their password and access to the system(s).',\n      ),\n    },\n  ];\n};\n\nbundle.helpers.Signature(\n  K('content[User Signature Widget]').element(),\n  K('field[11 USER SIGNATURE]'),\n  {\n    modalTitle: '11. USER SIGNATURE',\n    fieldLabel: '11. USER SIGNATURE',\n    disabled: K('form').reviewMode(),\n    renderers: { ModalHeaderContent: ModalHeaderContentRenderer }\n  }\n);\n"
+        },
+        {
+          "name": "Render Review Parts",
+          "type": "Load",
+          "action": "Custom",
+          "code": "/* This original request will render its decendants in review as long as it hasn't been loaded by one of those descendants. This is tracked by adding a data-loaded-id attribute to the container of each submission that is loaded as a review subform. If that attribute with the current submission's id doesn't exist in the dom, then it is safe to render the descendants in review. Otherwise, each descendant will render it's appropriate siblings so we do nothing here. */\nif ($('[data-loaded-id=' + submission('id') + ']').length === 0) {\n  // Add data-loaded-id attribute to current form so descendant subforms don't try to load it again\n  $(K('form').element()).attr('data-loaded-id', submission('id'));\n  // Fetch descendants of the submission\n  $.ajax({\n    url: \"/app/api/v1/submissions/\"+submission('id')+\"?include=descendants\", \n    success: function(response){\n      // Get the descendants that are not in draft\n      const descendants = response.submission.descendants.filter(function(s) {\n        return s.coreState !== 'Draft';\n      });\n\n      // Show descendants if any exist\n      if (descendants && descendants.length > 0) {\n        // Show before review container\n        K('content[Review Container]').show();\n        // For each descendants, render it in review\n        descendants.forEach(function(descendant) {\n          // Create container to render it into\n          const container = $('<div>', { class: 'mt-3 form-unstyled', 'data-loaded-id': descendant.id })\n            .append(\n              $('<div>', { class: 'paper-form' }).append(\n                $('<div>', { class: 'section-title text-muted' }).append(\n                  $('<span>', { class: 'fa fa-spinner fa-spin mr-2' }),\n                  K.translate('Loading')\n                )\n              )\n            )\n            .appendTo($(K('content[Review Container]').element()));\n          // Load the sibling submission in review\n          K.load({\n            parentForm: K('form'),\n            path: '/submissions/' + descendant.id + '?review',\n            container: container.get(0)\n          });\n        });\n      }\n    }\n  });\n}"
+        },
+        {
+          "name": "Add Help Text",
+          "type": "Load",
+          "action": "Custom",
+          "code": "// Add help text to labels\n$(K('form').element()).find(\n  '[data-help-text][data-element-type=section].inline-group,[data-help-text][data-element-type=wrapper]'\n).each((i, el) => {\n  $(el)\n    .children('.inline-group-label,.field-label')\n    .filter((idx, label) => {\n      return $(label).has('em.help-text').length === 0;\n    })\n    .append(\n      $('<em>', { class: 'help-text font-sm' }).text(\n        $(el).attr('data-help-text'),\n      ),\n    );\n});"
+        }
+      ],
+      "name": "Page 1",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+    {
+      "endpoint": "Display",
+      "name": "Admins"
+    }
+  ],
+  "slug": "dd-2875",
+  "status": "Active",
+  "submissionLabelExpression": "${form('name')} for ${values('SYSTEM NAME')} / ${values('LOCATION')} (${values('1 NAME')})",
+  "type": "Service"
+}

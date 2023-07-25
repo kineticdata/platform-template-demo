@@ -1,0 +1,516 @@
+{
+  "anonymous": false,
+  "attributes": [
+    {
+      "name": "Datastore Configuration",
+      "values": [
+        "{\"columns\":[{\"name\":\"Status\",\"label\":\"Status\",\"type\":\"value\",\"visible\":true},{\"name\":\"News Article Location\",\"label\":\"News Article Location\",\"type\":\"value\",\"visible\":true},{\"name\":\"Headline\",\"label\":\"Headline\",\"type\":\"value\",\"visible\":true},{\"name\":\"Snippet\",\"label\":\"Snippet\",\"type\":\"value\",\"visible\":true},{\"name\":\"Banner Image\",\"label\":\"Banner Image\",\"type\":\"value\",\"visible\":true},{\"name\":\"External Link\",\"label\":\"External Link\",\"type\":\"value\",\"visible\":true},{\"name\":\"Image Source\",\"label\":\"Image Source\",\"type\":\"value\",\"visible\":true},{\"name\":\"Description\",\"label\":\"Description\",\"type\":\"value\",\"visible\":false},{\"name\":\"handle\",\"label\":\"Handle\",\"type\":\"system\",\"visible\":false},{\"name\":\"label\",\"label\":\"Label\",\"type\":\"system\",\"visible\":false},{\"name\":\"createdAt\",\"label\":\"Created At\",\"type\":\"system\",\"visible\":false},{\"name\":\"createdBy\",\"label\":\"Created By\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedAt\",\"label\":\"Updated At\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedBy\",\"label\":\"Updated By\",\"type\":\"system\",\"visible\":false},{\"name\":\"id\",\"label\":\"Id\",\"type\":\"system\",\"visible\":false},{\"name\":\"Kinetic Sourced Images\",\"label\":\"Kinetic Sourced Images\",\"type\":\"value\",\"visible\":false}],\"defaultSearchIndex\":{\"index\":\"values[Status]\",\"direction\":\"ASC\"}}"
+      ]
+    }
+  ],
+  "bridgedResources": [
+    {
+      "model": "Datastore - Images",
+      "name": "Kinetic Sourced Images",
+      "order": [
+
+      ],
+      "parameters": [
+
+      ],
+      "qualification": "All",
+      "status": "Active"
+    }
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": null,
+  "description": "The space form is used by the bundle to display new articles",
+  "indexDefinitions": [
+    {
+      "name": "coreState",
+      "parts": [
+        "coreState"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Banner Image]",
+      "parts": [
+        "values[Banner Image]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Description]",
+      "parts": [
+        "values[Description]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Headline]",
+      "parts": [
+        "values[Headline]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Image Source]",
+      "parts": [
+        "values[Image Source]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Kinetic Sourced Images]",
+      "parts": [
+        "values[Kinetic Sourced Images]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Status]",
+      "parts": [
+        "values[Status]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "News Articles",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "field",
+          "name": "Status",
+          "label": "Status",
+          "key": "f5",
+          "defaultValue": "Active",
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Active",
+              "value": "Active"
+            },
+            {
+              "label": "Inactive",
+              "value": "Inactive"
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "name": "News Article Location",
+          "label": "News Article Location",
+          "key": "f7",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Kinetic Article",
+              "value": "Kinetic Article"
+            },
+            {
+              "label": "External Article",
+              "value": "External Article"
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "name": "Headline",
+          "label": "Headline (displayed on portal)",
+          "key": "f1",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Snippet",
+          "label": "Snippet (displayed on portal)",
+          "key": "f6",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Description Editor",
+          "text": "<label class=\"field-label\">Article Content</label>\n<div class=\"content\"></div>",
+          "visible": "values('News Article Location') === \"Kinetic Article\"",
+          "renderAttributes": {
+            "class": "form-group"
+          }
+        },
+        {
+          "type": "field",
+          "name": "Description",
+          "label": "Article Content",
+          "key": "f2",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": false,
+          "enabled": false,
+          "required": "values('News Article Location') === \"Kinetic Article\"",
+          "requiredMessage": "Article Content is required for Kinetic Articles",
+          "omitWhenHidden": false,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 10
+        },
+        {
+          "type": "field",
+          "name": "External Link",
+          "label": "External Link",
+          "key": "f3",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": "values('News Article Location') === \"External Article\"",
+          "enabled": true,
+          "required": "values('News Article Location') === \"External Article\"",
+          "requiredMessage": null,
+          "omitWhenHidden": true,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Image Source",
+          "label": "Image Source (if background image is desired)",
+          "key": "f8",
+          "defaultValue": "No Image",
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+            {
+              "name": "Clear Images",
+              "type": "Change",
+              "action": "Set Fields",
+              "mappings": [
+                {
+                  "field": "Kinetic Sourced Images",
+                  "value": "${null}",
+                  "visible": null
+                },
+                {
+                  "field": "Banner Image",
+                  "value": "${null}",
+                  "visible": null
+                }
+              ]
+            }
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "No Image",
+              "value": "No Image"
+            },
+            {
+              "label": "Kinetic (select from list)",
+              "value": "Kinetic"
+            },
+            {
+              "label": "External (provide full URL)",
+              "value": "External"
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "name": "Kinetic Sourced Images",
+          "label": "Kinetic Sourced Images",
+          "key": "f9",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": "values('Image Source') === \"Kinetic\"",
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": true,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+            {
+              "name": "Set Banner Image field",
+              "type": "Change",
+              "action": "Set Fields",
+              "mappings": [
+                {
+                  "field": "Banner Image",
+                  "value": "${space('attribute:Images Base URL')}/${values('Kinetic Sourced Images')}",
+                  "visible": null
+                }
+              ],
+              "runIf": "values('Kinetic Sourced Images') !== null"
+            },
+            {
+              "name": "Clear Banner Image Field",
+              "type": "Change",
+              "action": "Set Fields",
+              "mappings": [
+                {
+                  "field": "Banner Image",
+                  "value": "${null}",
+                  "visible": null
+                }
+              ],
+              "runIf": "values('Kinetic Sourced Images') === null"
+            }
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "dropdown",
+          "choicesResourceName": "Kinetic Sourced Images",
+          "choicesRunIf": null,
+          "choices": {
+            "label": "${resources('Kinetic Sourced Images:Relative URL')}: ${resources('Kinetic Sourced Images:Description')}",
+            "value": "${resources('Kinetic Sourced Images:Relative URL')}"
+          }
+        },
+        {
+          "type": "field",
+          "name": "Banner Image",
+          "label": "Image URL",
+          "key": "f4",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": "values('Image Source') === \"External\"",
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": false,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+            {
+              "name": "Display image preview",
+              "type": "Change",
+              "action": "Custom",
+              "code": "$('.image-viewer').css('background-image', 'linear-gradient(to left, rgba(255, 255, 255, 0) 20%, rgb(0, 0, 0)),url(' + K('field[Banner Image]').value() + ')');",
+              "runIf": "values('Banner Image') !== null"
+            },
+            {
+              "name": "Clear Banner Image",
+              "type": "Change",
+              "action": "Custom",
+              "code": "$('.image-viewer').css('background-image', '');",
+              "runIf": "values('Banner Image') === null"
+            }
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Image Message",
+          "text": "<div class=\"alert alert-warning\">Image appears close to how it will appear on the portal in the news articles area.</div>",
+          "visible": "values('Banner Image') !== null",
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Image Preview",
+          "text": "<div class=\"image-viewer\" style=\"height: 21rem; background-size:cover,cover; width: 100%; background-image:linear-gradient(to left, rgba(255, 255, 255, 0) 20%, rgb(0, 0, 0)),url('');\"></div>",
+          "visible": "values('Banner Image') !== null",
+          "renderAttributes": {
+            "class": "mb-2"
+          }
+        },
+        {
+          "type": "button",
+          "label": "Submit",
+          "name": "Submit Button",
+          "visible": true,
+          "enabled": true,
+          "renderType": "submit-page",
+          "renderAttributes": {
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "Show Banner Image",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$('.image-viewer').css('background-image', 'linear-gradient(to left, rgba(255, 255, 255, 0) 20%, rgb(0, 0, 0)),url(' + K('field[Banner Image]').value() + ')');",
+          "runIf": "values('Banner Image') !== null"
+        },
+        {
+          "name": "Load Markdown Editor",
+          "type": "Load",
+          "action": "Custom",
+          "code": "bundle.helpers.markdownEditor({\n  container: $(K('content[Description Editor]').element()).find('.content').get(0),\n  field: K('field[Description]')\n})"
+        }
+      ],
+      "name": "Page",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+    {
+      "endpoint": "Display",
+      "name": "Data Admins"
+    },
+    {
+      "endpoint": "Submission Access",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Submission Modification",
+      "name": "Data Admins"
+    }
+  ],
+  "slug": "news-articles",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Headline')}",
+  "type": null
+}

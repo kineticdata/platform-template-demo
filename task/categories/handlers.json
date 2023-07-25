@@ -1,0 +1,19 @@
+{
+  "name": "Handlers",
+  "description": "Handlers in the system",
+  "type": "Stored",
+  "handlers": [
+    "kinetic_core_api_v1",
+    "kinetic_request_ce_notification_template_send_v3",
+    "servicenow_attachment_create_v1",
+    "servicenow_object_create_v1",
+    "servicenow_object_retrieve_v1",
+    "smtp_email_send_v1"
+  ],
+  "policyRules": [
+    "Admins"
+  ],
+  "trees": [
+
+  ]
+}

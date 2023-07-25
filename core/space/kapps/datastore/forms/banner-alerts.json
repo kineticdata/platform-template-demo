@@ -1,0 +1,525 @@
+{
+  "anonymous": false,
+  "attributes": [
+    {
+      "name": "Datastore Configuration",
+      "values": [
+        "{\"columns\":[{\"name\":\"Status\",\"label\":\"Status\",\"type\":\"value\",\"visible\":false},{\"name\":\"Title\",\"label\":\"Title\",\"type\":\"value\",\"visible\":false},{\"name\":\"Content\",\"label\":\"Content\",\"type\":\"value\",\"visible\":false},{\"name\":\"Start Date\",\"label\":\"Start Date\",\"type\":\"value\",\"visible\":true},{\"name\":\"End Date\",\"label\":\"End Date\",\"type\":\"value\",\"visible\":true},{\"name\":\"Date Bucket\",\"label\":\"Date Bucket\",\"type\":\"value\",\"visible\":false},{\"name\":\"Source\",\"label\":\"Source\",\"type\":\"value\",\"visible\":false},{\"name\":\"handle\",\"label\":\"Handle\",\"type\":\"system\",\"visible\":true},{\"name\":\"label\",\"label\":\"Label\",\"type\":\"system\",\"visible\":true},{\"name\":\"createdAt\",\"label\":\"Created At\",\"type\":\"system\",\"visible\":false},{\"name\":\"createdBy\",\"label\":\"Created By\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedAt\",\"label\":\"Updated At\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedBy\",\"label\":\"Updated By\",\"type\":\"system\",\"visible\":false},{\"name\":\"id\",\"label\":\"Id\",\"type\":\"system\",\"visible\":false},{\"name\":\"Scope\",\"label\":\"Scope\",\"type\":\"value\",\"visible\":false},{\"name\":\"Groups\",\"label\":\"Groups\",\"type\":\"value\",\"visible\":false},{\"name\":\"Dismissible\",\"label\":\"Dismissible\",\"type\":\"value\",\"visible\":false},{\"name\":\"Snippet\",\"label\":\"Snippet\",\"type\":\"value\",\"visible\":false}],\"defaultSearchIndex\":{\"index\":\"handle\",\"direction\":\"DESC\"}}"
+      ]
+    },
+    {
+      "name": "Datastore Hidden",
+      "values": [
+        "False"
+      ]
+    }
+  ],
+  "bridgedResources": [
+    {
+      "model": "Team",
+      "name": "All Teams",
+      "order": [
+
+      ],
+      "parameters": [
+
+      ],
+      "qualification": "All Teams",
+      "status": "Active"
+    }
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": null,
+  "description": "System Alert notifications.",
+  "indexDefinitions": [
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Content]",
+      "parts": [
+        "values[Content]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Date Bucket]",
+      "parts": [
+        "values[Date Bucket]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[End Date]",
+      "parts": [
+        "values[End Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Snippet]",
+      "parts": [
+        "values[Snippet]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Source]",
+      "parts": [
+        "values[Source]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Start Date]",
+      "parts": [
+        "values[Start Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Status]",
+      "parts": [
+        "values[Status]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Status],values[Date Bucket]",
+      "parts": [
+        "values[Status]",
+        "values[Date Bucket]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Title]",
+      "parts": [
+        "values[Title]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "Banner Alerts",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": "",
+      "displayCondition": null,
+      "displayPage": "",
+      "elements": [
+        {
+          "type": "field",
+          "name": "Status",
+          "label": "Status",
+          "key": "f901",
+          "defaultValue": "Active",
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Active",
+              "value": "Active"
+            },
+            {
+              "label": "Inactive",
+              "value": "Inactive"
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "name": "Scope",
+          "label": "Scope",
+          "key": "f910",
+          "defaultValue": "Global",
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Global",
+              "value": "Global"
+            },
+            {
+              "label": "Targeted",
+              "value": "Targeted"
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "name": "Groups",
+          "label": "Groups",
+          "key": "f912",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": "values('Scope') === \"Targeted\"",
+          "enabled": true,
+          "required": "values('Scope') === \"Targeted\"",
+          "requiredMessage": null,
+          "omitWhenHidden": true,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+            "class": "form-col-4"
+          },
+          "dataType": "json",
+          "renderType": "checkbox",
+          "choicesResourceName": "All Teams",
+          "choicesRunIf": null,
+          "choices": {
+            "label": "${resources('All Teams:Name')}",
+            "value": "${resources('All Teams:Name')}"
+          }
+        },
+        {
+          "type": "field",
+          "name": "Dismissible",
+          "label": "Dismissible",
+          "key": "f911",
+          "defaultValue": "Yes",
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Yes",
+              "value": "Yes"
+            },
+            {
+              "label": "No",
+              "value": "No"
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "name": "Title",
+          "label": "Title",
+          "key": "f1",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Snippet",
+          "label": "Snippet",
+          "key": "f913",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Content",
+          "label": "Content",
+          "key": "f2",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 3
+        },
+        {
+          "type": "field",
+          "name": "Start Date",
+          "label": "Start Date",
+          "key": "f908",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "date"
+        },
+        {
+          "type": "field",
+          "name": "End Date",
+          "label": "End Date",
+          "key": "f909",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "date"
+        },
+        {
+          "type": "button",
+          "label": "Submit",
+          "name": "Submit",
+          "visible": true,
+          "enabled": true,
+          "renderType": "submit-page",
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Hidden Questions",
+          "title": null,
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Date Bucket",
+              "label": "Date Bucket",
+              "key": "f905",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "data-start-field": "Start Date",
+                "data-end-field": "End Date"
+              },
+              "dataType": "json",
+              "renderType": "checkbox",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+
+              ]
+            },
+            {
+              "type": "field",
+              "name": "Source",
+              "label": "Source",
+              "key": "f5",
+              "defaultValue": "Local",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "dropdown",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "kinops",
+                  "value": "kinops"
+                },
+                {
+                  "label": "Local",
+                  "value": "Local"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "Populate Date Bucket",
+          "type": "Submit",
+          "action": "Custom",
+          "code": "/**\n * Generates the buckets for each day, month, and year between\n * the start and end times.\n */\nvar generateBuckets = function(startTime, endTime) {\n  var buckets = [];\n\n  // Get the start and end dates\n  var start = moment.utc(startTime);\n  var end = moment.utc(endTime);\n\n  // Patterns\n  var yearPattern = \"YYYY\";\n  var monthPattern = \"YYYY-MM\";\n  var dayPattern = \"YYYY-MM-DD\";\n  var hourPattern = \"YYYY-MM-DD-HH\";\n\n  // Get the start buckets\n  var lastBucketDay = start.format(dayPattern);\n\n  // Add the start buckets\n  buckets.push(lastBucketDay);\n  \n  // Add the end buckets\n  if (start.isBefore(end, 'day')) {\n    buckets.push(end.format(dayPattern));\n  }\n\n  // Add each day bucket in between the start and end\n  while (start.add(1, 'hour').isBefore(end, 'hour')) {\n    // Add each new day bucket\n    if (start.isBefore(moment.utc(end), 'day') && start.isAfter(moment.utc(lastBucketDay), 'day')) {\n        lastBucketDay = start.format(dayPattern);\n        buckets.push(lastBucketDay);\n    }\n  }\n\n  // Return buckets, sorting and removing and duplicates\n  buckets = _.sortBy(buckets, _.identity);\n  return _.uniq(buckets, true);\n};\n\n/**\n * Generates the checkbox options based on the buckets\n */\nvar generateOptions = function(buckets) {\n  var options = [];\n  _.each(buckets, function(bucket) {\n    options.push({\"label\": bucket, \"value\": bucket});\n  });\n  return options;\n};\n\n$.each($('div[data-start-field]'), function() {\n  var bField = $(this).attr('data-element-name'),\n      startDateField = $(this).attr('data-start-field'),\n      endDateField = $(this).attr('data-end-field');\n\n  var bucketField = K('field[' + bField + ']');\n  var buckets = generateBuckets(values(startDateField), values(endDateField));\n  bucketField.options(generateOptions(buckets));\n  bucketField.value(buckets);\n})"
+        }
+      ],
+      "name": "Alerts",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+    {
+      "endpoint": "Display",
+      "name": "Data Admins"
+    },
+    {
+      "endpoint": "Modification",
+      "name": "Admins"
+    },
+    {
+      "endpoint": "Submission Access",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Submission Modification",
+      "name": "Data Admins"
+    }
+  ],
+  "slug": "banner-alerts",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Title')}",
+  "type": null
+}

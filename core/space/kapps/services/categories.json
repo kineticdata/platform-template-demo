@@ -4,7 +4,7 @@
       {
         "name": "Icon",
         "values": [
-          "fa-truck"
+          "la-truck-loading"
         ]
       },
       {
@@ -22,7 +22,7 @@
       {
         "name": "Icon",
         "values": [
-          "fa-money"
+          "la-coins"
         ]
       },
       {
@@ -58,7 +58,7 @@
       {
         "name": "Icon",
         "values": [
-          "fa-clipboard"
+          "la-users"
         ]
       },
       {
@@ -76,7 +76,19 @@
       {
         "name": "Icon",
         "values": [
-          "fa-desktop"
+          "la-user-shield"
+        ]
+      }
+    ],
+    "name": "Information Security",
+    "slug": "information-security"
+  },
+  {
+    "attributes": [
+      {
+        "name": "Icon",
+        "values": [
+          "la-laptop-code"
         ]
       },
       {
@@ -94,7 +106,7 @@
       {
         "name": "Icon",
         "values": [
-          "fa-gavel"
+          "la-balance-scale"
         ]
       },
       {
@@ -112,7 +124,7 @@
       {
         "name": "Icon",
         "values": [
-          "fa-film"
+          "la-ad"
         ]
       },
       {
@@ -124,5 +136,12 @@
     ],
     "name": "Marketing",
     "slug": "marketing"
+  },
+  {
+    "attributes": [
+
+    ],
+    "name": "Popular Services",
+    "slug": "popular-services"
   }
 ]

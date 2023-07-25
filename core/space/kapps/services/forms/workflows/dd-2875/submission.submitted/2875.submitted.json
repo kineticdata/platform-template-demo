@@ -1,0 +1,1550 @@
+{
+  "builderVersion": "",
+  "schemaVersion": "1.0",
+  "version": "",
+  "processOwnerEmail": "",
+  "lastId": 106,
+  "name": "2875 Submitted",
+  "notes": "",
+  "connectors": [
+    {
+      "from": "start",
+      "to": "routine_kinetic_email_template_notification_send_v1_79",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "utilities_echo_v1_29",
+      "to": "routine_kinetic_submission_activity_create_v1_74",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_kinetic_submission_update_status_v1_66",
+      "to": "system_junction_v1_100",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_kinetic_submission_update_status_v1_67",
+      "to": "routine_queue_task_create_with_custom_activity_label_77",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_kinetic_submission_activity_create_v1_74",
+      "to": "routine_kinetic_email_template_notification_send_v1_80",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_queue_task_create_with_custom_activity_label_77",
+      "to": "system_join_v1_102",
+      "label": "Denied",
+      "value": "JSON.parse(@results['Part 2a']['Fields JSON'])[\"Decision\"].to_s.downcase == \"denied\"",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_queue_task_create_with_custom_activity_label_77",
+      "to": "routine_queue_task_create_with_custom_activity_label_103",
+      "label": "Approved",
+      "value": "JSON.parse(@results['Part 2a']['Fields JSON'])[\"Decision\"].to_s.downcase != \"denied\"",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_kinetic_email_template_notification_send_v1_79",
+      "to": "routine_kinetic_submission_activity_create_v1_65",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_kinetic_email_template_notification_send_v1_80",
+      "to": "routine_kinetic_submission_update_v1_75",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_queue_task_create_with_custom_activity_label_90",
+      "to": "system_join_v1_102",
+      "label": "Denied",
+      "value": "JSON.parse(@results['Part 3']['Fields JSON'])[\"Decision\"].to_s.downcase == \"denied\"",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_queue_task_create_with_custom_activity_label_90",
+      "to": "routine_merge_submission_and_descendant_values_101",
+      "label": "Approved",
+      "value": "JSON.parse(@results['Part 3']['Fields JSON'])[\"Decision\"].to_s.downcase != \"denied\"",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_2875_change_record_create_99",
+      "to": "routine_kinetic_submission_activity_create_v1_105",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_2875_change_record_create_99",
+      "to": "system_junction_v1_100",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "system_junction_v1_100",
+      "to": "utilities_echo_v1_29",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_merge_submission_and_descendant_values_101",
+      "to": "routine_2875_change_record_create_99",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "system_join_v1_102",
+      "to": "routine_kinetic_submission_update_status_v1_66",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_queue_task_create_with_custom_activity_label_103",
+      "to": "system_join_v1_102",
+      "label": "Denied",
+      "value": "JSON.parse(@results['Part 2b']['Fields JSON'])[\"Decision\"].to_s.downcase == \"denied\"",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_queue_task_create_with_custom_activity_label_103",
+      "to": "routine_queue_task_create_with_custom_activity_label_106",
+      "label": "Approved",
+      "value": "JSON.parse(@results['Part 2b']['Fields JSON'])[\"Decision\"].to_s.downcase != \"denied\"",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_queue_task_create_with_custom_activity_label_106",
+      "to": "routine_queue_task_create_with_custom_activity_label_90",
+      "label": "Approved",
+      "value": "JSON.parse(@results['Part 2c']['Fields JSON'])[\"Decision\"].to_s.downcase != \"denied\"",
+      "type": "Complete"
+    },
+    {
+      "from": "routine_queue_task_create_with_custom_activity_label_106",
+      "to": "system_join_v1_102",
+      "label": "Denied",
+      "value": "JSON.parse(@results['Part 2c']['Fields JSON'])[\"Decision\"].to_s.downcase == \"denied\"",
+      "type": "Complete"
+    }
+  ],
+  "nodes": [
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": false,
+      "name": "Start",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_email_template_notification_send_v1_79"
+          }
+        ]
+      },
+      "id": "start",
+      "position": {
+        "x": 34.7797744,
+        "y": -76.3942
+      },
+      "version": 1,
+      "parameters": [
+
+      ],
+      "definitionId": "system_start_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": true,
+      "name": "Outcome",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_submission_activity_create_v1_74"
+          }
+        ]
+      },
+      "id": "utilities_echo_v1_29",
+      "position": {
+        "x": 390.77023,
+        "y": 1200.3159
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "input",
+          "label": "Input",
+          "menu": "",
+          "value": "<%= outcome = \"Completed\"\nif @results.has_key?('Status - Cancelled')\n  outcome = \"Cancelled\"\nelsif @results.has_key?('Status - Approval - Denied')\n  outcome = \"Denied\"\nend\noutcome%>",
+          "required": true
+        }
+      ],
+      "definitionId": "utilities_echo_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": true,
+      "visible": false,
+      "name": "Submission Received Activity Record",
+      "messages": [
+
+      ],
+      "dependents": "",
+      "id": "routine_kinetic_submission_activity_create_v1_65",
+      "position": {
+        "x": 247.5982,
+        "y": 106.859764
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the submission to create the activity record for",
+          "id": "Submission Id",
+          "label": "Submission Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Data to store in the submission activity",
+          "id": "Data",
+          "label": "Data",
+          "menu": "",
+          "value": "<%={\"Comments\"=>\"Your DD2875 Was Successfully Submitted for Processing\"}.to_json%>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Description of the submission activity",
+          "id": "Description",
+          "label": "Description",
+          "menu": "",
+          "value": "Request is being routed for approval",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Label for the submission activity",
+          "id": "Label",
+          "label": "Label",
+          "menu": "",
+          "value": "2875 Form Received",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Type of submission activity",
+          "id": "Type",
+          "label": "Type",
+          "menu": "",
+          "value": "Submission Submitted",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_kinetic_submission_activity_create_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": true,
+      "visible": false,
+      "name": "Status - Approval - Denied",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "system_junction_v1_100"
+          }
+        ]
+      },
+      "id": "routine_kinetic_submission_update_status_v1_66",
+      "position": {
+        "x": 386.1995,
+        "y": 777.9588
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the Submission that is being updated",
+          "id": "Submission Id",
+          "label": "Submission Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Status to set the submission to. (e.g. Submitted, In Progress)",
+          "id": "Status",
+          "label": "Status",
+          "menu": "",
+          "value": "Denied",
+          "required": true
+        }
+      ],
+      "definitionId": "routine_kinetic_submission_update_status_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": true,
+      "visible": false,
+      "name": "Status - Pending Approval",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_queue_task_create_with_custom_activity_label_77"
+          }
+        ]
+      },
+      "id": "routine_kinetic_submission_update_status_v1_67",
+      "position": {
+        "x": -34.880165,
+        "y": 324.0044
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the Submission that is being updated",
+          "id": "Submission Id",
+          "label": "Submission Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Status to set the submission to. (e.g. Submitted, In Progress)",
+          "id": "Status",
+          "label": "Status",
+          "menu": "",
+          "value": "Pending Approval",
+          "required": true
+        }
+      ],
+      "definitionId": "routine_kinetic_submission_update_status_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": true,
+      "visible": false,
+      "name": "Submission Completed Activity Record",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_email_template_notification_send_v1_80"
+          }
+        ]
+      },
+      "id": "routine_kinetic_submission_activity_create_v1_74",
+      "position": {
+        "x": 393.68668,
+        "y": 1304.6501
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the submission to create the activity record for",
+          "id": "Submission Id",
+          "label": "Submission Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Data to store in the submission activity",
+          "id": "Data",
+          "label": "Data",
+          "menu": "",
+          "value": "<%={\"Comments\"=>\"Your request has been successfully completed\"}.to_json%>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Description of the submission activity",
+          "id": "Description",
+          "label": "Description",
+          "menu": "",
+          "value": "Your Request Was Successfully Completed",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Label for the submission activity",
+          "id": "Label",
+          "label": "Label",
+          "menu": "",
+          "value": "Submission Complete",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Type of submission activity",
+          "id": "Type",
+          "label": "Type",
+          "menu": "",
+          "value": "Submission Completed",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_kinetic_submission_activity_create_v1"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": false,
+      "name": "Close Submission",
+      "messages": [
+
+      ],
+      "dependents": "",
+      "id": "routine_kinetic_submission_update_v1_75",
+      "position": {
+        "x": 395.3812,
+        "y": 1528.9008
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The id of the submission to update",
+          "id": "Id",
+          "label": "Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The submissions core state",
+          "id": "Updated - Core State",
+          "label": "Updated - Core State",
+          "menu": "",
+          "value": "Closed",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The submissions current page",
+          "id": "Updated - Current Page",
+          "label": "Updated - Current Page",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The Id of the submissions origin",
+          "id": "Updated - Origin Id",
+          "label": "Updated - Origin Id",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The Id of the submissions parent",
+          "id": "Updated - Parent Id",
+          "label": "Updated - Parent Id",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A JSON representation of the submissions values",
+          "id": "Updated - Values JSON",
+          "label": "Updated - Values JSON",
+          "menu": "",
+          "value": "",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_kinetic_submission_update_v1"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": false,
+      "name": "Part 2a",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "Denied",
+            "type": "Complete",
+            "value": "JSON.parse(@results['Part 2a']['Fields JSON'])[\"Decision\"].to_s.downcase == \"denied\"",
+            "content": "system_join_v1_102"
+          },
+          {
+            "label": "Approved",
+            "type": "Complete",
+            "value": "JSON.parse(@results['Part 2a']['Fields JSON'])[\"Decision\"].to_s.downcase != \"denied\"",
+            "content": "routine_queue_task_create_with_custom_activity_label_103"
+          }
+        ]
+      },
+      "id": "routine_queue_task_create_with_custom_activity_label_77",
+      "position": {
+        "x": -34,
+        "y": 437
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Slug of the Queue Kapp",
+          "id": "Kapp Slug",
+          "label": "Kapp Slug",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Queue Kapp Slug']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Slug of the form the task is created for",
+          "id": "Task Form Slug",
+          "label": "Task Form Slug",
+          "menu": "",
+          "value": "dd-2875-part-2a",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A summary of what is to be worked on",
+          "id": "Summary",
+          "label": "Summary",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Fulfillment Summary']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A description of what is to be worked on",
+          "id": "Details",
+          "label": "Details",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Fulfillment Details']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Number of days from now the task is to be completed by",
+          "id": "Days Due",
+          "label": "Days Due",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Service Days Due']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Name of the team to assign work to (ex. \"Test::Test::Test\")",
+          "id": "Assignee Team",
+          "label": "Assignee Team",
+          "menu": "",
+          "value": "Supervisors",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the person the task will be assigned to",
+          "id": "Assignee Id",
+          "label": "Assignee Id",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Source of the parent record (e.g. Kinetic Core, Salesforce ..etc)",
+          "id": "Originating System",
+          "label": "Originating System",
+          "menu": "",
+          "value": "Kinetic Core",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the originating systems record",
+          "id": "Originating Id",
+          "label": "Originating Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Structured data that can be leveraged by the queue task form",
+          "id": "System Input",
+          "label": "System Input",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Label to be shown to end users in portal for this task",
+          "id": "Activity Record Label",
+          "label": "Activity Record Label",
+          "menu": "",
+          "value": "Supervisor Approval",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_queue_task_create_with_custom_activity_label"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": true,
+      "visible": false,
+      "name": "Notify - Submitted",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_submission_activity_create_v1_65"
+          }
+        ]
+      },
+      "id": "routine_kinetic_email_template_notification_send_v1_79",
+      "position": {
+        "x": -37.343758,
+        "y": 107.354744
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Comma separated list of recipients (Usernames, SMTP Addresses, and/or Team Names)",
+          "id": "Recipient List",
+          "label": "Recipient List",
+          "menu": "",
+          "value": "<%= @submission['Created By']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Name of the notification template to use when sending this email",
+          "id": "Notification Template Name",
+          "label": "Notification Template Name",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Notification Template Name - Create']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "JSON input of miscellaneous values.  These values are used to replace placeholder content in notification messages.",
+          "id": "JSON Variables",
+          "label": "JSON Variables",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The slug of the Kapp sending the notification (ex: catalog, queue, etc.)",
+          "id": "Kapp Slug Initiating Notification",
+          "label": "Kapp Slug Initiating Notification",
+          "menu": "",
+          "value": "<%= @kapp['Slug']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the submission to get values for, required if using those or attachments in the message",
+          "id": "Related Submission Id",
+          "label": "Related Submission Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_kinetic_email_template_notification_send_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": true,
+      "visible": false,
+      "name": "Notify - Complete",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_submission_update_v1_75"
+          }
+        ]
+      },
+      "id": "routine_kinetic_email_template_notification_send_v1_80",
+      "position": {
+        "x": 395.3812,
+        "y": 1415.4282
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Comma separated list of recipients (Usernames, SMTP Addresses, and/or Team Names)",
+          "id": "Recipient List",
+          "label": "Recipient List",
+          "menu": "",
+          "value": "<%= @submission['Created By']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Name of the notification template to use when sending this email",
+          "id": "Notification Template Name",
+          "label": "Notification Template Name",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Notification Template Name - Complete']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "JSON input of miscellaneous values.  These values are used to replace placeholder content in notification messages.",
+          "id": "JSON Variables",
+          "label": "JSON Variables",
+          "menu": "",
+          "value": "<%={\n  \"Outcome\" => @results['Outcome']['output']\n}.to_json%>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The slug of the Kapp sending the notification (ex: catalog, queue, etc.)",
+          "id": "Kapp Slug Initiating Notification",
+          "label": "Kapp Slug Initiating Notification",
+          "menu": "",
+          "value": "<%= @kapp['Slug']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the submission to get values for, required if using those or attachments in the message",
+          "id": "Related Submission Id",
+          "label": "Related Submission Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_kinetic_email_template_notification_send_v1"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": false,
+      "name": "Part 3",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "Denied",
+            "type": "Complete",
+            "value": "JSON.parse(@results['Part 3']['Fields JSON'])[\"Decision\"].to_s.downcase == \"denied\"",
+            "content": "system_join_v1_102"
+          },
+          {
+            "label": "Approved",
+            "type": "Complete",
+            "value": "JSON.parse(@results['Part 3']['Fields JSON'])[\"Decision\"].to_s.downcase != \"denied\"",
+            "content": "routine_merge_submission_and_descendant_values_101"
+          }
+        ]
+      },
+      "id": "routine_queue_task_create_with_custom_activity_label_90",
+      "position": {
+        "x": -37,
+        "y": 826.1153
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Slug of the Queue Kapp",
+          "id": "Kapp Slug",
+          "label": "Kapp Slug",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Queue Kapp Slug']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Slug of the form the task is created for",
+          "id": "Task Form Slug",
+          "label": "Task Form Slug",
+          "menu": "",
+          "value": "dd-2875-part-3",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A summary of what is to be worked on",
+          "id": "Summary",
+          "label": "Summary",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Fulfillment Summary']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A description of what is to be worked on",
+          "id": "Details",
+          "label": "Details",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Fulfillment Details']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Number of days from now the task is to be completed by",
+          "id": "Days Due",
+          "label": "Days Due",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Service Days Due']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Name of the team to assign work to (ex. \"Test::Test::Test\")",
+          "id": "Assignee Team",
+          "label": "Assignee Team",
+          "menu": "",
+          "value": "Security Managers",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the person the task will be assigned to",
+          "id": "Assignee Id",
+          "label": "Assignee Id",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Source of the parent record (e.g. Kinetic Core, Salesforce ..etc)",
+          "id": "Originating System",
+          "label": "Originating System",
+          "menu": "",
+          "value": "Kinetic Core",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the originating systems record",
+          "id": "Originating Id",
+          "label": "Originating Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Structured data that can be leveraged by the queue task form",
+          "id": "System Input",
+          "label": "System Input",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Label to be shown to end users in portal for this task",
+          "id": "Activity Record Label",
+          "label": "Activity Record Label",
+          "menu": "",
+          "value": "Security Manager Approval",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_queue_task_create_with_custom_activity_label"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": false,
+      "name": "Create Service Now Change",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_submission_activity_create_v1_105"
+          },
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "system_junction_v1_100"
+          }
+        ]
+      },
+      "id": "routine_2875_change_record_create_99",
+      "position": {
+        "x": -37.9573,
+        "y": 1110.2163
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "JSON Object Representing the Body",
+          "id": "Body",
+          "label": "Body",
+          "menu": "",
+          "value": "<%= \nvalues = JSON.parse(@results['Merge Submission and Descendant Values']['Values JSON'])\nresult = {}\n\n# Loop over each value and remove nil's and join arrays\nvalues.each do |k, v|\n  # If the field is for a complex type (IE list)\n  if v.is_a?(Array)\n    unless v.empty?\n      # Check to see if it's a Hash (Attachments)\n      if v[0].is_a?(Hash)\n        output = ''\n        v.each_with_index do |val, index|\n          next unless val.key?('contentType')\n          output << if index == v.size - 1\n                      \"Attachment Name: #{val['name']} (#{val['contentType']})\"\n                    else\n                      \"Attachment Name: #{val['name']} (#{val['contentType']})\\n\"\n                    end\n        end\n        result[k] = output\n      else\n        result[k] = v.join(', ')\n      end\n      end\n  # If the field is for a date/time\n  elsif v =~ /^\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d\\+00:00$/\n    result[k] = DateTime.parse(v).strftime('%c')\n  # If the field is for a date\n  elsif v =~ /^\\d\\d\\d\\d-\\d\\d-\\d\\d$/\n    result[k] = DateTime.parse(v).strftime('%D')\n  # If the field is for a time\n  elsif v =~ /^\\d\\d:\\d\\d$/\n    result[k] = DateTime.parse(v).strftime('%r')\n  # If the field is a normal field\n  else\n    result[k] = v\n  end\nend\n\ntable = ''\nresult.keys.each do |key|\n  table << \"#{key}: #{result[key]}\\n\"\nend\ntable\n\n  body = {\n    \"short_description\":values['Summary'],\n    \"description\":\"This Change Ticket was created from Kinetic Request Submission #{@submission['Id']}\\n\\nDETAILS:\\n#{table}\"\n  \n}\n\nbody.to_json\n %>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "Summary",
+          "label": "Summary",
+          "menu": "",
+          "value": "2875 Submission for <%=  @values['1 NAME'] %>  (<%=  @values['SYSTEM NAME'] %>)",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "Details",
+          "label": "Details",
+          "menu": "",
+          "value": "<%= \nvalues = JSON.parse(@results['Merge Submission and Descendant Values']['Values JSON'])\nresult = {}\n\n# Loop over each value and remove nil's and join arrays\nvalues.each do |k, v|\n  # If the field is for a complex type (IE list)\n  if v.is_a?(Array)\n    unless v.empty?\n      # Check to see if it's a Hash (Attachments)\n      if v[0].is_a?(Hash)\n        output = ''\n        v.each_with_index do |val, index|\n          next unless val.key?('contentType')\n          output << if index == v.size - 1\n                      \"Attachment Name: #{val['name']} (#{val['contentType']})\"\n                    else\n                      \"Attachment Name: #{val['name']} (#{val['contentType']})\\n\"\n                    end\n        end\n        result[k] = output\n      else\n        result[k] = v.join(', ')\n      end\n      end\n  # If the field is for a date/time\n  elsif v =~ /^\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d\\+00:00$/\n    result[k] = DateTime.parse(v).strftime('%c')\n  # If the field is for a date\n  elsif v =~ /^\\d\\d\\d\\d-\\d\\d-\\d\\d$/\n    result[k] = DateTime.parse(v).strftime('%D')\n  # If the field is for a time\n  elsif v =~ /^\\d\\d:\\d\\d$/\n    result[k] = DateTime.parse(v).strftime('%r')\n  # If the field is a normal field\n  else\n    result[k] = v\n  end\nend\n\ntable = ''\nresult.keys.each do |key|\n  table << \"#{key}: #{result[key]}\\n\"\nend\ntable\n\n\"This Change Ticket was created from Kinetic Request Submission #{@submission['Id']}\\n\\nDETAILS:\\n#{table}\"%>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "Originating Submission Id",
+          "label": "Originating Submission Id",
+          "menu": "",
+          "value": "<%=  @submission['Id'] %>",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_2875_change_record_create"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": false,
+      "name": "Junction Create Change",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "utilities_echo_v1_29"
+          }
+        ]
+      },
+      "id": "system_junction_v1_100",
+      "position": {
+        "x": 391.05182,
+        "y": 1121.6259
+      },
+      "version": 1,
+      "parameters": [
+
+      ],
+      "definitionId": "system_junction_v1"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": false,
+      "name": "Merge Submission and Descendant Values",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_2875_change_record_create_99"
+          }
+        ]
+      },
+      "id": "routine_merge_submission_and_descendant_values_101",
+      "position": {
+        "x": -35.994987,
+        "y": 962.1028
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Origin Submission Id",
+          "id": "Origin Id",
+          "label": "Origin Id",
+          "menu": "",
+          "value": "<%=  @submission['Id'] %>",
+          "required": true
+        }
+      ],
+      "definitionId": "routine_merge_submission_and_descendant_values"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": false,
+      "name": "Join",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_submission_update_status_v1_66"
+          }
+        ]
+      },
+      "id": "system_join_v1_102",
+      "position": {
+        "x": 385.33334,
+        "y": 610
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "How many dependents must be completed before continuing?",
+          "id": "type",
+          "label": "Type:",
+          "menu": "All,Any,Some",
+          "value": "Any",
+          "required": true
+        },
+        {
+          "dependsOnId": "type",
+          "dependsOnValue": "Some",
+          "description": "If some, how many?",
+          "id": "number",
+          "label": "Number:",
+          "menu": "",
+          "value": "",
+          "required": false
+        }
+      ],
+      "definitionId": "system_join_v1"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": false,
+      "name": "Part 2b",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "Denied",
+            "type": "Complete",
+            "value": "JSON.parse(@results['Part 2b']['Fields JSON'])[\"Decision\"].to_s.downcase == \"denied\"",
+            "content": "system_join_v1_102"
+          },
+          {
+            "label": "Approved",
+            "type": "Complete",
+            "value": "JSON.parse(@results['Part 2b']['Fields JSON'])[\"Decision\"].to_s.downcase != \"denied\"",
+            "content": "routine_queue_task_create_with_custom_activity_label_106"
+          }
+        ]
+      },
+      "id": "routine_queue_task_create_with_custom_activity_label_103",
+      "position": {
+        "x": -37.002506,
+        "y": 564.9348
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Slug of the Queue Kapp",
+          "id": "Kapp Slug",
+          "label": "Kapp Slug",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Queue Kapp Slug']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Slug of the form the task is created for",
+          "id": "Task Form Slug",
+          "label": "Task Form Slug",
+          "menu": "",
+          "value": "dd-2875-part-2b",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A summary of what is to be worked on",
+          "id": "Summary",
+          "label": "Summary",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Fulfillment Summary']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A description of what is to be worked on",
+          "id": "Details",
+          "label": "Details",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Fulfillment Details']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Number of days from now the task is to be completed by",
+          "id": "Days Due",
+          "label": "Days Due",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Service Days Due']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Name of the team to assign work to (ex. \"Test::Test::Test\")",
+          "id": "Assignee Team",
+          "label": "Assignee Team",
+          "menu": "",
+          "value": "Information Owner",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the person the task will be assigned to",
+          "id": "Assignee Id",
+          "label": "Assignee Id",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Source of the parent record (e.g. Kinetic Core, Salesforce ..etc)",
+          "id": "Originating System",
+          "label": "Originating System",
+          "menu": "",
+          "value": "Kinetic Core",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the originating systems record",
+          "id": "Originating Id",
+          "label": "Originating Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Structured data that can be leveraged by the queue task form",
+          "id": "System Input",
+          "label": "System Input",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Label to be shown to end users in portal for this task",
+          "id": "Activity Record Label",
+          "label": "Activity Record Label",
+          "menu": "",
+          "value": "Information Owner Approval",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_queue_task_create_with_custom_activity_label"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": false,
+      "name": "Create ServiceNow Activity Record",
+      "messages": [
+
+      ],
+      "dependents": "",
+      "id": "routine_kinetic_submission_activity_create_v1_105",
+      "position": {
+        "x": -299.31848,
+        "y": 1110.7994
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the submission to create the activity record for",
+          "id": "Submission Id",
+          "label": "Submission Id",
+          "menu": "",
+          "value": "<%=  @submission['Id'] %>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Data to store in the submission activity",
+          "id": "Data",
+          "label": "Data",
+          "menu": "",
+          "value": "<%=\n{\n  \"Status\" => \"Pending\",\n  \"Comments\" => \"ServiceNow Change Number: #{@results['Create Service Now Change']['Change Number']}\"\n  \n}.to_json\n%>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Description of the submission activity",
+          "id": "Description",
+          "label": "Description",
+          "menu": "",
+          "value": "ServiceNow Change Number: <%= @results['Create Service Now Change']['Change Number'] %>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Label for the submission activity",
+          "id": "Label",
+          "label": "Label",
+          "menu": "",
+          "value": "ServiceNow Change Created",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Type of submission activity",
+          "id": "Type",
+          "label": "Type",
+          "menu": "",
+          "value": "ServiceNow Change Created",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_kinetic_submission_activity_create_v1"
+    },
+    {
+      "configured": true,
+      "defers": true,
+      "deferrable": true,
+      "visible": false,
+      "name": "Part 2c",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "Approved",
+            "type": "Complete",
+            "value": "JSON.parse(@results['Part 2c']['Fields JSON'])[\"Decision\"].to_s.downcase != \"denied\"",
+            "content": "routine_queue_task_create_with_custom_activity_label_90"
+          },
+          {
+            "label": "Denied",
+            "type": "Complete",
+            "value": "JSON.parse(@results['Part 2c']['Fields JSON'])[\"Decision\"].to_s.downcase == \"denied\"",
+            "content": "system_join_v1_102"
+          }
+        ]
+      },
+      "id": "routine_queue_task_create_with_custom_activity_label_106",
+      "position": {
+        "x": -35.08772,
+        "y": 679.6992
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Slug of the Queue Kapp",
+          "id": "Kapp Slug",
+          "label": "Kapp Slug",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Queue Kapp Slug']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Slug of the form the task is created for",
+          "id": "Task Form Slug",
+          "label": "Task Form Slug",
+          "menu": "",
+          "value": "dd-2875-part-2c",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A summary of what is to be worked on",
+          "id": "Summary",
+          "label": "Summary",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Fulfillment Summary']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "A description of what is to be worked on",
+          "id": "Details",
+          "label": "Details",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Fulfillment Details']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Number of days from now the task is to be completed by",
+          "id": "Days Due",
+          "label": "Days Due",
+          "menu": "",
+          "value": "<%=@results['Build Config']['Service Days Due']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Name of the team to assign work to (ex. \"Test::Test::Test\")",
+          "id": "Assignee Team",
+          "label": "Assignee Team",
+          "menu": "",
+          "value": "Information Assurance",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the person the task will be assigned to",
+          "id": "Assignee Id",
+          "label": "Assignee Id",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Source of the parent record (e.g. Kinetic Core, Salesforce ..etc)",
+          "id": "Originating System",
+          "label": "Originating System",
+          "menu": "",
+          "value": "Kinetic Core",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Id of the originating systems record",
+          "id": "Originating Id",
+          "label": "Originating Id",
+          "menu": "",
+          "value": "<%= @submission['Id']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Structured data that can be leveraged by the queue task form",
+          "id": "System Input",
+          "label": "System Input",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Label to be shown to end users in portal for this task",
+          "id": "Activity Record Label",
+          "label": "Activity Record Label",
+          "menu": "",
+          "value": "Information Assurance Approval",
+          "required": false
+        }
+      ],
+      "definitionId": "routine_queue_task_create_with_custom_activity_label"
+    }
+  ]
+}

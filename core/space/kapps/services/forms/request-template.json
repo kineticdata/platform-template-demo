@@ -15,7 +15,21 @@
     }
   ],
   "bridgedResources": [
+    {
+      "model": "Users",
+      "name": "Find Person by Email",
+      "order": [
 
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Query')}",
+          "name": "Email"
+        }
+      ],
+      "qualification": "By Email",
+      "status": "Active"
+    }
   ],
   "categorizations": [
 
@@ -134,13 +148,6 @@
       "unique": false
     },
     {
-      "name": "values[Discussion Id]",
-      "parts": [
-        "values[Discussion Id]"
-      ],
-      "unique": false
-    },
-    {
       "name": "values[Observing Individuals]",
       "parts": [
         "values[Observing Individuals]"
@@ -151,6 +158,13 @@
       "name": "values[Observing Teams]",
       "parts": [
         "values[Observing Teams]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Query]",
+      "parts": [
+        "values[Query]"
       ],
       "unique": false
     },
@@ -228,6 +242,13 @@
         "values[Requested For]"
       ],
       "unique": false
+    },
+    {
+      "name": "values[Summary]",
+      "parts": [
+        "values[Summary]"
+      ],
+      "unique": false
     }
   ],
   "name": "Request Template",
@@ -241,14 +262,71 @@
         {
           "type": "section",
           "renderType": null,
+          "name": "Request Details",
+          "title": null,
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+            "class": "form-group__columns"
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Requested For Widget",
+              "text": null,
+              "visible": true,
+              "renderAttributes": {
+                "class": "form-group mb-0"
+              }
+            },
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Requested By Widget",
+              "text": null,
+              "visible": true,
+              "renderAttributes": {
+                "class": "form-group mb-0"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
           "name": "Questions",
           "title": "Questions",
           "visible": true,
           "omitWhenHidden": null,
           "renderAttributes": {
-
           },
           "elements": [
+            {
+              "type": "field",
+              "name": "Summary",
+              "label": "Summary",
+              "key": "f911",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
             {
               "type": "field",
               "name": "Description",
@@ -269,11 +347,10 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
-              "rows": 1
+              "rows": 4
             }
           ]
         },
@@ -285,7 +362,6 @@
           "visible": true,
           "omitWhenHidden": null,
           "renderAttributes": {
-
           },
           "elements": [
             {
@@ -296,7 +372,6 @@
               "enabled": true,
               "renderType": "save",
               "renderAttributes": {
-
               }
             },
             {
@@ -307,7 +382,6 @@
               "enabled": true,
               "renderType": "submit-page",
               "renderAttributes": {
-
               }
             }
           ]
@@ -320,7 +394,6 @@
           "visible": false,
           "omitWhenHidden": false,
           "renderAttributes": {
-
           },
           "elements": [
             {
@@ -343,7 +416,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -369,7 +441,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -395,7 +466,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -421,7 +491,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -429,13 +498,13 @@
             },
             {
               "type": "field",
-              "name": "Discussion Id",
-              "label": "Discussion Id",
-              "key": "f902",
+              "name": "Query",
+              "label": "Query",
+              "key": "f910",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
-              "enabled": true,
+              "enabled": false,
               "required": false,
               "requiredMessage": null,
               "omitWhenHidden": null,
@@ -447,7 +516,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -473,7 +541,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "json",
               "renderType": "checkbox",
@@ -503,7 +570,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "json",
               "renderType": "checkbox",
@@ -533,7 +599,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -543,7 +608,12 @@
         }
       ],
       "events": [
-
+        {
+          "name": "Typeahead Widget",
+          "type": "Load",
+          "action": "Custom",
+          "code": "// Define a custom render function for the typeahead suggestion so we can show the displayName and username\nvar suggestionContentRenderer = function(props) {\n\treturn [\n    {\n      tag: 'div',\n      props: { className: 'large' },\n      children: props.suggestion.get('Display Name')\n    },\n    {\n      tag: 'div',\n      props: { className: 'small' },\n      children: props.suggestion.get('Username')\n    }\n  ];\n};\nvar selectionRenderer = function(props) {\n\treturn [\n    {\n      tag: 'span',\n      props: { className: 'form-control-plaintext d-inline-block w-auto' },\n      children: props.selection \n      ? props.selection.get('Display Name') || props.selection.get('Username') : ''\n    },\n    {\n      tag: 'button',\n      props: { \n        className: 'btn btn-primary btn-sm rounded-pill ml-3', \n        onClick: props.edit, \n        disabled: props.disabled\n      },\n      children: 'Change'\n    }\n  ];\n};\n\n// Render Typeahead widget to implement Requested For Search\nbundle.helpers.Typeahead(K('content[Requested For Widget]').element(), {\n  // Type of typeahead\n  type: 'bridge',\n  // Label to show above this pseudo field\n  fieldLabel: 'Requested For',\n  // Search config\n  search: {\n    kappSlug: K('kapp').slug(),\n    formSlug: K('form').slug(),\n    bridgedResourceName: 'Find Person by Email',\n    fields: [{ name: 'Query' }]\n  },\n  // Property of the data record to be used as a unique value\n  valueProp: 'Username',\n  // Property of the data record to be shown in the typeahead input field\n  labelProp: 'Display Name',\n  // Initial value\n  value: {\n  \t'Username': K('field[Requested For]').value() || identity('username'),\n    'Display Name': K('field[Requested For Display Name]').value() || identity('displayName')\n  },\n  // Disable in review mode\n  disabled: K('form').reviewMode(),\n  // Function to call when the value changes\n  onChange: function(value) {\n  \tK('field[Requested For]').value(\n      value ? value['Username'] : identity('username')\n    );\n    K('field[Requested For Display Name]').value(\n      value ? value['Display Name'] : identity('displayName')\n    );\n  },\n  // Custom renderers\n  renderers: { \n    SuggestionContent: suggestionContentRenderer,\n    Selection: selectionRenderer\n  }\n}, 'rFor');\n\n// Render Typeahead widget to implement Requested By Search\nbundle.helpers.Typeahead(K('content[Requested By Widget]').element(), {\n  // Type of typeahead\n  type: 'bridge',\n  // Label to show above this pseudo field\n  fieldLabel: 'Requested By',\n  // Search config\n  search: {\n    kappSlug: K('kapp').slug(),\n    formSlug: K('form').slug(),\n    bridgedResourceName: 'Find Person by Email',\n    fields: [{ name: 'Query' }]\n  },\n  // Property of the data record to be used as a unique value\n  valueProp: 'Username',\n  // Property of the data record to be shown in the typeahead input field\n  labelProp: 'Display Name',\n  // Initial value\n  value: {\n  \t'Username': K('field[Requested By]').value() || identity('username'),\n    'Display Name': K('field[Requested By Display Name]').value() || identity('displayName')\n  },\n  // Disable in review mode\n  disabled: K('form').reviewMode(),\n  // Function to call when the value changes\n  onChange: function(value) {\n  \tK('field[Requested By]').value(\n      value ? value['Username'] : identity('username')\n    );\n    K('field[Requested By Display Name]').value(\n      value ? value['Display Name'] : identity('displayName')\n    );\n  },\n  // Custom renderers\n  renderers: { \n    SuggestionContent: suggestionContentRenderer,\n    Selection: selectionRenderer\n  }\n}, 'rBy');"
+        }
       ],
       "name": "Page 1",
       "renderType": "submittable",

@@ -1,108 +1,10 @@
 {
   "afterLogoutPath": "",
+  "allowedIps": [
+
+  ],
+  "allowedIpsEnabled": false,
   "attributes": [
-    {
-      "name": "Admin Kapp Slug",
-      "values": [
-        "admin"
-      ]
-    },
-    {
-      "name": "Alerts Form Slug",
-      "values": [
-        "alerts"
-      ]
-    },
-    {
-      "name": "Approval Form Slug",
-      "values": [
-        "approval"
-      ]
-    },
-    {
-      "name": "Catalog Kapp Slug",
-      "values": [
-        "services"
-      ]
-    },
-    {
-      "name": "Change Manager Form Slug",
-      "values": [
-        "change-manager-request"
-      ]
-    },
-    {
-      "name": "Default Kapp Display",
-      "values": [
-        "services"
-      ]
-    },
-    {
-      "name": "Disable Self Sign Up",
-      "values": [
-        "false"
-      ]
-    },
-    {
-      "name": "Discussion Server Url",
-      "values": [
-        "Not used with Kinetic Discussions"
-      ]
-    },
-    {
-      "name": "Feedback Form Slug",
-      "values": [
-        "feedback"
-      ]
-    },
-    {
-      "name": "Help Form Slug",
-      "values": [
-        "help"
-      ]
-    },
-    {
-      "name": "Hidden Users Regex",
-      "values": [
-        ".*@kinops.io$"
-      ]
-    },
-    {
-      "name": "Invite Others Form Slug",
-      "values": [
-        "invite-users"
-      ]
-    },
-    {
-      "name": "Libraries Bundle Path",
-      "values": [
-        "space"
-      ]
-    },
-    {
-      "name": "Owning Team",
-      "values": [
-        "Default"
-      ]
-    },
-    {
-      "name": "Queue Kapp Slug",
-      "values": [
-        "queue"
-      ]
-    },
-    {
-      "name": "Request Alert Form Slug",
-      "values": [
-        "system-alert-request"
-      ]
-    },
-    {
-      "name": "Service Days Due",
-      "values": [
-        "7"
-      ]
-    },
     {
       "name": "Shared Workflow Engine",
       "values": [
@@ -110,21 +12,9 @@
       ]
     },
     {
-      "name": "Task Assignee Team",
-      "values": [
-        "Default"
-      ]
-    },
-    {
-      "name": "Task Form Slug",
-      "values": [
-        "work-order"
-      ]
-    },
-    {
       "name": "Task Server Host",
       "values": [
-        "service-portal-template.kinops.io"
+        "training.kinops.io"
       ]
     },
     {
@@ -136,25 +26,19 @@
     {
       "name": "Task Server Space Slug",
       "values": [
-        "service-portal-template"
+        "training"
       ]
     },
     {
       "name": "Task Server Url",
       "values": [
-        "https://service-portal-template.kinops.io/kinetic-task"
-      ]
-    },
-    {
-      "name": "Task Source Name",
-      "values": [
-        "Kinetic Request CE"
+        "https://training.kinops.io/kinetic-task"
       ]
     },
     {
       "name": "Web Server Url",
       "values": [
-        "https://service-portal-template.kinops.io"
+        "https://demo.kinops.io"
       ]
     }
   ],
@@ -165,12 +49,12 @@
   "defaultLocale": "en",
   "defaultTimezone": "America/Chicago",
   "displayType": "Single Page App",
-  "displayValue": "https://s3.amazonaws.com/kinops.io/bundles/default/releases/5.x.x/index.html",
+  "displayValue": "https://s3.amazonaws.com/kinops.io/bundles/demo/branches/customer/queens-public-library/index.html",
   "enabledLocales": [
     "en"
   ],
   "loginPage": null,
-  "name": "Service Portal Template",
+  "name": "Kinetic Data",
   "platformComponents": {
     "agents": [
 
@@ -178,10 +62,6 @@
   },
   "resetPasswordPage": null,
   "securityPolicies": [
-    {
-      "endpoint": "Discussion Creation",
-      "name": "Authenticated Users"
-    },
     {
       "endpoint": "Display",
       "name": "Authenticated Users"
@@ -217,7 +97,7 @@
   ],
   "sessionInactiveLimitInSeconds": 2592000,
   "sharedBundleBase": "hydrogen-v1",
-  "slug": "service-portal-template",
+  "slug": "demo",
   "trustedFrameDomains": [
 
   ],

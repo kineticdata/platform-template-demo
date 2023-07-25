@@ -51,247 +51,6 @@
         "updatedBy"
       ],
       "unique": false
-    },
-    {
-      "name": "values[Assigned Individual Display Name]",
-      "parts": [
-        "values[Assigned Individual Display Name]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Individual]",
-      "parts": [
-        "values[Assigned Individual]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Individual],createdBy",
-      "parts": [
-        "values[Assigned Individual]",
-        "createdBy"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Individual],values[Assigned Team]",
-      "parts": [
-        "values[Assigned Individual]",
-        "values[Assigned Team]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Individual],values[Assigned Team],createdBy",
-      "parts": [
-        "values[Assigned Individual]",
-        "values[Assigned Team]",
-        "createdBy"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Individual],values[Assigned Team],values[Status]",
-      "parts": [
-        "values[Assigned Individual]",
-        "values[Assigned Team]",
-        "values[Status]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Individual],values[Assigned Team],values[Status],createdBy",
-      "parts": [
-        "values[Assigned Individual]",
-        "values[Assigned Team]",
-        "values[Status]",
-        "createdBy"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Individual],values[Status]",
-      "parts": [
-        "values[Assigned Individual]",
-        "values[Status]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Individual],values[Status],createdBy",
-      "parts": [
-        "values[Assigned Individual]",
-        "values[Status]",
-        "createdBy"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Team Display Name]",
-      "parts": [
-        "values[Assigned Team Display Name]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Team]",
-      "parts": [
-        "values[Assigned Team]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Team],createdBy",
-      "parts": [
-        "values[Assigned Team]",
-        "createdBy"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Team],values[Status]",
-      "parts": [
-        "values[Assigned Team]",
-        "values[Status]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Assigned Team],values[Status],createdBy",
-      "parts": [
-        "values[Assigned Team]",
-        "values[Status]",
-        "createdBy"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Cancellation Reason]",
-      "parts": [
-        "values[Cancellation Reason]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Deferral Token]",
-      "parts": [
-        "values[Deferral Token]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Details]",
-      "parts": [
-        "values[Details]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Discussion Id]",
-      "parts": [
-        "values[Discussion Id]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Due Date]",
-      "parts": [
-        "values[Due Date]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Notes for Customer]",
-      "parts": [
-        "values[Notes for Customer]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Observing Individuals]",
-      "parts": [
-        "values[Observing Individuals]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Observing Teams]",
-      "parts": [
-        "values[Observing Teams]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Originating Id]",
-      "parts": [
-        "values[Originating Id]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Originating System]",
-      "parts": [
-        "values[Originating System]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Originating Url]",
-      "parts": [
-        "values[Originating Url]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Pending Reason]",
-      "parts": [
-        "values[Pending Reason]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Resolution]",
-      "parts": [
-        "values[Resolution]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Scheduled Date]",
-      "parts": [
-        "values[Scheduled Date]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Status]",
-      "parts": [
-        "values[Status]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Status],createdBy",
-      "parts": [
-        "values[Status]",
-        "createdBy"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Summary]",
-      "parts": [
-        "values[Summary]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[System Input]",
-      "parts": [
-        "values[System Input]"
-      ],
-      "unique": false
     }
   ],
   "name": "Work Order",
@@ -310,7 +69,6 @@
           "visible": true,
           "omitWhenHidden": null,
           "renderAttributes": {
-
           },
           "elements": [
             {
@@ -321,20 +79,19 @@
               "visible": true,
               "omitWhenHidden": null,
               "renderAttributes": {
-
               },
               "elements": [
                 {
                   "type": "field",
                   "name": "Status",
                   "label": "Status",
-                  "key": "f10",
+                  "key": "f901",
                   "defaultValue": "Open",
                   "defaultResourceName": null,
                   "visible": true,
                   "enabled": true,
-                  "required": true,
-                  "requiredMessage": "A valid status must be set.",
+                  "required": false,
+                  "requiredMessage": null,
                   "omitWhenHidden": null,
                   "pattern": null,
                   "constraints": [
@@ -344,7 +101,6 @@
 
                   ],
                   "renderAttributes": {
-
                   },
                   "dataType": "string",
                   "renderType": "radio",
@@ -371,6 +127,67 @@
                 },
                 {
                   "type": "field",
+                  "name": "Pending Client Action",
+                  "label": "Pending Client Action",
+                  "key": "f908",
+                  "defaultValue": "No",
+                  "defaultResourceName": null,
+                  "visible": "values('Status') === 'Pending'",
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": true,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+                    {
+                      "name": "Set Pending Reason",
+                      "type": "Change",
+                      "action": "Set Fields",
+                      "mappings": [
+                        {
+                          "field": "Pending Reason",
+                          "value": "Waiting for client action",
+                          "visible": null
+                        }
+                      ],
+                      "runIf": "values('Pending Reason') === null && values('Pending Client Action') === \"Yes\""
+                    },
+                    {
+                      "name": "Clear Pending Reason",
+                      "type": "Change",
+                      "action": "Set Fields",
+                      "mappings": [
+                        {
+                          "field": "Pending Reason",
+                          "value": "${null}",
+                          "visible": null
+                        }
+                      ],
+                      "runIf": "values('Pending Reason') === \"Waiting for client action\" && values('Pending Client Action') === \"No\""
+                    }
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "radio",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "Yes",
+                      "value": "Yes"
+                    },
+                    {
+                      "label": "No",
+                      "value": "No"
+                    }
+                  ]
+                },
+                {
+                  "type": "field",
                   "name": "Pending Reason",
                   "label": "Pending Reason",
                   "key": "f33",
@@ -389,7 +206,6 @@
 
                   ],
                   "renderAttributes": {
-
                   },
                   "dataType": "string",
                   "renderType": "text",
@@ -415,7 +231,6 @@
 
                   ],
                   "renderAttributes": {
-
                   },
                   "dataType": "string",
                   "renderType": "text",
@@ -441,7 +256,6 @@
 
                   ],
                   "renderAttributes": {
-
                   },
                   "dataType": "string",
                   "renderType": "text",
@@ -469,7 +283,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -485,7 +298,6 @@
           "visible": false,
           "omitWhenHidden": false,
           "renderAttributes": {
-
           },
           "elements": [
             {
@@ -508,7 +320,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -534,7 +345,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -549,7 +359,7 @@
               "defaultResourceName": null,
               "visible": true,
               "enabled": true,
-              "required": true,
+              "required": "(values('Bulk Action') === null || (values('Bulk Action') === \"Yes\" && submission('id') !== null))",
               "requiredMessage": null,
               "omitWhenHidden": null,
               "pattern": null,
@@ -560,7 +370,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -586,7 +395,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -612,7 +420,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -638,37 +445,10 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
               "rows": 2
-            },
-            {
-              "type": "field",
-              "name": "Discussion Id",
-              "label": "Discussion Id",
-              "key": "f6",
-              "defaultValue": null,
-              "defaultResourceName": null,
-              "visible": true,
-              "enabled": true,
-              "required": false,
-              "requiredMessage": null,
-              "omitWhenHidden": null,
-              "pattern": null,
-              "constraints": [
-
-              ],
-              "events": [
-
-              ],
-              "renderAttributes": {
-
-              },
-              "dataType": "string",
-              "renderType": "text",
-              "rows": 1
             },
             {
               "type": "field",
@@ -690,7 +470,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "datetime"
@@ -715,7 +494,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "json",
               "renderType": "checkbox",
@@ -745,7 +523,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "json",
               "renderType": "checkbox",
@@ -775,7 +552,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -801,7 +577,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -827,7 +602,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "text",
@@ -837,7 +611,7 @@
               "type": "field",
               "name": "Scheduled Date",
               "label": "Scheduled Date",
-              "key": "f48",
+              "key": "f902",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
@@ -853,7 +627,6 @@
 
               ],
               "renderAttributes": {
-
               },
               "dataType": "string",
               "renderType": "datetime"
@@ -878,7 +651,56 @@
 
               ],
               "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Priority",
+              "label": "Priority",
+              "key": "f905",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
 
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Requested For VIP",
+              "label": "Requested For VIP",
+              "key": "f904",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
               },
               "dataType": "string",
               "renderType": "text",
@@ -904,7 +726,81 @@
 
               ],
               "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Bulk Action",
+              "label": "Bulk Action",
+              "key": "f903",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
 
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Is Major Incident",
+              "label": "Is Major Incident",
+              "key": "f906",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Related Major Incident",
+              "label": "Related Major Incident",
+              "key": "f907",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
               },
               "dataType": "string",
               "renderType": "text",
@@ -914,7 +810,13 @@
         }
       ],
       "events": [
-
+        {
+          "name": "Check Subtasks are Closed",
+          "type": "Submit",
+          "action": "Custom",
+          "code": "action.stop();\n// Get Childen\n$.ajax({\n  \"method\":\"GET\",\n  \"url\": \"\" + bundle.apiLocation() + \"/submissions/\" + K('submission').id() + \"?include=children\",\n}).done(function(data) {\n  var children = data['submission']['children'],\n      anyOpen = false;\n  $.each(children, function(idx,child){\n    if (child['coreState'] !== \"Closed\") {\n      anyOpen = true;\n      return false;\n    }\n  });\n  if (anyOpen) {\n    bundle.helpers.alert({\n      \"element\":K('form').element(),\n      \"message\":\"Cannot close or cancel because there are still subtasks open.\"\n    });\n  } else {\n    action.continue();\n  }\n})\n",
+          "runIf": "﻿(values('Status') === 'Complete' || values('Status') === 'Cancelled') && (values('Bulk Action') === null || (values('Bulk Action') === \"Yes\" && submission('id') !== null))"
+        }
       ],
       "name": "Page One",
       "renderType": "submittable",
@@ -927,5 +829,5 @@
   "slug": "work-order",
   "status": "Active",
   "submissionLabelExpression": "${values('Summary')}",
-  "type": "Automated"
+  "type": "Template"
 }

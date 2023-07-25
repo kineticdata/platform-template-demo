@@ -5,7 +5,7 @@
   ],
   "bridgedResources": [
     {
-      "model": "Person",
+      "model": "Users",
       "name": "Person - By Email",
       "order": [
 
@@ -20,7 +20,7 @@
       "status": "Active"
     },
     {
-      "model": "Person",
+      "model": "Users",
       "name": "Person - By Username",
       "order": [
 
@@ -111,13 +111,6 @@
       "unique": false
     },
     {
-      "name": "values[Discussion Id]",
-      "parts": [
-        "values[Discussion Id]"
-      ],
-      "unique": false
-    },
-    {
       "name": "values[Email]",
       "parts": [
         "values[Email]"
@@ -174,7 +167,6 @@
 
           ],
           "renderAttributes": {
-
           },
           "dataType": "string",
           "renderType": "text",
@@ -200,33 +192,6 @@
 
           ],
           "renderAttributes": {
-
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Discussion Id",
-          "label": "Discussion Id",
-          "key": "f902",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-
           },
           "dataType": "string",
           "renderType": "text",
@@ -252,7 +217,6 @@
 
           ],
           "renderAttributes": {
-
           },
           "dataType": "json",
           "renderType": "checkbox",
@@ -282,7 +246,6 @@
 
           ],
           "renderAttributes": {
-
           },
           "dataType": "json",
           "renderType": "checkbox",
