@@ -829,5 +829,5 @@
   "slug": "work-order",
   "status": "Active",
   "submissionLabelExpression": "${values('Summary')}",
-  "type": "Template"
+  "type": "Automated"
 }

@@ -12,6 +12,7 @@
   "trees": [
     "routine_create_servicenow_change",
     "routine_kinetic_email_template_notification_send_v1",
+    "routine_kinetic_queue_submission_config_v1",
     "routine_kinetic_queue_task_update_origin_submission_activity_v1",
     "routine_kinetic_submission_create_v1",
     "routine_kinetic_submission_update_status_v1",

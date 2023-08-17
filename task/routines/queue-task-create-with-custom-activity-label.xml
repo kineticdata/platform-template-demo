@@ -54,13 +54,10 @@
                 <parameters>
                     <parameter dependsOnId="" dependsOnValue="" id="deferral_value" label="Initial Deferral Value" menu="" required="false" tooltip=""></parameter>
                 </parameters>
-                <messages>
-                    <message type="Create">A task was created and assigned to the &lt;%=@results['Verify Assignment']['Assigned Team']%&gt; team</message>
-                    <message type="Complete">A task for your request was recently completed</message>
-                </messages>
+                <messages></messages>
                 <dependents>
                     <task label="" type="Complete" value="">routine_kinetic_submission_retrieve_v1_136</task>
-                    <task label="Activity Update" type="Update" value="@trigger['Message'] == &quot;Activity Update&quot; &amp;&amp; @results['Has Kinetic Submission Origin']['output'].to_s == 'true'  &amp;&amp; @results.has_key?('Create Activity Record') &amp;&amp; @results['Create Activity Record'].has_key?('Id') &amp;&amp; !@results['Create Activity Record']['Id'].nil?">routine_kinetic_queue_task_update_origin_submission_activity_v1_151</task>
+                    <task label="Activity Update" type="Update" value="@trigger['Message'] == &quot;Activity Update&quot; &amp;&amp; @results.has_key?('Create Activity Record') &amp;&amp; @results['Create Activity Record'].has_key?('Id') &amp;&amp; !@results['Create Activity Record']['Id'].nil?">routine_kinetic_queue_task_update_origin_submission_activity_v1_151</task>
                     <task label="" type="Create" value="">routine_kinetic_form_retrieve_v1_154</task>
                 </dependents>
             </task>
@@ -148,8 +145,8 @@ values.to_json%&gt;</parameter>
                 </parameters>
                 <messages></messages>
                 <dependents>
-                    <task label="Has Notes for Customer" type="Complete" value="@results['Has Kinetic Submission Origin']['output'].to_s == 'true' &amp;&amp; JSON.parse(@results['Retrieve Fulfillment Values']['Values JSON']).has_key?('Notes for Customer') &amp;&amp; !JSON.parse(@results['Retrieve Fulfillment Values']['Values JSON'])['Notes for Customer'].to_s.empty?">routine_kinetic_submission_retrieve_v1_141</task>
-                    <task label="Activity Complete" type="Complete" value="@results['Has Kinetic Submission Origin']['output'].to_s == 'true' &amp;&amp; @results.has_key?('Create Activity Record') &amp;&amp; @results['Create Activity Record'].has_key?('Id') &amp;&amp; !@results['Create Activity Record']['Id'].nil?">routine_kinetic_submission_activity_update_v1_150</task>
+                    <task label="Has Notes for Customer" type="Complete" value="JSON.parse(@results['Retrieve Fulfillment Values']['Values JSON']).has_key?('Notes for Customer') &amp;&amp; !JSON.parse(@results['Retrieve Fulfillment Values']['Values JSON'])['Notes for Customer'].to_s.empty?">routine_kinetic_submission_retrieve_v1_141</task>
+                    <task label="Activity Complete" type="Complete" value="@results.has_key?('Create Activity Record') &amp;&amp; @results['Create Activity Record'].has_key?('Id') &amp;&amp; !@results['Create Activity Record']['Id'].nil?">routine_kinetic_submission_activity_update_v1_150</task>
                 </dependents>
             </task>
             <task definition_id="utilities_create_trigger_v1" id="utilities_create_trigger_v1_137" name="Send Fulfillment Id to Parent Run" x="841" y="166">

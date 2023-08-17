@@ -3,7 +3,7 @@
   "schemaVersion": "1.0",
   "version": "",
   "processOwnerEmail": "",
-  "lastId": 106,
+  "lastId": 108,
   "name": "2875 Submitted",
   "notes": "",
   "connectors": [
@@ -16,7 +16,7 @@
     },
     {
       "from": "utilities_echo_v1_29",
-      "to": "routine_kinetic_submission_activity_create_v1_74",
+      "to": "routine_kinetic_submission_update_v1_75",
       "label": "",
       "value": "",
       "type": "Complete"
@@ -43,6 +43,13 @@
       "type": "Complete"
     },
     {
+      "from": "routine_kinetic_submission_update_v1_75",
+      "to": "routine_kinetic_submission_activity_create_v1_74",
+      "label": "",
+      "value": "",
+      "type": "Complete"
+    },
+    {
       "from": "routine_queue_task_create_with_custom_activity_label_77",
       "to": "system_join_v1_102",
       "label": "Denied",
@@ -64,8 +71,8 @@
       "type": "Complete"
     },
     {
-      "from": "routine_kinetic_email_template_notification_send_v1_80",
-      "to": "routine_kinetic_submission_update_v1_75",
+      "from": "routine_kinetic_email_template_notification_send_v1_79",
+      "to": "routine_kinetic_submission_update_status_v1_67",
       "label": "",
       "value": "",
       "type": "Complete"
@@ -92,22 +99,8 @@
       "type": "Complete"
     },
     {
-      "from": "routine_2875_change_record_create_99",
-      "to": "system_junction_v1_100",
-      "label": "",
-      "value": "",
-      "type": "Complete"
-    },
-    {
-      "from": "system_junction_v1_100",
-      "to": "utilities_echo_v1_29",
-      "label": "",
-      "value": "",
-      "type": "Complete"
-    },
-    {
       "from": "routine_merge_submission_and_descendant_values_101",
-      "to": "routine_2875_change_record_create_99",
+      "to": "kinetic_request_ce_attachment_copy_v2_107",
       "label": "",
       "value": "",
       "type": "Complete"
@@ -146,6 +139,13 @@
       "label": "Denied",
       "value": "JSON.parse(@results['Part 2c']['Fields JSON'])[\"Decision\"].to_s.downcase == \"denied\"",
       "type": "Complete"
+    },
+    {
+      "from": "kinetic_request_ce_attachment_copy_v2_107",
+      "to": "system_junction_v1_100",
+      "label": "",
+      "value": "",
+      "type": "Complete"
     }
   ],
   "nodes": [
@@ -170,8 +170,8 @@
       },
       "id": "start",
       "position": {
-        "x": 34.7797744,
-        "y": -76.3942
+        "x": 40.030621707585645,
+        "y": 62.576593181071146
       },
       "version": 1,
       "parameters": [
@@ -194,14 +194,14 @@
             "label": "",
             "type": "Complete",
             "value": "",
-            "content": "routine_kinetic_submission_activity_create_v1_74"
+            "content": "routine_kinetic_submission_update_v1_75"
           }
         ]
       },
       "id": "utilities_echo_v1_29",
       "position": {
-        "x": 390.77023,
-        "y": 1200.3159
+        "x": 404.4025403647945,
+        "y": 1160.4224431383905
       },
       "version": 1,
       "parameters": [
@@ -230,8 +230,8 @@
       "dependents": "",
       "id": "routine_kinetic_submission_activity_create_v1_65",
       "position": {
-        "x": 247.5982,
-        "y": 106.859764
+        "x": 299.52843255813946,
+        "y": 188.76674074418585
       },
       "version": 1,
       "parameters": [
@@ -407,8 +407,8 @@
       },
       "id": "routine_kinetic_submission_activity_create_v1_74",
       "position": {
-        "x": 393.68668,
-        "y": 1304.6501
+        "x": 402.1155933711188,
+        "y": 1365.1316816409055
       },
       "version": 1,
       "parameters": [
@@ -459,7 +459,7 @@
           "id": "Type",
           "label": "Type",
           "menu": "",
-          "value": "Submission Completed",
+          "value": "Submission Completed 2875",
           "required": false
         }
       ],
@@ -474,11 +474,20 @@
       "messages": [
 
       ],
-      "dependents": "",
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_submission_activity_create_v1_74"
+          }
+        ]
+      },
       "id": "routine_kinetic_submission_update_v1_75",
       "position": {
-        "x": 395.3812,
-        "y": 1528.9008
+        "x": 403.3700752649163,
+        "y": 1260.2756480229816
       },
       "version": 1,
       "parameters": [
@@ -584,7 +593,7 @@
           "id": "Kapp Slug",
           "label": "Kapp Slug",
           "menu": "",
-          "value": "<%=@results['Build Config']['Queue Kapp Slug']%>",
+          "value": "queue",
           "required": true
         },
         {
@@ -604,7 +613,7 @@
           "id": "Summary",
           "label": "Summary",
           "menu": "",
-          "value": "<%=@results['Build Config']['Fulfillment Summary']%>",
+          "value": "2875 for <%=  @values['1 NAME'] %> Supervisor Approval",
           "required": true
         },
         {
@@ -614,7 +623,7 @@
           "id": "Details",
           "label": "Details",
           "menu": "",
-          "value": "<%=@results['Build Config']['Fulfillment Details']%>",
+          "value": "NAME: <%=  @values['1 NAME'] %>\nORGANIZATION: <%=  @values['2 ORGANIZATION'] %>\nOFFICE SYMBOL DEPARTMENT: <%=  @values['3 OFFICE SYMBOL DEPARTMENT'] %>\nPHONE: <%=  @values['4 PHONE'] %>\nOFFICIAL E-MAIL ADDRESS: <%=  @values['5 OFFICIAL E-MAIL ADDRESS'] %>\nJOB TITLE AND GRADE RANK: <%=  @values['6 JOB TITLE AND GRADE RANK'] %>\nOFFICIAL MAILING ADDRESS: <%=  @values['7 OFFICIAL MAILING ADDRESS'] %>\nCITIZENSHIP: <%=  @values['8 CITIZENSHIP'] %>\nDESIGNATION OF PERSON: <%=  @values['9 DESIGNATION OF PERSON'] %>\nDATE: <%=  @values['10 DATE'] %>",
           "required": true
         },
         {
@@ -624,7 +633,7 @@
           "id": "Days Due",
           "label": "Days Due",
           "menu": "",
-          "value": "<%=@results['Build Config']['Service Days Due']%>",
+          "value": "4",
           "required": true
         },
         {
@@ -706,13 +715,19 @@
             "type": "Complete",
             "value": "",
             "content": "routine_kinetic_submission_activity_create_v1_65"
+          },
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "routine_kinetic_submission_update_status_v1_67"
           }
         ]
       },
       "id": "routine_kinetic_email_template_notification_send_v1_79",
       "position": {
-        "x": -37.343758,
-        "y": 107.354744
+        "x": -37.33676499300699,
+        "y": 188.2784997239885
       },
       "version": 1,
       "parameters": [
@@ -733,7 +748,7 @@
           "id": "Notification Template Name",
           "label": "Notification Template Name",
           "menu": "",
-          "value": "<%=@results['Build Config']['Notification Template Name - Create']%>",
+          "value": "Service Submitted",
           "required": true
         },
         {
@@ -778,20 +793,11 @@
       "messages": [
 
       ],
-      "dependents": {
-        "task": [
-          {
-            "label": "",
-            "type": "Complete",
-            "value": "",
-            "content": "routine_kinetic_submission_update_v1_75"
-          }
-        ]
-      },
+      "dependents": "",
       "id": "routine_kinetic_email_template_notification_send_v1_80",
       "position": {
-        "x": 395.3812,
-        "y": 1415.4282
+        "x": 399.3670547547855,
+        "y": 1465.4611911535094
       },
       "version": 1,
       "parameters": [
@@ -812,7 +818,7 @@
           "id": "Notification Template Name",
           "label": "Notification Template Name",
           "menu": "",
-          "value": "<%=@results['Build Config']['Notification Template Name - Complete']%>",
+          "value": "2875 Service Completed",
           "required": true
         },
         {
@@ -828,7 +834,7 @@
         {
           "dependsOnId": "",
           "dependsOnValue": "",
-          "description": "The slug of the Kapp sending the notification (ex: catalog, queue, etc.)",
+          "description": "The slug of the Kapp sending the notification (ex: services, queue, etc.)",
           "id": "Kapp Slug Initiating Notification",
           "label": "Kapp Slug Initiating Notification",
           "menu": "",
@@ -843,6 +849,26 @@
           "label": "Related Submission Id",
           "menu": "",
           "value": "<%= @submission['Id']%>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The slug of the Form sending the notification (ex: work-order, cleaning, etc.)",
+          "id": "Form Slug Initiating Notification",
+          "label": "Form Slug Initiating Notification",
+          "menu": "",
+          "value": "<%=  @form['Slug'] %>",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "If the Related Submission Id, or Form Slug is a datastore form.",
+          "id": "Is Datastore",
+          "label": "Is Datastore",
+          "menu": "",
+          "value": "false",
           "required": false
         }
       ],
@@ -887,7 +913,7 @@
           "id": "Kapp Slug",
           "label": "Kapp Slug",
           "menu": "",
-          "value": "<%=@results['Build Config']['Queue Kapp Slug']%>",
+          "value": "queue",
           "required": true
         },
         {
@@ -907,7 +933,7 @@
           "id": "Summary",
           "label": "Summary",
           "menu": "",
-          "value": "<%=@results['Build Config']['Fulfillment Summary']%>",
+          "value": "2875 for <%=  @values['1 NAME'] %> Security Manager Approval",
           "required": true
         },
         {
@@ -917,7 +943,7 @@
           "id": "Details",
           "label": "Details",
           "menu": "",
-          "value": "<%=@results['Build Config']['Fulfillment Details']%>",
+          "value": "NAME: <%=  @values['1 NAME'] %>\nORGANIZATION: <%=  @values['2 ORGANIZATION'] %>\nOFFICE SYMBOL DEPARTMENT: <%=  @values['3 OFFICE SYMBOL DEPARTMENT'] %>\nPHONE: <%=  @values['4 PHONE'] %>\nOFFICIAL E-MAIL ADDRESS: <%=  @values['5 OFFICIAL E-MAIL ADDRESS'] %>\nJOB TITLE AND GRADE RANK: <%=  @values['6 JOB TITLE AND GRADE RANK'] %>\nOFFICIAL MAILING ADDRESS: <%=  @values['7 OFFICIAL MAILING ADDRESS'] %>\nCITIZENSHIP: <%=  @values['8 CITIZENSHIP'] %>\nDESIGNATION OF PERSON: <%=  @values['9 DESIGNATION OF PERSON'] %>\nDATE: <%=  @values['10 DATE'] %>",
           "required": true
         },
         {
@@ -927,7 +953,7 @@
           "id": "Days Due",
           "label": "Days Due",
           "menu": "",
-          "value": "<%=@results['Build Config']['Service Days Due']%>",
+          "value": "3",
           "required": true
         },
         {
@@ -1009,19 +1035,13 @@
             "type": "Complete",
             "value": "",
             "content": "routine_kinetic_submission_activity_create_v1_105"
-          },
-          {
-            "label": "",
-            "type": "Complete",
-            "value": "",
-            "content": "system_junction_v1_100"
           }
         ]
       },
       "id": "routine_2875_change_record_create_99",
       "position": {
-        "x": -37.9573,
-        "y": 1110.2163
+        "x": -20.934698292315403,
+        "y": 1155.3790322953282
       },
       "version": 1,
       "parameters": [
@@ -1077,20 +1097,11 @@
       "messages": [
 
       ],
-      "dependents": {
-        "task": [
-          {
-            "label": "",
-            "type": "Complete",
-            "value": "",
-            "content": "utilities_echo_v1_29"
-          }
-        ]
-      },
+      "dependents": "",
       "id": "system_junction_v1_100",
       "position": {
-        "x": 391.05182,
-        "y": 1121.6259
+        "x": 397.05182,
+        "y": 1053.6259
       },
       "version": 1,
       "parameters": [
@@ -1113,14 +1124,14 @@
             "label": "",
             "type": "Complete",
             "value": "",
-            "content": "routine_2875_change_record_create_99"
+            "content": "kinetic_request_ce_attachment_copy_v2_107"
           }
         ]
       },
       "id": "routine_merge_submission_and_descendant_values_101",
       "position": {
         "x": -35.994987,
-        "y": 962.1028
+        "y": 949.1028
       },
       "version": 1,
       "parameters": [
@@ -1225,7 +1236,7 @@
           "id": "Kapp Slug",
           "label": "Kapp Slug",
           "menu": "",
-          "value": "<%=@results['Build Config']['Queue Kapp Slug']%>",
+          "value": "queue",
           "required": true
         },
         {
@@ -1245,7 +1256,7 @@
           "id": "Summary",
           "label": "Summary",
           "menu": "",
-          "value": "<%=@results['Build Config']['Fulfillment Summary']%>",
+          "value": "2875 for <%=  @values['1 NAME'] %> Information Owner Approval",
           "required": true
         },
         {
@@ -1255,7 +1266,7 @@
           "id": "Details",
           "label": "Details",
           "menu": "",
-          "value": "<%=@results['Build Config']['Fulfillment Details']%>",
+          "value": "NAME: <%=  @values['1 NAME'] %>\nORGANIZATION: <%=  @values['2 ORGANIZATION'] %>\nOFFICE SYMBOL DEPARTMENT: <%=  @values['3 OFFICE SYMBOL DEPARTMENT'] %>\nPHONE: <%=  @values['4 PHONE'] %>\nOFFICIAL E-MAIL ADDRESS: <%=  @values['5 OFFICIAL E-MAIL ADDRESS'] %>\nJOB TITLE AND GRADE RANK: <%=  @values['6 JOB TITLE AND GRADE RANK'] %>\nOFFICIAL MAILING ADDRESS: <%=  @values['7 OFFICIAL MAILING ADDRESS'] %>\nCITIZENSHIP: <%=  @values['8 CITIZENSHIP'] %>\nDESIGNATION OF PERSON: <%=  @values['9 DESIGNATION OF PERSON'] %>\nDATE: <%=  @values['10 DATE'] %>",
           "required": true
         },
         {
@@ -1265,7 +1276,7 @@
           "id": "Days Due",
           "label": "Days Due",
           "menu": "",
-          "value": "<%=@results['Build Config']['Service Days Due']%>",
+          "value": "3",
           "required": true
         },
         {
@@ -1343,8 +1354,8 @@
       "dependents": "",
       "id": "routine_kinetic_submission_activity_create_v1_105",
       "position": {
-        "x": -299.31848,
-        "y": 1110.7994
+        "x": -19.90556189158065,
+        "y": 1264.5260435986156
       },
       "version": 1,
       "parameters": [
@@ -1440,7 +1451,7 @@
           "id": "Kapp Slug",
           "label": "Kapp Slug",
           "menu": "",
-          "value": "<%=@results['Build Config']['Queue Kapp Slug']%>",
+          "value": "queue",
           "required": true
         },
         {
@@ -1460,7 +1471,7 @@
           "id": "Summary",
           "label": "Summary",
           "menu": "",
-          "value": "<%=@results['Build Config']['Fulfillment Summary']%>",
+          "value": "2875 for <%=  @values['1 NAME'] %> IA Approval",
           "required": true
         },
         {
@@ -1470,7 +1481,7 @@
           "id": "Details",
           "label": "Details",
           "menu": "",
-          "value": "<%=@results['Build Config']['Fulfillment Details']%>",
+          "value": "NAME: <%=  @values['1 NAME'] %>\nORGANIZATION: <%=  @values['2 ORGANIZATION'] %>\nOFFICE SYMBOL DEPARTMENT: <%=  @values['3 OFFICE SYMBOL DEPARTMENT'] %>\nPHONE: <%=  @values['4 PHONE'] %>\nOFFICIAL E-MAIL ADDRESS: <%=  @values['5 OFFICIAL E-MAIL ADDRESS'] %>\nJOB TITLE AND GRADE RANK: <%=  @values['6 JOB TITLE AND GRADE RANK'] %>\nOFFICIAL MAILING ADDRESS: <%=  @values['7 OFFICIAL MAILING ADDRESS'] %>\nCITIZENSHIP: <%=  @values['8 CITIZENSHIP'] %>\nDESIGNATION OF PERSON: <%=  @values['9 DESIGNATION OF PERSON'] %>\nDATE: <%=  @values['10 DATE'] %>",
           "required": true
         },
         {
@@ -1480,7 +1491,7 @@
           "id": "Days Due",
           "label": "Days Due",
           "menu": "",
-          "value": "<%=@results['Build Config']['Service Days Due']%>",
+          "value": "3",
           "required": true
         },
         {
@@ -1545,6 +1556,115 @@
         }
       ],
       "definitionId": "routine_queue_task_create_with_custom_activity_label"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": false,
+      "name": "Copy Final 2875",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "",
+            "type": "Complete",
+            "value": "",
+            "content": "system_junction_v1_100"
+          }
+        ]
+      },
+      "id": "kinetic_request_ce_attachment_copy_v2_107",
+      "position": {
+        "x": -27.99498700000001,
+        "y": 1048.1028000000001
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Determine what to return if an error is encountered.",
+          "id": "error_handling",
+          "label": "Error Handling",
+          "menu": "Error Message,Raise Error",
+          "value": "Raise Error",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Slug of the Space where the handler should be imported",
+          "id": "space_slug",
+          "label": "Space Slug",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Submission Id that contains the attached file to copy",
+          "id": "submission_id",
+          "label": "From Submission Id",
+          "menu": "",
+          "value": "<%= @results['Part 3']['Task Submission Id'] %>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Name of the file attachment field on the Kinetic Request CE form to copy from",
+          "id": "field_name",
+          "label": "From Form Field Name",
+          "menu": "",
+          "value": "DD 2875 PDF",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The Kapp the receiving form is in.",
+          "id": "kapp_slug",
+          "label": "To Kapp Slug",
+          "menu": "",
+          "value": "<%=  @kapp['Slug'] %>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "The Form receiving the attachment.",
+          "id": "form_slug",
+          "label": "To Form Slug",
+          "menu": "",
+          "value": "<%=  @form['Slug'] %>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Submission Id that contains the attached file to copy to",
+          "id": "to_submission_id",
+          "label": "To Submission Id",
+          "menu": "",
+          "value": "<%=  @submission['Id'] %>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "Name of the file attachment field on the Kinetic Request CE form to copy to",
+          "id": "to_field_name",
+          "label": "To Form Field Name",
+          "menu": "",
+          "value": "Final 2875 PDF",
+          "required": true
+        }
+      ],
+      "definitionId": "kinetic_request_ce_attachment_copy_v2"
     }
   ]
 }

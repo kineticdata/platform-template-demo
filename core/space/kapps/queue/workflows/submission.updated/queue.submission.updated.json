@@ -1,0 +1,110 @@
+{
+  "builderVersion": "",
+  "schemaVersion": "1.0",
+  "version": "",
+  "processOwnerEmail": "",
+  "lastId": 10,
+  "name": "Queue Submission Updated",
+  "notes": "",
+  "connectors": [
+    {
+      "from": "start",
+      "to": "utilities_create_trigger_v1_2",
+      "label": "Has Deferral and Open",
+      "value": "!@values['Deferral Token'].to_s.empty? && @submission['Core State'] == \"Draft\"",
+      "type": "Complete"
+    }
+  ],
+  "nodes": [
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": false,
+      "name": "Start",
+      "messages": [
+
+      ],
+      "dependents": {
+        "task": [
+          {
+            "label": "Has Deferral and Open",
+            "type": "Complete",
+            "value": "!@values['Deferral Token'].to_s.empty? && @submission['Core State'] == \"Draft\"",
+            "content": "utilities_create_trigger_v1_2"
+          }
+        ]
+      },
+      "id": "start",
+      "position": {
+        "x": 725,
+        "y": -14
+      },
+      "version": 1,
+      "parameters": [
+
+      ],
+      "definitionId": "system_start_v1"
+    },
+    {
+      "configured": true,
+      "defers": false,
+      "deferrable": false,
+      "visible": true,
+      "name": "Update Parent Activity Record",
+      "messages": [
+
+      ],
+      "dependents": "",
+      "id": "utilities_create_trigger_v1_2",
+      "position": {
+        "x": 657,
+        "y": 178
+      },
+      "version": 1,
+      "parameters": [
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "action_type",
+          "label": "Action Type",
+          "menu": "Update,Complete",
+          "value": "Update",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "deferral_token",
+          "label": "Deferral Token",
+          "menu": "",
+          "value": "<%= @values['Deferral Token']%>",
+          "required": true
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "deferred_variables",
+          "label": "Deferred Results",
+          "menu": "",
+          "value": "",
+          "required": false
+        },
+        {
+          "dependsOnId": "",
+          "dependsOnValue": "",
+          "description": "",
+          "id": "message",
+          "label": "Message",
+          "menu": "",
+          "value": "Activity Update",
+          "required": false
+        }
+      ],
+      "definitionId": "utilities_create_trigger_v1"
+    }
+  ]
+}

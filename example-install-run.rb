@@ -1,7 +1,7 @@
 require "json"
 
-space_name = "Service Portal Temlate"
-space_slug = "service-portal-template"
+space_name = "Demo Temlate"
+space_slug = "demo"
 server = "https://#{space_slug}.kinops.io"
 username = "admin-user"
 password = "admin-password"
@@ -30,11 +30,6 @@ data = {
      "server" => "#{server}/app/components/task",
      "space_slug" => space_slug,
      "signature_secret" => "1234asdf5678jkl;"
-   },
-   "discussions" => {
-     "api" => "#{server}/app/discussions/api/v1",
-     "server" => "#{server}/app/discussions",
-     "space_slug" => space_slug
    },
    "data" => {
      "requesting_user" => {

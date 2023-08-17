@@ -67,7 +67,7 @@
 require "logger"
 require "json"
 
-template_name = "platform-template-service-portal"
+template_name = "platform-template-demo"
 
 logger = Logger.new(STDERR)
 logger.level = Logger::INFO

@@ -1,0 +1,117 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_bmc_helix_incident_create</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>BMC Helix Incident Create</name>
+        <author></author>
+        <notes></notes>
+        <lastID>4</lastID>
+        <taskDefinition id="routine_bmc_helix_incident_create" name="BMC Helix Incident Create" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Submitter" label="Submitter" required="true" tooltip=""></parameter>
+                <parameter id="Summary" label="Summary" required="true" tooltip=""></parameter>
+                <parameter id="Description" label="Description" required="true" tooltip=""></parameter>
+                <parameter id="Impact" label="Impact" required="true" tooltip=""></parameter>
+                <parameter id="Urgency" label="Urgency" required="true" tooltip=""></parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Incident Number" tooltip="INC..."></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="10" y="10">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">routine_bmc_helix_person_retrieve_2</task>
+                </dependents>
+            </task>
+            <task definition_id="ars_rest_api_v1" id="ars_rest_api_v1_1" name="Create Incident" x="524" y="23.5">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Error Message</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="method" label="Method" menu="GET,POST,PUT,DELETE" required="true" tooltip="GET,POST,PUT,DELETE (Defaults to GET)">POST</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="path" label="Path" menu="" required="true" tooltip="See readme for examples.">HPD:IncidentInterface_Create/?fields=values(Incident Number,InstanceId)</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="body" label="Body" menu="" required="false" tooltip="JSON body if applicable (POST,PUT)">&lt;%= 
+customer = JSON.parse(@results['Retrieve Customer Information']['Results JSON'])[0]["values"]
+
+{
+  "values" =&gt; { 
+    "Person ID" =&gt; customer['Person ID'],
+    "Login_ID" =&gt; customer['Remedy Login ID'],
+    "Internet E-mail" =&gt; customer['Internet E-mail'],
+    "First_Name" =&gt; customer['First Name'],
+    "Last_Name" =&gt; customer['Last Name'],
+    "Middle Initial" =&gt; customer['Middle Initial'],
+    "Person Instance ID" =&gt; customer['instanceId'],
+    "Site ID" =&gt; customer['Site ID'],
+    "Site" =&gt; customer['Site'],
+    "Region" =&gt; customer['Region'],
+    "Site Group" =&gt; customer['Site Group'],
+    "Contact_Company" =&gt; "Calbro Services",
+    "Status" =&gt; "Assigned",
+    "Assigned Support Company" =&gt; "Calbro Services",
+    "Assigned Support Organization" =&gt; "IT Support",
+    "Assigned Group" =&gt; "Backoffice Support",
+    "Company" =&gt; "Calbro Services",
+    "Detailed_Decription" =&gt; @inputs['Description'],
+    "Description" =&gt; @inputs['Summary'],
+    "Impact" =&gt; @inputs['Impact'],
+    "Priority" =&gt; "3",
+    "Urgency" =&gt; @inputs['Urgency'],
+    "Priority Weight" =&gt; "0",
+    "Service_Type" =&gt; "User Service Restoration",
+    "Reported Source" =&gt; "Phone",
+    "z1D_Action" =&gt; "CREATE"
+  }
+}.to_json %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_4</task>
+                </dependents>
+            </task>
+            <task definition_id="routine_bmc_helix_person_retrieve" id="routine_bmc_helix_person_retrieve_2" name="Retrieve Customer Information" x="208" y="17.5">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>true</defers>
+                <deferrable>true</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Query" label="Query" menu="" required="true" tooltip="'Profile Status'=&quot;Enabled&quot;">'Internet E-mail'="&lt;%= @inputs['Submitter'] %&gt;"</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">ars_rest_api_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_4" name="Return" x="871" y="23.5">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Incident Number" label="Incident Number" menu="" required="false" tooltip="INC...">&lt;%= JSON.parse(@results['Create Incident']['Response Body'])["values"]["Incident Number"] %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

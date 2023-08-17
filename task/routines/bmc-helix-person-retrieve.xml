@@ -1,0 +1,67 @@
+<tree schema_version="1.0">
+    <sourceName>-</sourceName>
+    <sourceGroup>-</sourceGroup>
+    <definitionId>routine_bmc_helix_person_retrieve</definitionId>
+    <type>Global Routine</type>
+    <status>Active</status>
+    <taskTree builder_version="" schema_version="1.0" version="">
+        <name>BMC Helix Person Retrieve</name>
+        <author></author>
+        <notes></notes>
+        <lastID>2</lastID>
+        <taskDefinition id="routine_bmc_helix_person_retrieve" name="BMC Helix Person Retrieve" schema_version="1.0" version="1">
+            <visible>false</visible>
+            <deferrable>true</deferrable>
+            <parameters>
+                <parameter id="Query" label="Query" required="true" tooltip="'Profile Status'=&quot;Enabled&quot;">'Profile Status'="Enabled"</parameter>
+            </parameters>
+            <handler name="system_tree_call" version="1"></handler>
+            <results format="xml">
+                <result name="Results JSON" tooltip=""></result>
+            </results>
+        </taskDefinition>
+        <request>
+            <task definition_id="system_start_v1" id="start" name="Start" x="53" y="30">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters></parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">ars_rest_api_v1_1</task>
+                </dependents>
+            </task>
+            <task definition_id="ars_rest_api_v1" id="ars_rest_api_v1_1" name="Fetch People" x="283" y="35.5">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="error_handling" label="Error Handling" menu="Error Message,Raise Error" required="true" tooltip="Determine what to return if an error is encountered.">Raise Error</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="method" label="Method" menu="GET,POST,PUT,DELETE" required="true" tooltip="GET,POST,PUT,DELETE (Defaults to GET)">GET</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="path" label="Path" menu="" required="true" tooltip="See readme for examples.">/CTM:People?fields=values(Person ID,Profile Status,First Name,Last Name,Middle Initial,Phone Number Business,Internet E-mail,Site,Remedy Login ID,instanceId,Site ID,Region,Site Group)&amp;q=&lt;%= @inputs['Query'] %&gt;</parameter>
+                    <parameter dependsOnId="" dependsOnValue="" id="body" label="Body" menu="" required="false" tooltip="JSON body if applicable (POST,PUT)"></parameter>
+                </parameters>
+                <messages></messages>
+                <dependents>
+                    <task label="" type="Complete" value="">system_tree_return_v1_2</task>
+                </dependents>
+            </task>
+            <task definition_id="system_tree_return_v1" id="system_tree_return_v1_2" name="Return Results" x="636" y="36.5">
+                <version>1</version>
+                <configured>true</configured>
+                <defers>false</defers>
+                <deferrable>false</deferrable>
+                <visible>false</visible>
+                <parameters>
+                    <parameter dependsOnId="" dependsOnValue="" id="Results JSON" label="Results JSON" menu="" required="false" tooltip="">&lt;%= JSON.parse(@results['Fetch People']['Response Body'])["entries"].to_json %&gt;</parameter>
+                </parameters>
+                <messages></messages>
+                <dependents></dependents>
+            </task>
+        </request>
+    </taskTree>
+</tree>

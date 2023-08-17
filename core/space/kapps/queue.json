@@ -11,14 +11,6 @@
   "displayValue": null,
   "fields": [
     {
-      "name": "Deferral Token",
-      "renderType": "text"
-    },
-    {
-      "name": "Requested By",
-      "renderType": "text"
-    },
-    {
       "name": "Assigned Individual",
       "renderType": "text"
     },
@@ -27,7 +19,15 @@
       "renderType": "text"
     },
     {
-      "name": "Status",
+      "name": "Deferral Token",
+      "renderType": "text"
+    },
+    {
+      "name": "Due Date",
+      "renderType": "datetime"
+    },
+    {
+      "name": "Requested By",
       "renderType": "text"
     },
     {
@@ -35,8 +35,8 @@
       "renderType": "text"
     },
     {
-      "name": "Due Date",
-      "renderType": "datetime"
+      "name": "Status",
+      "renderType": "text"
     }
   ],
   "indexDefinitions": [

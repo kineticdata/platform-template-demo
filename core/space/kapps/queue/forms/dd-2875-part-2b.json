@@ -1,0 +1,861 @@
+{
+  "anonymous": false,
+  "attributes": [
+    {
+      "name": "Custom Submission Workflow",
+      "values": [
+        "Submitted"
+      ]
+    },
+    {
+      "name": "Form Configuration",
+      "values": [
+        "{\"columns\":[{\"name\":\"Justification for Access\",\"label\":\"Justification for Access\",\"type\":\"value\",\"visible\":false},{\"name\":\"Type of Access Required\",\"label\":\"Type of Access Required\",\"type\":\"value\",\"visible\":false},{\"name\":\"User Requires Access To\",\"label\":\"User Requires Access To\",\"type\":\"value\",\"visible\":false},{\"name\":\"User Requires Access To - Other\",\"label\":\"User Requires Access To - Other\",\"type\":\"value\",\"visible\":false},{\"name\":\"Verification of Need to Know\",\"label\":\"Verification of Need to Know\",\"type\":\"value\",\"visible\":false},{\"name\":\"handle\",\"label\":\"Handle\",\"type\":\"system\",\"visible\":true},{\"name\":\"label\",\"label\":\"Label\",\"type\":\"system\",\"visible\":true},{\"name\":\"createdAt\",\"label\":\"Created At\",\"type\":\"system\",\"visible\":false},{\"name\":\"createdBy\",\"label\":\"Created By\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedAt\",\"label\":\"Updated At\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedBy\",\"label\":\"Updated By\",\"type\":\"system\",\"visible\":false},{\"name\":\"id\",\"label\":\"Id\",\"type\":\"system\",\"visible\":false}]}"
+      ]
+    },
+    {
+      "name": "Icon",
+      "values": [
+        ""
+      ]
+    },
+    {
+      "name": "Prohibit Subtasks",
+      "values": [
+        "True"
+      ]
+    }
+  ],
+  "bridgedResources": [
+
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": "<style>\n  .modal.show .modal-dialog.work-menu {\n    transform: translate(0);\n    max-width: 90% !important;\n    max-height: 90% !important;\n    height: 90% !important;\n  }\n  .paper-form {\n    display: flex;\n    flex-wrap: wrap;\n    border: 1px solid #1b1c1d;\n  }\n  .paper-form > .section-title {\n    margin: 0;\n    font-size: 1.125rem;\n    font-weight: 700;\n    text-align: center;\n  }\n  .paper-form > .paper-form {\n    padding: 0;\n    border: none;\n  }\n  .paper-form > section,\n  .paper-form > div {\n    position: relative;\n    flex: 1 1 100%;\n    border: 1px solid #1b1c1d;\n    padding: 0.125rem 0.25rem;\n    margin: 0;\n    max-width: 100%;\n    break-inside: avoid;\n  }\n  .paper-form > section.sr-only,\n  .paper-form > div.sr-only {\n    border: none;\n    padding: 0;\n    height: 0;\n  }\n  .paper-form > section.col1,\n  .paper-form > div.col1 {\n    flex-basis: calc(100% * 1 / 12);\n    min-width: calc(6rem + 1 * 1rem);\n  }\n  .paper-form > section.col0p,\n  .paper-form > div.col0p {\n    flex-basis: calc(100% * 0.5 / 12);\n    min-width: calc(6rem + 0.5 * 1rem);\n  }\n  .paper-form > section.col2,\n  .paper-form > div.col2 {\n    flex-basis: calc(100% * 2 / 12);\n    min-width: calc(6rem + 2 * 1rem);\n  }\n  .paper-form > section.col1p,\n  .paper-form > div.col1p {\n    flex-basis: calc(100% * 1.5 / 12);\n    min-width: calc(6rem + 1.5 * 1rem);\n  }\n  .paper-form > section.col3,\n  .paper-form > div.col3 {\n    flex-basis: calc(100% * 3 / 12);\n    min-width: calc(6rem + 3 * 1rem);\n  }\n  .paper-form > section.col2p,\n  .paper-form > div.col2p {\n    flex-basis: calc(100% * 2.5 / 12);\n    min-width: calc(6rem + 2.5 * 1rem);\n  }\n  .paper-form > section.col4,\n  .paper-form > div.col4 {\n    flex-basis: calc(100% * 4 / 12);\n    min-width: calc(6rem + 4 * 1rem);\n  }\n  .paper-form > section.col3p,\n  .paper-form > div.col3p {\n    flex-basis: calc(100% * 3.5 / 12);\n    min-width: calc(6rem + 3.5 * 1rem);\n  }\n  .paper-form > section.col5,\n  .paper-form > div.col5 {\n    flex-basis: calc(100% * 5 / 12);\n    min-width: calc(6rem + 5 * 1rem);\n  }\n  .paper-form > section.col4p,\n  .paper-form > div.col4p {\n    flex-basis: calc(100% * 4.5 / 12);\n    min-width: calc(6rem + 4.5 * 1rem);\n  }\n  .paper-form > section.col6,\n  .paper-form > div.col6 {\n    flex-basis: calc(100% * 6 / 12);\n    min-width: calc(6rem + 6 * 1rem);\n  }\n  .paper-form > section.col5p,\n  .paper-form > div.col5p {\n    flex-basis: calc(100% * 5.5 / 12);\n    min-width: calc(6rem + 5.5 * 1rem);\n  }\n  .paper-form > section.col7,\n  .paper-form > div.col7 {\n    flex-basis: calc(100% * 7 / 12);\n    min-width: calc(6rem + 7 * 1rem);\n  }\n  .paper-form > section.col6p,\n  .paper-form > div.col6p {\n    flex-basis: calc(100% * 6.5 / 12);\n    min-width: calc(6rem + 6.5 * 1rem);\n  }\n  .paper-form > section.col8,\n  .paper-form > div.col8 {\n    flex-basis: calc(100% * 8 / 12);\n    min-width: calc(6rem + 8 * 1rem);\n  }\n  .paper-form > section.col7p,\n  .paper-form > div.col7p {\n    flex-basis: calc(100% * 7.5 / 12);\n    min-width: calc(6rem + 7.5 * 1rem);\n  }\n  .paper-form > section.col9,\n  .paper-form > div.col9 {\n    flex-basis: calc(100% * 9 / 12);\n    min-width: calc(6rem + 9 * 1rem);\n  }\n  .paper-form > section.col8p,\n  .paper-form > div.col8p {\n    flex-basis: calc(100% * 8.5 / 12);\n    min-width: calc(6rem + 8.5 * 1rem);\n  }\n  .paper-form > section.col10,\n  .paper-form > div.col10 {\n    flex-basis: calc(100% * 10 / 12);\n    min-width: calc(6rem + 10 * 1rem);\n  }\n  .paper-form > section.col9p,\n  .paper-form > div.col9p {\n    flex-basis: calc(100% * 9.5 / 12);\n    min-width: calc(6rem + 9.5 * 1rem);\n  }\n  .paper-form > section.col11,\n  .paper-form > div.col11 {\n    flex-basis: calc(100% * 11 / 12);\n    min-width: calc(6rem + 11 * 1rem);\n  }\n  .paper-form > section.col10p,\n  .paper-form > div.col10p {\n    flex-basis: calc(100% * 10.5 / 12);\n    min-width: calc(6rem + 10.5 * 1rem);\n  }\n  .paper-form > section.col12,\n  .paper-form > div.col12 {\n    flex-basis: calc(100% * 12 / 12);\n    min-width: calc(6rem + 12 * 1rem);\n  }\n  .paper-form > section.col11p,\n  .paper-form > div.col11p {\n    flex-basis: calc(100% * 11.5 / 12);\n    min-width: calc(6rem + 11.5 * 1rem);\n  }\n  .paper-form > section.inline-group,\n  .paper-form > div.inline-group {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  .paper-form > section.inline-group > .inline-group-label,\n  .paper-form > div.inline-group > .inline-group-label {\n    flex: 0 0 100%;\n    line-height: 1.2;\n    font-weight: bold;\n    color: #1b1c1d;\n  }\n  .paper-form > section.inline-group > .inline-group-label em,\n  .paper-form > div.inline-group > .inline-group-label em {\n    font-size: 0.75rem;\n    font-weight: 400;\n  }\n  .paper-form > section.inline-group > section,\n  .paper-form > section.inline-group > div,\n  .paper-form > div.inline-group > section,\n  .paper-form > div.inline-group > div {\n    flex: 0 1 auto;\n    margin: 0;\n  }\n  .paper-form > section.inline-group > section.col1,\n  .paper-form > section.inline-group > div.col1,\n  .paper-form > div.inline-group > section.col1,\n  .paper-form > div.inline-group > div.col1 {\n    flex-basis: calc(100% * 1 / 12);\n  }\n  .paper-form > section.inline-group > section.col0p,\n  .paper-form > section.inline-group > div.col0p,\n  .paper-form > div.inline-group > section.col0p,\n  .paper-form > div.inline-group > div.col0p {\n    flex-basis: calc(100% * 0.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col2,\n  .paper-form > section.inline-group > div.col2,\n  .paper-form > div.inline-group > section.col2,\n  .paper-form > div.inline-group > div.col2 {\n    flex-basis: calc(100% * 2 / 12);\n  }\n  .paper-form > section.inline-group > section.col1p,\n  .paper-form > section.inline-group > div.col1p,\n  .paper-form > div.inline-group > section.col1p,\n  .paper-form > div.inline-group > div.col1p {\n    flex-basis: calc(100% * 1.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col3,\n  .paper-form > section.inline-group > div.col3,\n  .paper-form > div.inline-group > section.col3,\n  .paper-form > div.inline-group > div.col3 {\n    flex-basis: calc(100% * 3 / 12);\n  }\n  .paper-form > section.inline-group > section.col2p,\n  .paper-form > section.inline-group > div.col2p,\n  .paper-form > div.inline-group > section.col2p,\n  .paper-form > div.inline-group > div.col2p {\n    flex-basis: calc(100% * 2.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col4,\n  .paper-form > section.inline-group > div.col4,\n  .paper-form > div.inline-group > section.col4,\n  .paper-form > div.inline-group > div.col4 {\n    flex-basis: calc(100% * 4 / 12);\n  }\n  .paper-form > section.inline-group > section.col3p,\n  .paper-form > section.inline-group > div.col3p,\n  .paper-form > div.inline-group > section.col3p,\n  .paper-form > div.inline-group > div.col3p {\n    flex-basis: calc(100% * 3.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col5,\n  .paper-form > section.inline-group > div.col5,\n  .paper-form > div.inline-group > section.col5,\n  .paper-form > div.inline-group > div.col5 {\n    flex-basis: calc(100% * 5 / 12);\n  }\n  .paper-form > section.inline-group > section.col4p,\n  .paper-form > section.inline-group > div.col4p,\n  .paper-form > div.inline-group > section.col4p,\n  .paper-form > div.inline-group > div.col4p {\n    flex-basis: calc(100% * 4.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col6,\n  .paper-form > section.inline-group > div.col6,\n  .paper-form > div.inline-group > section.col6,\n  .paper-form > div.inline-group > div.col6 {\n    flex-basis: calc(100% * 6 / 12);\n  }\n  .paper-form > section.inline-group > section.col5p,\n  .paper-form > section.inline-group > div.col5p,\n  .paper-form > div.inline-group > section.col5p,\n  .paper-form > div.inline-group > div.col5p {\n    flex-basis: calc(100% * 5.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col7,\n  .paper-form > section.inline-group > div.col7,\n  .paper-form > div.inline-group > section.col7,\n  .paper-form > div.inline-group > div.col7 {\n    flex-basis: calc(100% * 7 / 12);\n  }\n  .paper-form > section.inline-group > section.col6p,\n  .paper-form > section.inline-group > div.col6p,\n  .paper-form > div.inline-group > section.col6p,\n  .paper-form > div.inline-group > div.col6p {\n    flex-basis: calc(100% * 6.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col8,\n  .paper-form > section.inline-group > div.col8,\n  .paper-form > div.inline-group > section.col8,\n  .paper-form > div.inline-group > div.col8 {\n    flex-basis: calc(100% * 8 / 12);\n  }\n  .paper-form > section.inline-group > section.col7p,\n  .paper-form > section.inline-group > div.col7p,\n  .paper-form > div.inline-group > section.col7p,\n  .paper-form > div.inline-group > div.col7p {\n    flex-basis: calc(100% * 7.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col9,\n  .paper-form > section.inline-group > div.col9,\n  .paper-form > div.inline-group > section.col9,\n  .paper-form > div.inline-group > div.col9 {\n    flex-basis: calc(100% * 9 / 12);\n  }\n  .paper-form > section.inline-group > section.col8p,\n  .paper-form > section.inline-group > div.col8p,\n  .paper-form > div.inline-group > section.col8p,\n  .paper-form > div.inline-group > div.col8p {\n    flex-basis: calc(100% * 8.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col10,\n  .paper-form > section.inline-group > div.col10,\n  .paper-form > div.inline-group > section.col10,\n  .paper-form > div.inline-group > div.col10 {\n    flex-basis: calc(100% * 10 / 12);\n  }\n  .paper-form > section.inline-group > section.col9p,\n  .paper-form > section.inline-group > div.col9p,\n  .paper-form > div.inline-group > section.col9p,\n  .paper-form > div.inline-group > div.col9p {\n    flex-basis: calc(100% * 9.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col11,\n  .paper-form > section.inline-group > div.col11,\n  .paper-form > div.inline-group > section.col11,\n  .paper-form > div.inline-group > div.col11 {\n    flex-basis: calc(100% * 11 / 12);\n  }\n  .paper-form > section.inline-group > section.col10p,\n  .paper-form > section.inline-group > div.col10p,\n  .paper-form > div.inline-group > section.col10p,\n  .paper-form > div.inline-group > div.col10p {\n    flex-basis: calc(100% * 10.5 / 12);\n  }\n  .paper-form > section.inline-group > section.col12,\n  .paper-form > section.inline-group > div.col12,\n  .paper-form > div.inline-group > section.col12,\n  .paper-form > div.inline-group > div.col12 {\n    flex-basis: calc(100% * 12 / 12);\n  }\n  .paper-form > section.inline-group > section.col11p,\n  .paper-form > section.inline-group > div.col11p,\n  .paper-form > div.inline-group > section.col11p,\n  .paper-form > div.inline-group > div.col11p {\n    flex-basis: calc(100% * 11.5 / 12);\n  }\n  .paper-form > section[data-tooltip]:before,\n  .paper-form > div[data-tooltip]:before {\n    content: attr(data-tooltip);\n    font-size: 0.75rem;\n    position: absolute;\n    bottom: calc(100% - 1rem);\n    left: 0;\n    width: 100%;\n    padding: 0.25rem 0.625rem;\n    background-color: #1474e5;\n    color: #ffffff;\n    border-radius: 0.125rem 0.125rem 0 0;\n    opacity: 0;\n    pointer-events: none;\n    transition: all 0.3s;\n    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.25);\n  }\n  .paper-form > section[data-tooltip]:focus-within:before,\n  .paper-form > div[data-tooltip]:focus-within:before {\n    opacity: 1;\n    bottom: 100%;\n  }\n  .paper-form .inline-group,\n  .paper-form .form-group,\n  .paper-form .radio,\n  .paper-form .checkbox {\n    margin-bottom: 0;\n  }\n  .paper-form .inline-group label,\n  .paper-form .form-group label,\n  .paper-form .radio label,\n  .paper-form .checkbox label {\n    line-height: 1.2;\n    font-weight: bold;\n    color: #1b1c1d;\n    word-break: break-word;\n  }\n  .paper-form .form-group.inline-field,\n  .paper-form .radio.inline-field,\n  .paper-form .checkbox.inline-field {\n    display: flex;\n    flex-wrap: wrap;\n  }\n  .paper-form .form-group.inline-field label.field-label,\n  .paper-form .radio.inline-field label.field-label,\n  .paper-form .checkbox.inline-field label.field-label {\n    flex: 0 0 auto;\n    width: auto;\n    margin-right: 1rem;\n    line-height: calc(0.875rem * 1.5 + 0.5rem);\n  }\n  .paper-form .form-group label.field-label:empty, .paper-form .form-group label.field-label.hide-label,\n  .paper-form .radio label.field-label:empty,\n  .paper-form .radio label.field-label.hide-label,\n  .paper-form .checkbox label.field-label:empty,\n  .paper-form .checkbox label.field-label.hide-label {\n    display: none;\n  }\n  .paper-form .form-group label.field-label em,\n  .paper-form .radio label.field-label em,\n  .paper-form .checkbox label.field-label em {\n    font-size: 0.75rem;\n    font-weight: 400;\n    margin-left: 0.25rem;\n  }\n  .paper-form .form-group.inline-field .form-control,\n  .paper-form .form-group.inline-field .form-control-plaintext,\n  .paper-form .form-group.inline-field input[type=text],\n  .paper-form .form-group.inline-field input[type=password],\n  .paper-form .form-group.inline-field input[type=color],\n  .paper-form .form-group.inline-field input[type=date],\n  .paper-form .form-group.inline-field input[type=datetime-local],\n  .paper-form .form-group.inline-field input[type=email],\n  .paper-form .form-group.inline-field input[type=month],\n  .paper-form .form-group.inline-field input[type=number],\n  .paper-form .form-group.inline-field input[type=search],\n  .paper-form .form-group.inline-field input[type=tel],\n  .paper-form .form-group.inline-field input[type=time],\n  .paper-form .form-group.inline-field input[type=url],\n  .paper-form .form-group.inline-field input[type=week],\n  .paper-form .form-group.inline-field select {\n    width: auto;\n  }\n  .paper-form .radio label:not(.field-label),\n  .paper-form .checkbox label:not(.field-label) {\n    margin-bottom: 0;\n    line-height: 1.5;\n    margin-top: 0.25rem;\n    margin-bottom: 0.25rem;\n  }\n  .paper-form .radio label:not(.field-label) input,\n  .paper-form .checkbox label:not(.field-label) input {\n    margin-right: 0.625rem;\n  }\n  .paper-form .radio label.field-label:empty + label:last-child,\n  .paper-form .checkbox label.field-label:empty + label:last-child {\n    font-weight: bold;\n  }\n  .paper-form .form-control,\n  .paper-form .form-control-plaintext,\n  .paper-form input[type=text],\n  .paper-form input[type=password],\n  .paper-form input[type=color],\n  .paper-form input[type=date],\n  .paper-form input[type=datetime-local],\n  .paper-form input[type=email],\n  .paper-form input[type=month],\n  .paper-form input[type=number],\n  .paper-form input[type=search],\n  .paper-form input[type=tel],\n  .paper-form input[type=time],\n  .paper-form input[type=url],\n  .paper-form input[type=week],\n  .paper-form select,\n  .paper-form textarea {\n    border-radius: 0;\n    border-color: #d4d5d6;\n    font-size: 0.875rem;\n    line-height: 1.5;\n    padding: 0.25rem 0.5rem;\n    height: calc(0.875rem * 1.5 + 0.5rem);\n    color: #4f5051;\n  }\n  .paper-form textarea,\n  .paper-form textarea:not(.form-control) {\n    height: auto;\n  }\n  .paper-form .form-control-plaintext {\n    height: auto;\n    border: 1px solid #d4d5d6;\n    background-color: white;\n    min-height: calc(0.875rem * 1.5 + 0.5rem);\n    white-space: pre-wrap;\n    border: none;\n    padding: 0;\n  }\n  .paper-form p {\n    margin: 0;\n  }\n  .paper-form .font-xl {\n    font-size: 1.125rem;\n  }\n  .paper-form .font-lg {\n    font-size: 1rem;\n  }\n  .paper-form .font-md {\n    font-size: 0.875rem;\n  }\n  .paper-form .font-sm {\n    font-size: 0.75rem;\n  }\n  .paper-form .strong {\n    font-weight: 700;\n  }\n</style>",
+  "description": "",
+  "indexDefinitions": [
+    {
+      "name": "closedBy",
+      "parts": [
+        "closedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[21a PHONE NUMBER]",
+      "parts": [
+        "values[21a PHONE NUMBER]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[21b DATE]",
+      "parts": [
+        "values[21b DATE]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "DD 2875 Part 2b",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Before Review Container",
+          "text": "",
+          "visible": false,
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Approval Decision",
+          "title": null,
+          "visible": "!form('review') || values('Decision') === 'Denied'",
+          "omitWhenHidden": true,
+          "renderAttributes": {
+            "class": "alert alert-info alert-bar"
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Decision",
+              "label": "Decision",
+              "key": "f930",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+                {
+                  "name": "Set Status Pending",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Status",
+                      "value": "Pending",
+                      "visible": null
+                    }
+                  ],
+                  "runIf": "values('Decision') === 'Pending'"
+                },
+                {
+                  "name": "Set Status Cancelled",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Status",
+                      "value": "Cancelled",
+                      "visible": null
+                    }
+                  ],
+                  "runIf": "values('Decision') === 'Denied'"
+                },
+                {
+                  "name": "Set Status Complete",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Status",
+                      "value": "Complete",
+                      "visible": null
+                    }
+                  ],
+                  "runIf": "values('Decision') === 'Approved'"
+                }
+              ],
+              "renderAttributes": {
+                "class": "mb-0"
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Approve and Continue",
+                  "value": "Approved"
+                },
+                {
+                  "label": "Deny",
+                  "value": "Denied"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Paper Form",
+          "title": null,
+          "visible": "values('Decision') == \"Approved\"",
+          "omitWhenHidden": true,
+          "renderAttributes": {
+            "class": "paper-form"
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Part 2",
+              "text": "<strong>PART II (CONTINUED) ENDORSEMENT OF ACCESS BY INFORMATION OWNER, USER SUPERVISOR OR GOVERNMENT SPONSOR</strong> <em class=\"font-sm\">(If individual is a contractor - provide company name, contract number, and date of contract expiration in Block 16.)</em>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Information Owner Signature Group",
+              "title": null,
+              "visible": true,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+                "class": "col6 inline-group"
+              },
+              "elements": [
+                {
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "Information Owner Signature Widget",
+                  "text": null,
+                  "visible": true,
+                  "renderAttributes": {
+                  }
+                },
+                {
+                  "type": "field",
+                  "name": "21 SIGNATURE OF INFORMATION OWNER OPR",
+                  "label": "21. SIGNATURE OF INFORMATION OWNER/OPR",
+                  "key": "f937",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": false,
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": false,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "file",
+                  "renderType": "attachment",
+                  "allowMultiple": false
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "21a PHONE NUMBER",
+              "label": "21a. PHONE NUMBER",
+              "key": "f938",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col3",
+                "data-tooltip": "Functional appointee telephone number."
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "21b DATE",
+              "label": "21b. DATE",
+              "key": "f939",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+                "class": "col3",
+                "data-tooltip": "The date the functional appointee signs the DD Form 2875."
+              },
+              "dataType": "string",
+              "renderType": "date"
+            }
+          ]
+        },
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Footer Notice",
+          "text": "<div class=\"footer-notice d-flex justify-content-between\">\n  <strong>DD FORM 2875, AUG 2009</strong>\n  <span>PREVIOUS EDITION IS OBSOLETE.</span>\n</div>",
+          "visible": "values('Decision') == \"Approved\"",
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "After Review Container",
+          "text": "",
+          "visible": false,
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Hidden Metadata",
+          "title": "",
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Assigned Individual",
+              "label": "Assigned Individual",
+              "key": "f912",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Assigned Individual Display Name",
+              "label": "Assigned Individual Display Name",
+              "key": "f913",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Assigned Team",
+              "label": "Assigned Team",
+              "key": "f910",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": "values('Assigned Individual') === null || values('Assigned Individual') === \"\"",
+              "requiredMessage": "",
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Assigned Team Display Name",
+              "label": "Assigned Team Display Name",
+              "key": "f911",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Deferral Token",
+              "label": "Deferral Token",
+              "key": "f914",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Discussion Id",
+              "label": "Discussion Id",
+              "key": "f902",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Observing Individuals",
+              "label": "Observing Individuals",
+              "key": "f905",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "json",
+              "renderType": "checkbox",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+
+              ]
+            },
+            {
+              "type": "field",
+              "name": "Observing Teams",
+              "label": "Observing Teams",
+              "key": "f904",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "json",
+              "renderType": "checkbox",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+
+              ]
+            },
+            {
+              "type": "field",
+              "name": "Status",
+              "label": "Status",
+              "key": "f901",
+              "defaultValue": "Open",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": "A valid status must be set.",
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "dropdown",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Open",
+                  "value": "Open"
+                },
+                {
+                  "label": "Pending",
+                  "value": "Pending"
+                },
+                {
+                  "label": "Cancelled",
+                  "value": "Cancelled"
+                },
+                {
+                  "label": "Complete",
+                  "value": "Complete"
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "Summary",
+              "label": "Summary",
+              "key": "f2",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Due Date",
+              "label": "Due Date",
+              "key": "f920",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "datetime"
+            },
+            {
+              "type": "field",
+              "name": "Details",
+              "label": "Details",
+              "key": "f1",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 2
+            },
+            {
+              "type": "field",
+              "name": "Originating Id",
+              "label": "Originating Id",
+              "key": "f4",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Originating System",
+              "label": "Originating System",
+              "key": "f5",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Originating Url",
+              "label": "Originating Url",
+              "key": "f6",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Resolution",
+              "label": "Resolution Text",
+              "key": "f917",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Scheduled Date",
+              "label": "Scheduled Date",
+              "key": "f921",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "datetime"
+            },
+            {
+              "type": "field",
+              "name": "System Input",
+              "label": "System Input",
+              "key": "f3",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "Load Review Parts",
+          "type": "Load",
+          "action": "Custom",
+          "code": "// If submission has origin id, and origin id submission has not yet been loaded\nif (submission('originId') && $('[data-loaded-id=' + submission('originId') + ']').length === 0) {\n  var loadingContent = $('<div>', { class: 'paper-form' }).append(\n    $('<div>', { class: 'section-title text-muted' }).append(\n      $('<span>', { class: 'fa fa-spinner fa-spin mr-2' }),\n      K.translate('Loading')\n    )\n  );\n  \n  // Show before review container\n  K('content[Before Review Container]').show();\n  // Create container to render into\n  const container = $('<div>', { class: 'mb-3',  'data-loaded-id': submission('originId') })\n    .append(loadingContent.clone())\n    .appendTo($(K('content[Before Review Container]').element()));\n  // Load the original submission in review\n  K.load({\n    parentForm: K('form'),\n    path: '/submissions/' + submission('originId') + '?review',\n    container: container.get(0)\n  });\n\n  // Fetch descendants of the original submission, which are siblings of this one, to render in review\n  $.ajax({\n    url: \"/app/api/v1/submissions/\"+submission('originId')+\"?include=descendants\", \n    success: function(response){\n      // Get the siblings that are not in draft and are not this submission\n      const siblings = response.submission.descendants.filter(function(s) {\n        return s.id !== submission('id') && s.coreState !== 'Draft';\n      });\n      // Get the siblings that came before this submission\n      const previousSiblings = siblings.filter(function(s) {\n          return s.submittedAt < submission('createdAt');\n        });\n      // Get the siblings that came after this submission\n      const nextSiblings = siblings.filter(function(s) {\n          return !!submission('submittedAt') && s.submittedAt > submission('submittedAt');\n        });\n\n      // Show previous siblings if any exist\n      if (previousSiblings && previousSiblings.length > 0) {\n        // Show before review container\n        K('content[Before Review Container]').show();\n        // For each previous sibling, render it in review\n        previousSiblings.forEach(function(sibling) {\n          // Create container to render it into\n          const container = $('<div>', { class: 'mb-3',  'data-loaded-id': sibling.id })\n            .append(loadingContent.clone())\n            .appendTo($(K('content[Before Review Container]').element()));\n          // Load the sibling submission in review\n          K.load({\n            parentForm: K('form'),\n            path: '/submissions/' + sibling.id + '?review',\n            container: container.get(0)\n          });\n        });\n      }\n      \n      // Show next siblings if any exist\n      if (nextSiblings && nextSiblings.length > 0) {\n        // Show after review container\n        K('content[After Review Container]').show();\n        // For each next  sibling, render it in review\n        nextSiblings.forEach(function(sibling) {\n          // Create container to render it into\n          const container = $('<div>', { class: 'mt-3', 'data-loaded-id': sibling.id })\n            .append(loadingContent.clone())\n            .appendTo($(K('content[After Review Container]').element()));\n          // Load the sibling submission in review\n          K.load({\n            parentForm: K('form'),\n            path: '/submissions/' + sibling.id + '?review',\n            container: container.get(0)\n          });\n        });\n      }\n    }\n  });\n}",
+          "runIf": ""
+        },
+        {
+          "name": "Add Information Owner Signature Widget",
+          "type": "Load",
+          "action": "Custom",
+          "code": "var ModalHeaderContentRenderer = function(props, options) {\n  return [\n    {\n      tag: 'h4',\n      props: { className: 'modal-title' },\n      children: [\n        {\n          tag: 'button',\n          props: { type: 'button', className: 'btn btn-link', onClick: props.toggle },\n          children: K.translate('Close'),\n        },\n        { tag: 'span', children: K.translate(props.title) },\n        !props.signed &&\n          props.valid && {\n            tag: 'button',\n            props: {\n              type: 'button',\n              className: 'btn btn-link',\n              onClick: props.reset,\n            },\n            children: K.translate('Reset'),\n          },\n      ].filter(Boolean),\n    },\n    {\n      tag: 'small',\n      props: { className: 'text-muted px-3 py-1' },\n      children: K.translate(\n        \"Signature of the functional appointee responsible for approving access to the system being requested.\"\n      ),\n    },\n  ];\n};\n\nbundle.helpers.Signature(\n  K('content[Information Owner Signature Widget]').element(),\n  K('field[21 SIGNATURE OF INFORMATION OWNER OPR]'),\n  {\n    modalTitle: '21. SIGNATURE OF INFORMATION OWNER/OPR',\n    fieldLabel: '21. SIGNATURE OF INFORMATION OWNER/OPR',\n    disabled: K('form').reviewMode(),\n    renderers: { ModalHeaderContent: ModalHeaderContentRenderer }\n  }\n);\n"
+        },
+        {
+          "name": "Add Help Text",
+          "type": "Load",
+          "action": "Custom",
+          "code": "// Add help text to labels\n$(K('form').element()).find(\n  '[data-help-text][data-element-type=section].inline-group,[data-help-text][data-element-type=wrapper]'\n).each((i, el) => {\n  $(el)\n    .children('.inline-group-label,.field-label')\n    .filter((idx, label) => {\n      return $(label).has('em.help-text').length === 0;\n    })\n    .append(\n      $('<em>', { class: 'help-text font-sm' }).text(\n        $(el).attr('data-help-text'),\n      ),\n    );\n});"
+        }
+      ],
+      "name": "Page 1",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+    {
+      "endpoint": "Submission Access",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Submission Modification",
+      "name": "Assigned Team - Assigned Individual"
+    }
+  ],
+  "slug": "dd-2875-part-2b",
+  "status": "Active",
+  "submissionLabelExpression": "Information Owner (Part 2b) on ${values('Summary')}",
+  "type": "Automated"
+}
